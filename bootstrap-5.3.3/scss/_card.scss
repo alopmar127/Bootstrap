@@ -205,6 +205,7 @@
   .card-body {
     flex: 1; /* El texto ocupa el espacio disponible */
     padding: 1.5rem;
+    text-shadow: 0 1px 0 color;
   }
   img {
     max-width: 350px; /* Tamaño máximo de la imagen */

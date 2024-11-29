@@ -1833,6 +1833,25 @@
   background-size: 0.5rem 100%;
 }
 
+.swatch-fondoHeader {
+  color: #000;
+  background-color: #1672fd;
+}
+.swatch-fondoHeader::after {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding-left: 1rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  white-space: pre;
+  content: "4.85" "\a" "4.32" "\a" "4.85";
+  background-color: #1672fd;
+  background-image: linear-gradient(to bottom, transparent 0.25rem, #000 0.25rem 0.75rem, transparent 0.75rem 1.25rem, #fff 1.25rem 1.75rem, transparent 1.75rem 2.25rem, #000 2.25rem 2.75rem, transparent 2.75rem);
+  background-repeat: no-repeat;
+  background-size: 0.5rem 100%;
+}
+
 .swatch-purple {
   color: #fff;
   background-color: #6f42c1;

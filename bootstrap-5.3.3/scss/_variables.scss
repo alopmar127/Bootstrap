@@ -3,6 +3,14 @@
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
+//Variables personalizadas para fondo
+$custom-bg-color: #e5e5f7; // Color base del fondo
+$custom-opacity: 0.3; // Opacidad del fondo
+$custom-radial-gradient: repeating-radial-gradient(circle at 0 0, transparent 0, #e5e5f7 10px);
+$custom-linear-gradient: repeating-linear-gradient(#00000055, #000000);
+
+
+
 // Color system
 
 // scss-docs-start gray-color-variables
@@ -41,6 +49,7 @@ $indigo: #6610f2 !default;
 //color cerdo iberico y banana
 $iberico: #313131 !default;
 $negrotransparente: rgba(0, 0, 0, 0.6) !default;
+$fondoHeader: #1672fd !default;
 $banana: #f8ea39 !default;
 $purple: #6f42c1 !default;
 $pink: #d63384 !default;
@@ -59,6 +68,7 @@ $colors: (
   "iberico": $iberico,
   "negrotransparente": $negrotransparente,
   "banana": $banana,
+  "fondoHeader": $fondoHeader,
   "purple": $purple,
   "pink": $pink,
   "red": $red,
