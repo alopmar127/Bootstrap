@@ -87,139 +87,53 @@
       </nav>
     </header>
 
-    <!-- Carrusel -->
-    <div
-      id="carouselExample"
-      class="carousel slide mt-0 d-none d-md-block"
-      data-bs-ride="carousel"
-      data-bs-interval="3000"
-    >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img
-            src="./img/iberican xtreme.webp"
-            class="d-block w-100"
-            alt="..."
-            style="max-height: 400px; object-fit: cover"
-          />
-          <div class="carousel-caption">
-            <h5>IBERICAN XTREME</h5>
-            <p>Descripción breve de la primera imagen.</p>
+    <div class="container my-5 cristal">
+      <div class="row align-items-center carved-text">
+        <h1 class="text-center mb-4">IBERICAN XTREME</h1>
+        <!-- Columna izquierda -->
+        <div class="col-md-4 text-center">
+          <div class="feature">
+            <i class="fas fa-fire mb-2 fa-2x"></i>
+            <h5>Sabor Ahumado</h5>
+            <p>Carne de cerdo ibérico asada al estilo tradicional.</p>
+          </div>
+          <div class="feature mt-4">
+            <i class="fas fa-drumstick-bite mb-2 fa-2x"></i>
+            <h5>Ingredientes Premium</h5>
+            <p>Queso curado, jamón ibérico y pan artesanal.</p>
+          </div>
+          <div class="feature mt-4">
+            <i class="fas fa-leaf mb-2 fa-2x"></i>
+            <h5>Frescura Garantizada</h5>
+            <p>Lechuga y tomate recién cosechados.</p>
           </div>
         </div>
-        <div class="carousel-item">
-          <img
-            src="./img/castana apa.webp"
-            class="d-block w-100"
-            alt="..."
-            style="max-height: 400px; object-fit: cover"
-          />
-          <div class="carousel-caption">
-            <h5>Título de la Segunda Imagen</h5>
-            <p>Descripción breve de la segunda imagen.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="./img/labrava apa.webp"
-            class="d-block w-100"
-            alt="..."
-            style="max-height: 400px; object-fit: cover"
-          />
-          <div class="carousel-caption">
-            <h5>Título de la Tercera Imagen</h5>
-            <p>Descripción breve de la tercera imagen.</p>
-          </div>
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-      </button>
-    </div>
 
-    <!-- Card (visible solo en pantallas extra pequeñas) -->
-    <div class="d-block d-md-none mt-0">
-      <div class="card">
-        <img src="./img/castana apa.jpg" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Título del Card</h5>
-          <p class="card-text">
-            Descripción breve de la imagen en pantallas pequeñas.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección de Bienvenida -->
-    <div class="container mt-5">
-      <div class="text-center">
-        <div class="card novedades my-4 shadow-sm bg-secondary">
-          <div class="card-body">
-            <h5 class="card-title">Novedades</h5>
-            <p class="card-text">
-              ¡Descubre nuestras últimas incorporaciones al menú! Prueba las
-              nuevas hamburguesas con ingredientes de temporada.
-            </p>
-            <a href="#" class="btn btn-primary">Saber más</a>
-          </div>
+        <!-- Imagen central -->
+        <div class="col-md-4 text-center">
           <img
             src="./img/estilo1.png"
-            class="img-fluid"
-            alt="Novedades en el menú"
+            alt="Arándanos"
+            class="img-fluid rounded-circle"
           />
         </div>
-      </div>
-    </div>
 
-    <div class="container mt-5">
-      <div class="card shadow-lg border-0">
-        <div class="row g-0">
-          <!-- Imagen a la izquierda -->
-          <div class="col-md-5">
-            <img
-              src="./img/midjourney.deiwor_Facade_of_a_modern_hamburger_restaurant_in_th_3736fbc0-c603-4e00-bc08-4bd2c2785734.webp"
-              alt="Nuestra Empresa"
-              class="img-fluid rounded-start"
-              style="height: 100%; object-fit: cover"
-            />
+        <!-- Columna derecha -->
+        <div class="col-md-4 text-center">
+          <div class="feature">
+            <i class="fas fa-heart mb-2 fa-2x"></i>
+            <h5>Receta Única</h5>
+            <p>Una mezcla exclusiva de sabores ibéricos.</p>
           </div>
-          <!-- Contenido a la derecha -->
-          <div class="col-md-7">
-            <div class="card-body">
-              <h2 class="card-title text-primary">
-                Bienvenidos a Iberican Burger
-              </h2>
-              <p class="card-text">
-                En <strong>Iberican Burger</strong>, nos enorgullece ofrecer
-                hamburguesas elaboradas con los mejores ingredientes locales.
-                Nuestra pasión por la calidad y el sabor nos ha llevado a crear
-                una experiencia única para los amantes de la buena comida.
-              </p>
-              <p class="card-text">
-                Con más de <strong>5 años de experiencia</strong>, nos hemos
-                convertido en un referente en el mercado de hamburguesas
-                artesanales, combinando tradición e innovación para deleitar a
-                nuestros clientes.
-              </p>
-              <a href="contacto.html" class="btn btn-primary btn-lg mt-3">
-                Conoce Más <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
+          <div class="feature mt-4">
+            <i class="fas fa-clock mb-2 fa-2x"></i>
+            <h5>Perfecta en Cualquier Momento</h5>
+            <p>Ideal para almuerzos, cenas o una tarde de amigos.</p>
+          </div>
+          <div class="feature mt-4">
+            <i class="fas fa-chart-line mb-2 fa-2x"></i>
+            <h5>Rendimiento Energético</h5>
+            <p>Con 850 kcal para disfrutar sin remordimientos.</p>
           </div>
         </div>
       </div>
@@ -297,6 +211,7 @@
         </div>
       </div>
     </footer>
+
     <script src="bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {

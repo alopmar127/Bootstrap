@@ -235,11 +235,10 @@
     flex-direction: column; /* Cambiar a disposición vertical en pantallas pequeñas */
     text-align: center; /* Centrar texto en pantallas pequeñas */
     img {
-      max-width: 550px; /* Tamaño máximo más pequeño */
+      max-width: 450px; /* Tamaño máximo más pequeño */
     }
   }
 }
-
 
 //
 // Card groups

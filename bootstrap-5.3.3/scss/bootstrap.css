@@ -4529,7 +4529,7 @@ textarea.form-control-lg {
     text-align: center; /* Centrar texto en pantallas pequeñas */
   }
   .card.novedades img {
-    max-width: 550px; /* Tamaño máximo más pequeño */
+    max-width: 450px; /* Tamaño máximo más pequeño */
   }
 }
 

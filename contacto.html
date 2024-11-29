@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacto - Iberican Burger</title>
-    <link rel="stylesheet" href="bootstrap-5.3.3\scss\personalizado.css" />
+    <link rel="stylesheet" href="bootstrap-5.3.3/scss/personalizado.css" />
     <link rel="stylesheet" href="bootstrap-5.3.3/scss/bootstrap.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -12,60 +12,74 @@
     />
   </head>
   <body>
-    <header>
-      <header class="bg-dark">
-        <nav class="navbar navbar-expand-lg py-3">
-          <div class="container">
-            <!-- Logotipo -->
-            <a class="navbar-brand text-warning fw-bold" href="index.html">
-              <img src="./img/logogpt333.png" alt="Logo" class="d-inline-block align-text-center me-2" style="max-height: 50px;">
-              Iberican<span class="text-danger">Burger</span>
-            </a>
-        
-            <!-- Botón Colapsable -->
-            <button
-              class="navbar-toggler text-warning border-0"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+    <header class="bg-dark">
+      <nav class="navbar navbar-expand-lg py-3">
+        <div class="container">
+          <!-- Logotipo -->
+          <a class="navbar-brand text-warning fw-bold" href="index.html">
+            <img
+              src="./img/logogpt333.png"
+              alt="Logo"
+              class="d-inline-block align-text-center me-2"
+              style="max-height: 50px"
+            />
+            Iberican<span class="text-danger">Burger</span>
+          </a>
+
+          <!-- Botón Colapsable -->
+          <button
+            class="navbar-toggler text-warning border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
+
+          <!-- Menú -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto text-center">
+              <li class="nav-item">
+                <a class="custom-btn btn-lg" href="index.html">
+                  <i class="fas fa-home"></i> Inicio
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-btn btn-lg" href="menu.html">
+                  <i class="fas fa-utensils"></i> Menú
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-btn btn-lg" href="contacto.html">
+                  <i class="fas fa-envelope"></i> Contacto
+                </a>
+              </li>
+            </ul>
+
+            <!-- Botón de Pedido -->
+            <a
+              href="#"
+              class="btn btn-danger btn-lg px-4 py-2 mx-auto mt-3 mt-lg-0"
+              data-bs-toggle="popover"
+              data-bs-placement="bottom"
+              data-bs-content="Ahora mismo no está disponible."
+              onclick="event.preventDefault();"
             >
-              <i class="fas fa-bars fa-lg"></i>
+              <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
+            </a>
+            <button
+              class="btn btn-light btn-lg mx-auto mt-3 mt-lg-0"
+              id="language-toggle"
+            >
+              <i class="fas fa-flag"></i> <span id="language-label">ES</span>
             </button>
-        
-            <!-- Menú -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav mx-auto text-center">
-                <li class="nav-item">
-                  <a class="custom-btn btn-lg" href="index.html">
-                    <i class="fas fa-home"></i> Inicio
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="custom-btn btn-lg" href="menu.html">
-                    <i class="fas fa-utensils"></i> Menú
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="custom-btn btn-lg" href="contacto.html">
-                    <i class="fas fa-envelope"></i> Contacto
-                  </a>
-                </li>
-              </ul>
-        
-              <!-- Botón de Pedido -->
-              <a href="pedidos.html" class="btn btn-danger btn-lg px-4 py-2 mx-auto mt-3 mt-lg-0">
-                <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
-              </a>
-            </div>
           </div>
-        </nav>
-        
-
-
-    </header> 
+        </div>
+      </nav>
+    </header>
 
     <main class="container mt-5">
       <h1 class="text-center mb-4">Contáctanos</h1>
@@ -75,11 +89,21 @@
         <form class="row g-3">
           <div class="col-md-6">
             <label for="name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="name" placeholder="Escribe tu nombre" />
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Escribe tu nombre"
+            />
           </div>
           <div class="col-md-6">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="tuemail@ejemplo.com" />
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="tuemail@ejemplo.com"
+            />
           </div>
           <div class="col-12">
             <label for="message" class="form-label">Mensaje</label>
@@ -92,7 +116,7 @@
           </div>
         </form>
       </div>
-      <br>
+      <br />
       <!-- Sección con pestañas -->
       <div class="bg-light p-4 shadow rounded">
         <ul class="nav nav-tabs mb-4" id="contactTab" role="tablist">
@@ -121,131 +145,139 @@
             </button>
           </li>
         </ul>
-        
-      <div class="tab-content">
-        <div class="tab-pane fade show active p-3" id="general" role="tabpanel">
-          <section class="container mt-5">
-            <h2 class="text-center mb-4">Información de Contacto</h2>
 
-            <div class="row">
-              <!-- Información básica -->
-              <div class="col-md-6">
-                <h4>
-                  <i class="fas fa-map-marker-alt text-primary"></i> Dirección
-                </h4>
-                <p>Calle Principal 123, 21200 Aracena, Huelva, España</p>
+        <div class="tab-content">
+          <div
+            class="tab-pane fade show active p-3"
+            id="general"
+            role="tabpanel"
+          >
+            <section class="container mt-5">
+              <h2 class="text-center mb-4">Información de Contacto</h2>
 
-                <h4><i class="fas fa-phone text-success"></i> Teléfono</h4>
-                <p>
-                  <a href="tel:+34953123456" class="text-decoration-none"
-                    >+34 953 123 456</a
-                  >
-                </p>
+              <div class="row">
+                <!-- Información básica -->
+                <div class="col-md-6">
+                  <h4>
+                    <i class="fas fa-map-marker-alt text-primary"></i> Dirección
+                  </h4>
+                  <p>Calle Principal 123, 21200 Aracena, Huelva, España</p>
 
-                <h4><i class="fas fa-envelope text-danger"></i> Email</h4>
-                <p>
-                  <a
-                    href="mailto:info@ibericanburger.com"
-                    class="text-decoration-none"
-                    >info@ibericanburger.com</a
-                  >
-                </p>
-              </div>
+                  <h4><i class="fas fa-phone text-success"></i> Teléfono</h4>
+                  <p>
+                    <a href="tel:+34953123456" class="text-decoration-none"
+                      >+34 953 123 456</a
+                    >
+                  </p>
 
-              <!-- Mapa y redes sociales -->
-              <div class="col-md-6">
-                <h4><i class="fas fa-map text-info"></i> Localización</h4>
-                <div class="ratio ratio-16x9 mb-4">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.2915949272245!2d-6.5728!3d37.8837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12345678901234%3A0xabcdef123456789!2sCalle%20Principal%20123%2C%2021200%20Aracena%2C%20Huelva%2C%20España!5e0!3m2!1ses!2ses!4v1690234567890"
-                    style="border: 0"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                  ></iframe>
+                  <h4><i class="fas fa-envelope text-danger"></i> Email</h4>
+                  <p>
+                    <a
+                      href="mailto:info@ibericanburger.com"
+                      class="text-decoration-none"
+                      >info@ibericanburger.com</a
+                    >
+                  </p>
                 </div>
 
-                <h4>
-                  <i class="fas fa-share-alt text-warning"></i> Síguenos en
-                  Redes Sociales
-                </h4>
-                <div>
-                  <a href="#" class="text-decoration-none me-3">
-                    <i class="fab fa-facebook fa-2x text-primary"></i> Facebook
-                  </a>
-                  <a href="#" class="text-decoration-none me-3">
-                    <i class="fab fa-twitter fa-2x text-info"></i> Twitter
-                  </a>
-                  <a href="#" class="text-decoration-none">
-                    <i class="fab fa-instagram fa-2x text-danger"></i> Instagram
-                  </a>
+                <!-- Mapa y redes sociales -->
+                <div class="col-md-6">
+                  <h4><i class="fas fa-map text-info"></i> Localización</h4>
+                  <div class="ratio ratio-16x9 mb-4">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.2915949272245!2d-6.5728!3d37.8837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12345678901234%3A0xabcdef123456789!2sCalle%20Principal%20123%2C%2021200%20Aracena%2C%20Huelva%2C%20España!5e0!3m2!1ses!2ses!4v1690234567890"
+                      style="border: 0"
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
+
+                  <h4>
+                    <i class="fas fa-share-alt text-warning"></i> Síguenos en
+                    Redes Sociales
+                  </h4>
+                  <div>
+                    <a href="#" class="text-decoration-none me-3">
+                      <i class="fab fa-facebook fa-2x text-primary"></i>
+                      Facebook
+                    </a>
+                    <a href="#" class="text-decoration-none me-3">
+                      <i class="fab fa-twitter fa-2x text-info"></i> Twitter
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                      <i class="fab fa-instagram fa-2x text-danger"></i>
+                      Instagram
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
+          <div class="tab-pane fade p-3" id="team" role="tabpanel">
+            <section class="container mt-5">
+              <h2 class="text-center mb-4">Información de Contacto</h2>
+
+              <div class="row">
+                <!-- Información básica -->
+                <div class="col-md-6">
+                  <h4>
+                    <i class="fas fa-map-marker-alt text-primary"></i> Dirección
+                  </h4>
+                  <p>Calle Real 45, 21240 Aroche, Huelva, España</p>
+
+                  <h4><i class="fas fa-phone text-success"></i> Teléfono</h4>
+                  <p>
+                    <a href="tel:+34953123457" class="text-decoration-none"
+                      >+34 953 123 457</a
+                    >
+                  </p>
+
+                  <h4><i class="fas fa-envelope text-danger"></i> Email</h4>
+                  <p>
+                    <a
+                      href="mailto:contacto@ibericanburgeraroche.com"
+                      class="text-decoration-none"
+                      >contacto@ibericanburgeraroche.com</a
+                    >
+                  </p>
+                </div>
+
+                <!-- Mapa y redes sociales -->
+                <div class="col-md-6">
+                  <h4><i class="fas fa-map text-info"></i> Localización</h4>
+                  <div class="ratio ratio-16x9 mb-4">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.2915949272245!2d-6.8456!3d37.9878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12345678901234%3A0xabcdef123456789!2sCalle%20Real%2045%2C%2021240%20Aroche%2C%20Huelva%2C%20España!5e0!3m2!1ses!2ses!4v1690234567890"
+                      style="border: 0"
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
+
+                  <h4>
+                    <i class="fas fa-share-alt text-warning"></i> Síguenos en
+                    Redes Sociales
+                  </h4>
+                  <div>
+                    <a href="#" class="text-decoration-none me-3">
+                      <i class="fab fa-facebook fa-2x text-primary"></i>
+                      Facebook
+                    </a>
+                    <a href="#" class="text-decoration-none me-3">
+                      <i class="fab fa-twitter fa-2x text-info"></i> Twitter
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                      <i class="fab fa-instagram fa-2x text-danger"></i>
+                      Instagram
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
-        <div class="tab-pane fade p-3" id="team" role="tabpanel">
-          <section class="container mt-5">
-            <h2 class="text-center mb-4">Información de Contacto</h2>
-
-            <div class="row">
-              <!-- Información básica -->
-              <div class="col-md-6">
-                <h4>
-                  <i class="fas fa-map-marker-alt text-primary"></i> Dirección
-                </h4>
-                <p>Calle Real 45, 21240 Aroche, Huelva, España</p>
-
-                <h4><i class="fas fa-phone text-success"></i> Teléfono</h4>
-                <p>
-                  <a href="tel:+34953123457" class="text-decoration-none"
-                    >+34 953 123 457</a
-                  >
-                </p>
-
-                <h4><i class="fas fa-envelope text-danger"></i> Email</h4>
-                <p>
-                  <a
-                    href="mailto:contacto@ibericanburgeraroche.com"
-                    class="text-decoration-none"
-                    >contacto@ibericanburgeraroche.com</a
-                  >
-                </p>
-              </div>
-
-              <!-- Mapa y redes sociales -->
-              <div class="col-md-6">
-                <h4><i class="fas fa-map text-info"></i> Localización</h4>
-                <div class="ratio ratio-16x9 mb-4">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.2915949272245!2d-6.8456!3d37.9878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12345678901234%3A0xabcdef123456789!2sCalle%20Real%2045%2C%2021240%20Aroche%2C%20Huelva%2C%20España!5e0!3m2!1ses!2ses!4v1690234567890"
-                    style="border: 0"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
-
-                <h4>
-                  <i class="fas fa-share-alt text-warning"></i> Síguenos en
-                  Redes Sociales
-                </h4>
-                <div>
-                  <a href="#" class="text-decoration-none me-3">
-                    <i class="fab fa-facebook fa-2x text-primary"></i> Facebook
-                  </a>
-                  <a href="#" class="text-decoration-none me-3">
-                    <i class="fab fa-twitter fa-2x text-info"></i> Twitter
-                  </a>
-                  <a href="#" class="text-decoration-none">
-                    <i class="fab fa-instagram fa-2x text-danger"></i> Instagram
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
       </div>
       <br />
     </main>
@@ -323,26 +355,20 @@
       </div>
     </footer>
   </body>
-  <script src="bootstrap-5.3.3/dist/js/bootstrap.js"></script>
   <!-- Bootstrap Icons -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
     rel="stylesheet"
   />
+  <script src="bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Activar tooltips y popovers
-    var tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-
-    var popoverTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="popover"]')
-    );
-    popoverTriggerList.map(function (popoverTriggerEl) {
-      return new bootstrap.Popover(popoverTriggerEl);
+    document.addEventListener("DOMContentLoaded", () => {
+      const popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      const popoverList = popoverTriggerList.map((popoverTriggerEl) => {
+        return new bootstrap.Popover(popoverTriggerEl);
+      });
     });
   </script>
 </html>
