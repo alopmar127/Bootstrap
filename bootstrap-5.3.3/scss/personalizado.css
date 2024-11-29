@@ -25,7 +25,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #f239f8; /* Color base */
+  background-color: #c9b7b7; /* Color base */
   background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #e5e5f7 10px), repeating-linear-gradient(rgba(0, 0, 0, 0.3333333333), #000000);
   background-blend-mode: overlay;
   background-size: cover;
@@ -74,10 +74,118 @@ body::before {
 
 .cristal {
   /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  border: 1px solid rgba(255, 255, 255, 0.74);
+}
+
+header {
+  border-bottom: 3px solid #ffc107;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
+}
+.navbar-brand:hover {
+  color: #ffc107;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+.nav-link:hover {
+  color: #ffc107;
+  transform: scale(1.1);
+}
+
+.btn-danger {
+  border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+}
+.btn-danger:hover {
+  background-color: #ff5722;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 87, 34, 0.6);
+}
+
+.navbar-toggler {
+  background-color: transparent;
+  border: none;
+  color: #ffc107;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-toggler i {
+  transition: transform 0.3s ease-in-out;
+}
+.navbar-toggler:hover i {
+  transform: rotate(90deg);
+}
+
+.navbar-nav {
+  gap: 1.5rem;
+}
+
+.custom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #312c2c;
+  background-color: #ffc107;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+.custom-btn i {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+.custom-btn:hover {
+  background-color: #b18f2b;
+  color: #312e2e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+.custom-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-danger {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(255, 87, 34, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+.btn-danger:hover {
+  background-color: #ff5722;
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(255, 87, 34, 0.4);
+}
+.btn-danger:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(255, 87, 34, 0.2);
+}
+
+@media (max-width: 992px) {
+  .navbar-nav {
+    flex-direction: column;
+  }
+  .btn-danger {
+    width: 100%;
+    text-align: center;
+  }
 }/*# sourceMappingURL=personalizado.css.map */

@@ -15,76 +15,59 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-          <!-- Logotipo -->
-          <a class="navbar-brand" href="index.html" mb-2 mb-lg-0 me-lg-2>
-            <img
-              src="./img/logogpt333.png"
-              alt="Logotipo"
-              width="40"
-              height="40"
-              class="d-inline-block"
-            />
-            IBERICAN BURGER
-          </a>
-          <!-- Botón colapsable en pantallas pequeñas -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <!-- Menú de navegación -->
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a
-                  class="btn btn-light mb-2 mb-lg-0 me-lg-2 btn-lg"
-                  href="index.html"
-                >
-                  <i class="fas fa-home"></i> Inicio
-                </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="btn btn-outline-light mb-2 mb-lg-0 me-lg-2 btn-lg"
-                  href="servicios.html"
-                >
-                  <i class="fa-solid fa-burger"></i> Servicios
-                </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="btn btn-outline-light mb-2 mb-lg-0 btn-lg"
-                  href="contacto.html"
-                >
-                  <i class="fas fa-envelope"></i> Contacto
-                </a>
-              </li>
-            </ul>
-
-            <!-- Buscador -->
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Buscar"
-                aria-label="Buscar"
-              />
-              <button class="btn btn-light btn-sm" type="submit">
-                <i class="fas fa-search"></i> Buscar
-              </button>
-            </form>
+      <header class="bg-dark">
+        <nav class="navbar navbar-expand-lg py-3">
+          <div class="container">
+            <!-- Logotipo -->
+            <a class="navbar-brand text-warning fw-bold" href="index.html">
+              <img src="./img/logogpt333.png" alt="Logo" class="d-inline-block align-text-center me-2" style="max-height: 50px;">
+              Iberican<span class="text-danger">Burger</span>
+            </a>
+        
+            <!-- Botón Colapsable -->
+            <button
+              class="navbar-toggler text-warning border-0"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="fas fa-bars fa-lg"></i>
+            </button>
+        
+            <!-- Menú -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item">
+                  <a class="custom-btn btn-lg" href="index.html">
+                    <i class="fas fa-home"></i> Inicio
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="custom-btn btn-lg" href="menu.html">
+                    <i class="fas fa-utensils"></i> Menú
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="custom-btn btn-lg" href="contacto.html">
+                    <i class="fas fa-envelope"></i> Contacto
+                  </a>
+                </li>
+              </ul>
+        
+              <!-- Botón de Pedido -->
+              <a href="pedidos.html" class="btn btn-danger btn-lg px-4 py-2 mx-auto mt-3 mt-lg-0">
+                <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
+              </a>
+            </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+        
+
+
+    </header> 
 
     <!-- Carrusel -->
     <div
@@ -187,6 +170,7 @@
 
     <div class="container my-5 cristal">
       <div class="row align-items-center carved-text">
+        <h1 class="text-center mb-4">IBERICAN XTREME</h1>
         <!-- Columna izquierda -->
         <div class="col-md-4 text-center">
           <div class="feature">

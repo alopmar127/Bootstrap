@@ -202,17 +202,44 @@
   display: flex;
   flex-direction: row; /* Imagen y contenido en fila */
   align-items: center; /* Centrar verticalmente */
+  gap: 1rem; /* Espaciado entre la imagen y el contenido */
+
   .card-body {
-    flex: 1; /* El texto ocupa el espacio disponible */
+    flex: 1; /* El contenido ocupa el espacio restante */
     padding: 1.5rem;
-    text-shadow: 0 1px 0 color;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2); /* Sombras ligeras en el texto */
   }
+
   img {
-    max-width: 350px; /* Tamaño máximo de la imagen */
-    object-fit: cover; /* Mantener proporciones */
-    border-radius: 0.25rem; /* Bordes redondeados para la imagen */
+    max-width: 60%; /* Imagen escalable */
+    height: auto; /* Mantener proporciones */
+    object-fit: cover; /* Asegura que la imagen se adapte al espacio */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    display: block; /* Quita espacio en línea */
+  }
+
+  /* Media queries para tamaños de pantalla */
+  @media (min-width: 768px) {
+    img {
+      max-width: 450px; /* Tamaño máximo para pantallas medianas */
+    }
+  }
+
+  @media (min-width: 992px) {
+    img {
+      max-width: 650px; /* Tamaño máximo para pantallas grandes */
+    }
+  }
+
+  @media (max-width: 576px) {
+    flex-direction: column; /* Cambiar a disposición vertical en pantallas pequeñas */
+    text-align: center; /* Centrar texto en pantallas pequeñas */
+    img {
+      max-width: 550px; /* Tamaño máximo más pequeño */
+    }
   }
 }
+
 
 //
 // Card groups
