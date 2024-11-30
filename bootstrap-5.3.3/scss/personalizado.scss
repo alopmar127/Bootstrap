@@ -44,6 +44,14 @@ $custom-linear-gradient: repeating-linear-gradient(#00000055, #000000);
       z-index: -1; /* Envía el fondo detrás del contenido */
     }
   }
+// body {
+//     background-image: url('../../img/fondogen2.png'); /* Reemplaza con la ruta de tu imagen */
+//     background-repeat: repeat; /* Repite el patrón */
+//     background-size: auto; /* Usa el tamaño natural de la imagen */
+//     background-attachment: fixed; /* Mantiene el fondo fijo al hacer scroll */
+//     background-position: top left; /* Empieza desde la esquina superior izquierda */
+//   }
+  
   
 $color-fondo-header: #1a1f50; // Color de fondo del header
 $color-borde-header: #007bff; // Color del borde del header
@@ -239,4 +247,3 @@ $btn-primary-hover-text: #312e2e; // Texto más oscuro en hover
     text-align: center; // Centrado del texto
   }
 }
-

@@ -6184,7 +6184,7 @@ textarea.form-control-lg {
   margin-left: 3px;
   text-indent: -999px;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #313131;
   background-clip: padding-box;
   border: 0;
   border-top: 10px solid transparent;
@@ -6257,6 +6257,31 @@ textarea.form-control-lg {
 
 .carousel-caption p {
   font-size: 1.2rem;
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  z-index: 5; /* Asegura que las flechas estén sobre el contenido */
+}
+
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
+.carousel-inner {
+  overflow: hidden;
 }
 
 .spinner-grow,
