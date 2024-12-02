@@ -62,6 +62,33 @@ body::before {
   color: #000; /* Texto negro al pasar el cursor */
 }
 
+/* Añade esto a tu archivo CSS personalizado */
+.navbar .form-control {
+  background-color: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.navbar .form-control::-moz-placeholder {
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+.navbar .form-control::placeholder {
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+.navbar .btn-outline-light {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.navbar .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
 .carved-text {
   position: relative;
   color: #2e2a2a;
@@ -188,31 +215,4 @@ header {
     width: 100%;
     text-align: center;
   }
-}
-body, html {
-  height: 100%;
-}
-
-.parallax {
-  /* The image used */
-  background-image: url("../../img/fondogen2.png");
-  /* Full height */
-  height: 100%;
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.parallax2 {
-  /* The image used */
-  background-image: url("../../img/fondogen3.png");
-  /* Full height */
-  height: 100%;
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }/*# sourceMappingURL=personalizado.css.map */

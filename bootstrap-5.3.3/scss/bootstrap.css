@@ -4533,6 +4533,56 @@ textarea.form-control-lg {
   }
 }
 
+.card-grupal {
+  position: relative;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-image: "url('../img/fon')";
+}
+
+.card-grupal .card-img-top {
+  width: 100%;
+  height: auto;
+}
+
+.card-grupal .card-body {
+  padding: 1rem;
+  flex: 1 1 auto;
+}
+
+.info-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+}
+
+.nutritional-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+}
+
+.card-grupal .card-title,
+.card-grupal .card-text {
+  text-align: center;
+}
+
 .card-group > .card {
   margin-bottom: var(--bs-card-group-margin);
 }

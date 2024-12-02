@@ -1,49 +1,51 @@
 //Variables personalizadas para fondo
 $custom-bg-color: #c9b7b7; // Color base del fondo
 $custom-opacity: 0.3; // Opacidad del fondo
-$custom-radial-gradient: repeating-radial-gradient(circle at 0 0, transparent 0, #e5e5f7 10px);
+$custom-radial-gradient: repeating-radial-gradient(
+  circle at 0 0,
+  transparent 0,
+  #e5e5f7 10px
+);
 $custom-linear-gradient: repeating-linear-gradient(#00000055, #000000);
 
-
 .feature {
-    i {
-      font-size: 2rem; /* Tamaño del ícono */
-      margin-bottom: 0.5rem;
-    }
-    h5 {
-      font-weight: bold;
-      margin-top: 0.5rem;
-      margin-bottom: 0.2rem;
-    }
-    p {
-      color: #383f46; /* Texto en tono gris */
-      font-size: 0.9rem;
-    }
+  i {
+    font-size: 2rem; /* Tamaño del ícono */
+    margin-bottom: 0.5rem;
   }
-  
-  
-  body {
-    position: relative; /* Necesario para posicionar el pseudo-elemento */
-    min-height: 100vh; /* Asegura que cubra toda la ventana */
-  
-    /* Fondo de la web */
-    &::before {
-      content: ""; /* Crea el pseudo-elemento */
-      position: absolute; /* Asegura que se coloque detrás del contenido */
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: $custom-bg-color; /* Color base */
-      background-image: $custom-radial-gradient, $custom-linear-gradient;
-      background-blend-mode: overlay;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      opacity: $custom-opacity; /* Aplica opacidad solo al fondo */
-      z-index: -1; /* Envía el fondo detrás del contenido */
-    }
+  h5 {
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
   }
+  p {
+    color: #383f46; /* Texto en tono gris */
+    font-size: 0.9rem;
+  }
+}
+
+body {
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  min-height: 100vh; /* Asegura que cubra toda la ventana */
+
+  /* Fondo de la web */
+  &::before {
+    content: ""; /* Crea el pseudo-elemento */
+    position: absolute; /* Asegura que se coloque detrás del contenido */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $custom-bg-color; /* Color base */
+    background-image: $custom-radial-gradient, $custom-linear-gradient;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: $custom-opacity; /* Aplica opacidad solo al fondo */
+    z-index: -1; /* Envía el fondo detrás del contenido */
+  }
+}
 // body {
 //     background-image: url('../../img/fondogen2.png'); /* Reemplaza con la ruta de tu imagen */
 //     background-repeat: repeat; /* Repite el patrón */
@@ -51,40 +53,60 @@ $custom-linear-gradient: repeating-linear-gradient(#00000055, #000000);
 //     background-attachment: fixed; /* Mantiene el fondo fijo al hacer scroll */
 //     background-position: top left; /* Empieza desde la esquina superior izquierda */
 //   }
-  
-  
+
 $color-fondo-header: #1a1f50; // Color de fondo del header
 $color-borde-header: #007bff; // Color del borde del header
 
-  .header {
-    .navbar {
-      border-top: 2px solid $color-borde-header; // Color del borde del header
-    }
-    img {
-      max-height: 80px; // Ajusta el tamaño del logotipo
-    }
+.header {
+  .navbar {
+    border-top: 2px solid $color-borde-header; // Color del borde del header
   }
+  img {
+    max-height: 80px; // Ajusta el tamaño del logotipo
+  }
+}
 
-  .nav-tabs .nav-link {
-    background-color: #f8f9fa; /* Color de fondo claro para pestañas no activas */
-    color: #6c757d; /* Texto en gris */
-    border: 1px solid #dee2e6; /* Borde claro */
-    transition: all 0.3s ease; /* Animación suave */
-  }
-  
-  .nav-tabs .nav-link.active {
-    background-color: #0d6efd; /* Fondo azul para la pestaña activa */
-    color: #fff; /* Texto blanco */
-    border-color: #0d6efd; /* Borde azul */
-    font-weight: bold; /* Texto en negrita */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
-  }
-  
-  .nav-tabs .nav-link:hover {
-    background-color: #e2e6ea; /* Fondo más oscuro al pasar el cursor */
-    color: #000; /* Texto negro al pasar el cursor */
-  }
-  
+.nav-tabs .nav-link {
+  background-color: #f8f9fa; /* Color de fondo claro para pestañas no activas */
+  color: #6c757d; /* Texto en gris */
+  border: 1px solid #dee2e6; /* Borde claro */
+  transition: all 0.3s ease; /* Animación suave */
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #0d6efd; /* Fondo azul para la pestaña activa */
+  color: #fff; /* Texto blanco */
+  border-color: #0d6efd; /* Borde azul */
+  font-weight: bold; /* Texto en negrita */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: #e2e6ea; /* Fondo más oscuro al pasar el cursor */
+  color: #000; /* Texto negro al pasar el cursor */
+}
+
+/* Añade esto a tu archivo CSS personalizado */
+.navbar .form-control {
+  background-color: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.navbar .form-control::placeholder {
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+.navbar .btn-outline-light {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.navbar .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
 
 // Variables para el efecto tallado
 $stone-text-color: #2e2a2a; // Color gris claro para el texto (superficie de piedra)
@@ -99,80 +121,78 @@ $shadow-blur: 2px; // Difuminado de la sombra
   font-weight: bold; // Texto grueso para el efecto grabado
   font-size: 2rem; // Tamaño adecuado para visualizar el efecto
   text-transform: uppercase; // Opcional, para que se vea más "grabado"
-  text-shadow: 
-    $shadow-offset $shadow-offset $shadow-blur $stone-shadow-dark, /* Sombra oscura inferior derecha */
-    -$shadow-offset -$shadow-offset $shadow-blur $stone-shadow-light; /* Luz superior izquierda */
+  text-shadow: $shadow-offset $shadow-offset $shadow-blur $stone-shadow-dark,
+    /* Sombra oscura inferior derecha */ -$shadow-offset -$shadow-offset
+      $shadow-blur $stone-shadow-light; /* Luz superior izquierda */
   letter-spacing: 1px; // Espaciado para mayor claridad
 }
 
-
-
 //Efecto cristal
 .cristal {
-/* From https://css.glass */
-background: rgba(255, 255, 255, 0.15);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5.7px);
--webkit-backdrop-filter: blur(5.7px);
-border: 1px solid rgba(255, 255, 255, 0.74);
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  border: 1px solid rgba(255, 255, 255, 0.74);
 }
 
 header {
-    border-bottom: 3px solid #ffc107; // Línea decorativa inferior (amarilla)
+  border-bottom: 3px solid #ffc107; // Línea decorativa inferior (amarilla)
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: #ffc107; // Color amarillo al pasar el ratón
   }
-  
-  .navbar-brand {
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-    transition: all 0.3s ease-in-out;
-  
-    &:hover {
-      color: #ffc107; // Color amarillo al pasar el ratón
-    }
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: #ffc107; // Amarillo en hover
+    transform: scale(1.1); // Efecto de zoom ligero
   }
-  
-  .nav-link {
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-  
-    &:hover {
-      color: #ffc107; // Amarillo en hover
-      transform: scale(1.1); // Efecto de zoom ligero
-    }
+}
+
+.btn-danger {
+  border-radius: 25px; // Botón redondeado
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #ff5722; // Cambiar a un naranja más vibrante
+    transform: scale(1.1); // Zoom ligero en hover
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.6);
   }
-  
-  .btn-danger {
-    border-radius: 25px; // Botón redondeado
-    transition: all 0.3s ease-in-out;
-  
-    &:hover {
-      background-color: #ff5722; // Cambiar a un naranja más vibrante
-      transform: scale(1.1); // Zoom ligero en hover
-      box-shadow: 0 0 10px rgba(255, 87, 34, 0.6);
-    }
+}
+
+.navbar-toggler {
+  background-color: transparent;
+  border: none;
+  color: #ffc107;
+
+  &:focus {
+    box-shadow: none;
   }
-  
-  .navbar-toggler {
-    background-color: transparent;
-    border: none;
-    color: #ffc107;
-  
-    &:focus {
-      box-shadow: none;
-    }
-  
-    i {
-      transition: transform 0.3s ease-in-out;
-    }
-  
-    &:hover i {
-      transform: rotate(90deg); // Rotación del ícono de hamburguesa
-    }
+
+  i {
+    transition: transform 0.3s ease-in-out;
   }
-  
- // Variables de colores
+
+  &:hover i {
+    transform: rotate(90deg); // Rotación del ícono de hamburguesa
+  }
+}
+
+// Variables de colores
 $btn-primary-bg: #ffc107; // Amarillo vibrante
 $btn-primary-hover-bg: #b18f2b; // Color oscuro para hover
 $btn-primary-text: #312c2c; // Texto oscuro
@@ -248,34 +268,35 @@ $btn-primary-hover-text: #312e2e; // Texto más oscuro en hover
   }
 }
 
-body, html {
-    height: 100%;
-  }
+// body,
+// html {
+//   height: 100%;
+// }
 
-.parallax {
-    /* The image used */
-    background-image: url("../../img/fondogen2.png");
-  
-  /* Full height */
-  height: 100%;
+// .parallax {
+//     /* The image used */
+//     background-image: url("../../img/fondogen2.png");
 
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  }
+//   /* Full height */
+//   height: 100%;
 
-  .parallax2 {
-    /* The image used */
-    background-image: url("../../img/fondogen3.png");
-  
-  /* Full height */
-  height: 100%;
+//   /* Create the parallax scrolling effect */
+//   background-attachment: fixed;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   }
 
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  }
+//   .parallax2 {
+//     /* The image used */
+//     background-image: url("../../img/fondogen3.png");
+
+//   /* Full height */
+//   height: 100%;
+
+//   /* Create the parallax scrolling effect */
+//   background-attachment: fixed;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   }
