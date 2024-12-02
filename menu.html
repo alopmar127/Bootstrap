@@ -13,49 +13,46 @@
     />
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const idiomaSelector = document.getElementById("language-toggle");
-        const idiomaLabel = document.getElementById("language-label");
-  
-        idiomaSelector.addEventListener("click", () => {
-          // Cambiar entre ES y EN
-          const nuevoIdioma = idiomaLabel.textContent === "ES" ? "en" : "es";
-          idiomaLabel.textContent = nuevoIdioma.toUpperCase();
-  
-          // Seleccionar todos los elementos con data-es y data-en
-          const elementos = document.querySelectorAll("[data-es][data-en]");
-  
-          elementos.forEach((elemento) => {
-            const texto = elemento.getAttribute(`data-${nuevoIdioma}`);
-  
-            if (elemento.tagName === "INPUT" || elemento.tagName === "TEXTAREA") {
-              // Cambiar el placeholder para inputs y textareas
-              elemento.placeholder = texto;
-            } else if (elemento.querySelector("i")) {
-              // Si el elemento tiene un ícono, limpiar nodos de texto previos y agregar texto nuevo
-              const icono = elemento.querySelector("i");
-  
-              // Eliminar todos los nodos de texto excepto el ícono
-              elemento.childNodes.forEach((node) => {
-                if (node.nodeType === Node.TEXT_NODE) {
-                  elemento.removeChild(node);
-                }
-              });
-  
-              // Agregar el nuevo texto
-              elemento.appendChild(document.createTextNode(` ${texto}`));
-            } else {
-              // Cambiar el texto directamente para otros elementos
-              elemento.textContent = texto;
-            }
+        document.addEventListener("DOMContentLoaded", () => {
+          const idiomaSelector = document.getElementById("language-toggle");
+          const idiomaLabel = document.getElementById("language-label");
+      
+          idiomaSelector.addEventListener("click", () => {
+            // Cambiar entre ES y EN
+            const nuevoIdioma = idiomaLabel.textContent === "ES" ? "en" : "es";
+            idiomaLabel.textContent = nuevoIdioma.toUpperCase();
+      
+            // Seleccionar todos los elementos con data-es y data-en
+            const elementos = document.querySelectorAll("[data-es][data-en]");
+      
+            elementos.forEach((elemento) => {
+              const texto = elemento.getAttribute(`data-${nuevoIdioma}`);
+      
+              if (elemento.tagName === "INPUT" || elemento.tagName === "TEXTAREA") {
+                // Cambiar el placeholder para inputs y textareas
+                elemento.placeholder = texto;
+              } else if (elemento.querySelector("i")) {
+                // Si el elemento tiene un ícono, limpiar nodos de texto previos y agregar texto nuevo
+                const icono = elemento.querySelector("i");
+      
+                // Eliminar todos los nodos de texto excepto el ícono
+                const nodes = Array.from(elemento.childNodes).filter(node => node !== icono);
+                nodes.forEach(node => elemento.removeChild(node));
+      
+                // Agregar el nuevo texto
+                elemento.appendChild(document.createTextNode(` ${texto}`));
+              } else {
+                // Cambiar el texto directamente para otros elementos
+                elemento.textContent = texto;
+              }
+            });
           });
+      
+          // Cambiar el idioma inmediatamente al cargar la página
+          idiomaSelector.click();
         });
-  
-        // Cambiar el idioma inmediatamente al cargar la página
-        idiomaSelector.click();
-      });
-  
-    </script>
+      </script>
+      
 <script>
     document.addEventListener("DOMContentLoaded", () => {
       // Evento para abrir/cerrar la información nutricional al pulsar el botón "?"
@@ -75,65 +72,67 @@
   
   <body>
     <header class="bg-dark">
-      <nav class="navbar navbar-expand-lg py-3">
-        <div class="container">
-          <!-- Logotipo -->
-          <a class="navbar-brand text-warning fw-bold" href="index.html">
-            <img src="./img/logogpt333.png" alt="Logo" class="d-inline-block align-text-center me-2"
-              style="max-height: 50px" />
-            Iberican<span class="text-danger">Burger</span>
-          </a>
-  
-          <!-- Botón Colapsable -->
-          <button class="navbar-toggler text-warning border-0" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars fa-lg"></i>
-          </button>
-  
-          <!-- Menú -->
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto text-center">
-              <li class="nav-item">
-                <a class="custom-btn btn-lg" href="index.html" data-es="Inicio" data-en="Home">
-                  <i class="fas fa-home"></i> Inicio
-                </a>             
-              </li>
-              <li class="nav-item">
-                <a class="custom-btn btn-lg" href="menu.html" data-es="Menú" data-en="Menu">
-                  <i class="fas fa-utensils"></i> Menú
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="custom-btn btn-lg" href="contacto.html" data-es="Contacto" data-en="Contact">
-                  <i class="fas fa-envelope"></i> Contacto
-                </a>
-              </li>
-            </ul>
-  
-            <!-- Botón de Pedido -->
-            <a href="#" class="btn btn-danger btn-lg px-4 py-2 mx-auto mt-3 mt-lg-0" 
-            data-bs-toggle="popover" 
-            data-bs-placement="bottom" 
-            data-bs-content="Ahora mismo no está disponible." 
-            onclick="event.preventDefault();" 
-            data-es="¡Pedir Ahora!" 
-            data-en="Order Now!">
-           <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
-         </a>
-            <button class="btn btn-light btn-lg mx-auto mt-3 mt-lg-0" id="language-toggle">
-              <i class="fas fa-flag"></i> <span id="language-label">EN</span>
-            </button>
-          </div>
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container">
+              <!-- Logotipo -->
+              <a class="navbar-brand text-warning fw-bold" href="index.html">
+                <img src="./img/logogpt333.png" alt="Logo" class="d-inline-block align-text-center me-2" style="max-height: 50px" />
+                Iberican<span class="text-danger">Burger</span>
+              </a>
           
-        </div>
-                         <!-- Formulario de Búsqueda -->
-      <form class="d-flex me-3" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="search-input">
-        <button class="btn btn-outline-light" type="submit" data-es="Buscar" data-en="Search">
-          <i class="fas fa-search"></i>
-        </button>
-      </form>
-      </nav>
+              <!-- Botón Colapsable -->
+              <button class="navbar-toggler text-warning border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg"></i>
+              </button>
+          
+              <!-- Menú -->
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto text-center">
+                  <li class="nav-item">
+                    <a class="custom-btn btn-lg" href="index.html" data-es="Inicio" data-en="Home">
+                      <i class="fas fa-home"></i> Inicio
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="custom-btn btn-lg" href="menu.html" data-es="Menú" data-en="Menu">
+                      <i class="fas fa-utensils"></i> Menú
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="custom-btn btn-lg" href="contacto.html" data-es="Contacto" data-en="Contact">
+                      <i class="fas fa-envelope"></i> Contacto
+                    </a>
+                  </li>
+                </ul>
+          
+                <!-- Formulario de Búsqueda
+                <form class="d-flex me-3" role="search" onsubmit="event.preventDefault();">
+                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="search-input" data-es="Buscar" data-en="Search">
+                  <button class="btn btn-outline-light" type="button" data-es="Buscar" data-en="Search">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form> -->
+          
+                <!-- Botón de Pedido -->
+                <a href="#" class="btn btn-danger btn-lg px-4 py-2 mx-auto mt-3 mt-lg-0"
+                  data-bs-toggle="popover"
+                  data-bs-placement="bottom"
+                  data-bs-content="Ahora mismo no está disponible."
+                  onclick="event.preventDefault();"
+                  data-es="¡Pedir Ahora!"
+                  data-en="Order Now!">
+                  <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
+                </a>
+          
+                <!-- Selector de Idioma -->
+                <button class="btn btn-light btn-lg mx-auto mt-3 mt-lg-0" id="language-toggle">
+                  <i class="fas fa-flag"></i> <span id="language-label">EN</span>
+                </button>
+              </div>
+            </div>
+          </nav>
+          
   
     </header>
    

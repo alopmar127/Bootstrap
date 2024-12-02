@@ -62,7 +62,7 @@ body::before {
   color: #000; /* Texto negro al pasar el cursor */
 }
 
-/* Añade esto a tu archivo CSS personalizado */
+/* nav */
 .navbar .form-control {
   background-color: transparent;
   border-color: #ffffff;
