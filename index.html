@@ -229,95 +229,66 @@
     </div>
   </div>
 
-  <footer class="bg-primary text-white mt-5 ">
-    <div class="container py-4">
+  <footer class="bg-dark py-4">
+    <div class="container">
       <div class="row">
-        <!-- Sección de enlaces -->
-        <div class="col-md-4">
-          <h5 data-es="Enlaces Rápidos" data-en="Quick Links">Enlaces Rápidos</h5>
+        <!-- Logotipo y Nombre -->
+        <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+          <a class="navbar-brand text-warning fw-bold" href="index.html">
+            <img src="./img/logogpt333.png" alt="Logo" class="d-inline-block align-text-center" />
+            Iberican<span class="text-danger">Burger</span>
+          </a>
+          <p class="text-white mt-2" data-es="La mejor experiencia de hamburguesas gourmet." data-en="The best gourmet burger experience.">
+            La mejor experiencia de hamburguesas gourmet.
+          </p>
+        </div>
+  
+        <!-- Menú Rápido -->
+        <div class="col-md-4 text-center">
           <ul class="list-unstyled">
-            <li>
-              <a
-                href="index.html"
-                class="text-white text-decoration-none"
-                data-es="Inicio"
-                data-en="Home"
-              >
-                Inicio
+            <li class="mb-2">
+              <a href="index.html" class="text-white text-decoration-none" data-es="Inicio" data-en="Home">
+                <i class="fas fa-home"></i> Inicio
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="menu.html" class="text-white text-decoration-none" data-es="Menú" data-en="Menu">
+                <i class="fas fa-utensils"></i> Menú
               </a>
             </li>
             <li>
-              <a
-                href="servicios.html"
-                class="text-white text-decoration-none"
-                data-es="Servicios"
-                data-en="Services"
-              >
-                Servicios
-              </a>
-            </li>
-            <li>
-              <a
-                href="contacto.html"
-                class="text-white text-decoration-none"
-                data-es="Contacto"
-                data-en="Contact"
-              >
-                Contacto
+              <a href="contacto.html" class="text-white text-decoration-none" data-es="Contacto" data-en="Contact">
+                <i class="fas fa-envelope"></i> Contacto
               </a>
             </li>
           </ul>
         </div>
-
-        <!-- Sección de contacto -->
-        <div class="col-md-4">
-          <h5 data-es="Contacto" data-en="Contact">Contacto</h5>
-          <p class="mb-1">
-            <span data-es="Teléfono:" data-en="Phone:">Teléfono:</span>
-            <a href="tel:+123456789" class="text-white text-decoration-none">+1 234 567 89</a>
+  
+        <!-- Redes Sociales -->
+        <div class="col-md-4 text-center text-md-end">
+          <p class="text-white mb-2" data-es="Síguenos en redes sociales:" data-en="Follow us on social media:">
+            Síguenos en redes sociales:
           </p>
-          <p class="mb-1">
-            <span data-es="Email:" data-en="Email:">Email:</span>
-            <a href="mailto:info@techsolutions.com" class="text-white text-decoration-none">info@techsolutions.com</a>
-          </p>
-          <p data-es="Dirección: Calle Principal 123, Ciudad" data-en="Address: Main Street 123, City">
-            Dirección: Calle Principal 123, Ciudad
-          </p>
-          
-        </div>
-
-        <!-- Sección de redes sociales -->
-        <div class="col-md-4">
-          <h5 data-es="Síguenos" data-en="Follow Us">Síguenos</h5>
-          <div>
-            <a href="#" class="text-white text-decoration-none me-3">
-              <i class="bi bi-facebook"></i> Facebook
-            </a>
-            <a href="#" class="text-white text-decoration-none me-3">
-              <i class="bi bi-twitter"></i> Twitter
-            </a>
-            <a href="#" class="text-white text-decoration-none">
-              <i class="bi bi-instagram"></i> Instagram
-            </a>
+          <div class="social-icons">
+            <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
           </div>
         </div>
       </div>
-
-      <!-- Línea de separación -->
-      <hr class="bg-white" />
-      <!-- Copyright -->
-      <div class="text-center">
-        <p
-        class="mb-0"
-        data-es="© 2024 Iberican Burger. Todos los derechos reservados."
-        data-en="© 2024 Iberican Burger. All rights reserved."
-      >
-        © 2024 Iberican Burger. Todos los derechos reservados.
-      </p>
-      
+  
+      <!-- Línea de Separación -->
+      <hr class="bg-light my-4" />
+  
+      <!-- Información de Derechos -->
+      <div class="text-center text-white">
+        <p class="mb-0" data-es="© 2024 Iberican Burger. Todos los derechos reservados." data-en="© 2024 Iberican Burger. All rights reserved.">
+          © 2024 Iberican Burger. Todos los derechos reservados.
+        </p>
       </div>
     </div>
   </footer>
+  
   <script src="bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {

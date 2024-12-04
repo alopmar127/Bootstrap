@@ -24,28 +24,72 @@ $custom-linear-gradient: repeating-linear-gradient(#00000055, #000000);
   }
 }
 
+//footer
+/* Variables */
+$bg-color-dark: #343a40; /* Color de fondo oscuro */
+$text-color-light: #ffffff; /* Color de texto claro */
+$text-color-hover: #ffc107; /* Color de texto al pasar el cursor */
+$logo-max-height: 80px; /* Tamaño máximo del logotipo */
+$link-spacing: 1rem; /* Espaciado entre enlaces sociales */
+$yellow-line: 4px solid #ffc107;
+
+/* Footer */
+/* Espaciado para el Footer */
+footer {
+  margin-top: 2rem; /* Espaciado superior para separar el footer */
+  padding-top: 2rem; /* Espaciado interno superior dentro del footer */
+  background-color: $bg-color-dark;
+  color: $text-color-light;
+  border-top: $yellow-line; 
+
+
+  a {
+    color: $text-color-light;
+    text-decoration: none;
+
+    &:hover {
+      color: $text-color-hover; /* Color al pasar el cursor */
+    }
+  }
+
+  hr {
+    border-color: $text-color-light;
+  }
+
+  .navbar-brand img {
+    max-height: $logo-max-height; /* Tamaño del logotipo */
+  }
+
+  .social-icons a {
+    margin-right: $link-spacing; /* Espaciado entre iconos sociales */
+  }
+}
+
+
+
 body {
   position: relative; /* Necesario para posicionar el pseudo-elemento */
   min-height: 100vh; /* Asegura que cubra toda la ventana */
 
   /* Fondo de la web */
-  &::before {
-    content: ""; /* Crea el pseudo-elemento */
-    position: absolute; /* Asegura que se coloque detrás del contenido */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $custom-bg-color; /* Color base */
-    background-image: $custom-radial-gradient, $custom-linear-gradient;
-    background-blend-mode: overlay;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    opacity: $custom-opacity; /* Aplica opacidad solo al fondo */
-    z-index: -1; /* Envía el fondo detrás del contenido */
+  // &::before {
+  //   content: ""; /* Crea el pseudo-elemento */
+  //   position: absolute; /* Asegura que se coloque detrás del contenido */
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-color: $custom-bg-color; /* Color base */
+  //   background-image: $custom-radial-gradient, $custom-linear-gradient;
+  //   background-blend-mode: overlay;
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   background-attachment: fixed;
+  //   opacity: $custom-opacity; /* Aplica opacidad solo al fondo */
+  //   z-index: -1; /* Envía el fondo detrás del contenido */
+  background-image: url('../../img/fondogen.png');
   }
-}
+
 // body {
 //     background-image: url('../../img/fondogen2.png'); /* Reemplaza con la ruta de tu imagen */
 //     background-repeat: repeat; /* Repite el patrón */
@@ -127,13 +171,71 @@ $shadow-blur: 2px; // Difuminado de la sombra
   letter-spacing: 1px; // Espaciado para mayor claridad
 }
 
+//Prueba fuente
+/* Definición de la fuente */
+@font-face {
+  font-family: 'Shred Handed';
+  src: url('../../fonts/Shred-Handed.eot'); /* IE9 Compatibility */
+  src: url('../../fonts/Shred-Handed.woff2') format('woff2'), /* Navegadores modernos */
+       url('../../fonts/Shred-Handed.woff') format('woff'), /* Compatibilidad adicional */
+       url('../../fonts/Shred-Handed.ttf') format('truetype'); /* Compatibilidad general */
+       
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Aplicación de la fuente */
+// Variables
+$font-family-main: 'Shred Handed', sans-serif;
+$text-shadow-main: 3px 3px 2px rgba(255, 0, 0, 0.4), -6px 2px rgba(251, 255, 0, 0.88);
+$font-size-large: 8rem;
+$font-size-medium: 3rem;
+$font-size-little: 2.1rem;
+$font-size-medium-mobile: 3.5rem; // Tamaño reducido para móviles
+$font-size-large-mobile: 7rem;
+
+// Estilo Generalizado
+.menu-fuente,
+.menu-fuente-nombres,
+.menu-fuente-nombreslil {
+  font-family: $font-family-main;
+  text-shadow: $text-shadow-main;
+}
+
+// Tamaños específicos
+.menu-fuente {
+  font-size: $font-size-large;
+  @media (max-width: 576px) {
+    font-size: $font-size-large-mobile;
+  }
+}
+
+.menu-fuente-nombres {
+  font-size: $font-size-medium;
+    // Ajuste en móviles
+    @media (max-width: 576px) {
+      font-size: $font-size-medium-mobile;
+    }
+}
+
+.menu-fuente-nombreslil {
+  font-size: $font-size-little;
+}
+
+
+p{
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
+
 //Efecto cristal
 .cristal {
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5.7px);
+  backdrop-filter: blur(3.7px);
   -webkit-backdrop-filter: blur(5.7px);
   border: 1px solid rgba(255, 255, 255, 0.74);
 }

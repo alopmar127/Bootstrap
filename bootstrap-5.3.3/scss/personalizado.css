@@ -13,26 +13,43 @@
   font-size: 0.9rem;
 }
 
+/* Variables */
+/* Color de fondo oscuro */
+/* Color de texto claro */
+/* Color de texto al pasar el cursor */
+/* Tamaño máximo del logotipo */
+/* Espaciado entre enlaces sociales */
+/* Footer */
+/* Espaciado para el Footer */
+footer {
+  margin-top: 2rem; /* Espaciado superior para separar el footer */
+  padding-top: 2rem; /* Espaciado interno superior dentro del footer */
+  background-color: #343a40;
+  color: #ffffff;
+  border-top: 4px solid #ffc107;
+}
+footer a {
+  color: #ffffff;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #ffc107; /* Color al pasar el cursor */
+}
+footer hr {
+  border-color: #ffffff;
+}
+footer .navbar-brand img {
+  max-height: 80px; /* Tamaño del logotipo */
+}
+footer .social-icons a {
+  margin-right: 1rem; /* Espaciado entre iconos sociales */
+}
+
 body {
   position: relative; /* Necesario para posicionar el pseudo-elemento */
   min-height: 100vh; /* Asegura que cubra toda la ventana */
   /* Fondo de la web */
-}
-body::before {
-  content: ""; /* Crea el pseudo-elemento */
-  position: absolute; /* Asegura que se coloque detrás del contenido */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #c9b7b7; /* Color base */
-  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #e5e5f7 10px), repeating-linear-gradient(rgba(0, 0, 0, 0.3333333333), #000000);
-  background-blend-mode: overlay;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  opacity: 0.3; /* Aplica opacidad solo al fondo */
-  z-index: -1; /* Envía el fondo detrás del contenido */
+  background-image: url("../../img/fondogen.png");
 }
 
 .header .navbar {
@@ -99,12 +116,55 @@ body::before {
   letter-spacing: 1px;
 }
 
+/* Definición de la fuente */
+@font-face {
+  font-family: "Shred Handed";
+  src: url("../../fonts/Shred-Handed.eot"); /* IE9 Compatibility */
+  src: url("../../fonts/Shred-Handed.woff2") format("woff2"), url("../../fonts/Shred-Handed.woff") format("woff"), url("../../fonts/Shred-Handed.ttf") format("truetype"); /* Compatibilidad general */
+  font-weight: normal;
+  font-style: normal;
+}
+/* Aplicación de la fuente */
+.menu-fuente,
+.menu-fuente-nombres,
+.menu-fuente-nombreslil {
+  font-family: "Shred Handed", sans-serif;
+  text-shadow: 3px 3px 2px rgba(255, 0, 0, 0.4), -6px 2px rgba(251, 255, 0, 0.88);
+}
+
+.menu-fuente {
+  font-size: 8rem;
+}
+@media (max-width: 576px) {
+  .menu-fuente {
+    font-size: 7rem;
+  }
+}
+
+.menu-fuente-nombres {
+  font-size: 3rem;
+}
+@media (max-width: 576px) {
+  .menu-fuente-nombres {
+    font-size: 3.5rem;
+  }
+}
+
+.menu-fuente-nombreslil {
+  font-size: 2.1rem;
+}
+
+p {
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
 .cristal {
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5.7px);
+  backdrop-filter: blur(3.7px);
   -webkit-backdrop-filter: blur(5.7px);
   border: 1px solid rgba(255, 255, 255, 0.74);
 }
