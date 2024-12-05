@@ -51,6 +51,35 @@ body {
   /* Fondo de la web */
   background-image: url("../../img/fondogen.png");
 }
+body a:focus,
+body button:focus {
+  outline: 4px solid #ff0707;
+  outline-offset: 2px;
+}
+body #btnVolverArriba {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: none;
+  z-index: 1000;
+  background-color: #f8ea39;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border: 2px solid #000000;
+  display: flex;
+  font-size: 1.2rem;
+}
+body #btnVolverArriba:hover {
+  background-color: #b9af25;
+  transform: scale(1.1);
+}
 
 .header .navbar {
   border-top: 2px solid #007bff;

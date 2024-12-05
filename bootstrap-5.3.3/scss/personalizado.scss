@@ -1,12 +1,13 @@
+
 //Variables personalizadas para fondo
-$custom-bg-color: #c9b7b7; // Color base del fondo
-$custom-opacity: 0.3; // Opacidad del fondo
-$custom-radial-gradient: repeating-radial-gradient(
-  circle at 0 0,
-  transparent 0,
-  #e5e5f7 10px
-);
-$custom-linear-gradient: repeating-linear-gradient(#00000055, #000000);
+// $custom-bg-color: #c9b7b7; // Color base del fondo
+// $custom-opacity: 0.3; // Opacidad del fondo
+// $custom-radial-gradient: repeating-radial-gradient(
+//   circle at 0 0,
+//   transparent 0,
+//   #e5e5f7 10px
+// );
+// $custom-linear-gradient: repeating-linear-gradient(#00000055, #000000);
 
 .feature {
   i {
@@ -70,6 +71,55 @@ footer {
 body {
   position: relative; /* Necesario para posicionar el pseudo-elemento */
   min-height: 100vh; /* Asegura que cubra toda la ventana */
+
+//Navegacion por teclado
+a:focus,
+button:focus {
+  outline: 4px solid #ff0707;
+  outline-offset: 2px;
+}
+
+
+//Boton volver arriba
+// Variables
+$btn-bg-color: #f8ea39; // Color de fondo del botón
+$btn-bg-hover: #b9af25; // Color de fondo al pasar el cursor
+$btn-color: #000; // Color del texto/icono
+$btn-size: 70px; // Tamaño del botón
+$btn-border-radius: 50%; // Forma redonda
+$btn-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Sombra
+$btn-position: 2rem; // Margen desde los bordes
+$btn-border: 2px solid #000000; // Borde del botón
+// Estilo del botón
+#btnVolverArriba {
+  position: fixed;
+  bottom: $btn-position;
+  right: $btn-position;
+  display: none; // Oculto por defecto
+  z-index: 1000; // Asegura que esté por encima del contenido
+  background-color: $btn-bg-color;
+  color: $btn-color;
+  border: none;
+  border-radius: $btn-border-radius;
+  width: $btn-size;
+  height: $btn-size;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $btn-shadow;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border: $btn-border;
+
+  // Icono centrado
+  display: flex;
+  font-size: 1.2rem;
+}
+
+// Hover y efecto de interacción
+#btnVolverArriba:hover {
+  background-color: $btn-bg-hover;
+  transform: scale(1.1);
+}
+
 
   /* Fondo de la web */
   // &::before {
@@ -166,7 +216,7 @@ $shadow-blur: 2px; // Difuminado de la sombra
   font-size: 2rem; // Tamaño adecuado para visualizar el efecto
   text-transform: uppercase; // Opcional, para que se vea más "grabado"
   text-shadow: $shadow-offset $shadow-offset $shadow-blur $stone-shadow-dark,
-    /* Sombra oscura inferior derecha */ -$shadow-offset -$shadow-offset
+    /* Sombra oscura inferior derecha */ -$shadow-offset - $shadow-offset
       $shadow-blur $stone-shadow-light; /* Luz superior izquierda */
   letter-spacing: 1px; // Espaciado para mayor claridad
 }
