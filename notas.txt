@@ -1,0 +1,4 @@
+carrusel que se pueda parar
+Lenguaje sencillo
+tooltip en cada boton de ? la comida
+Menu desplegable a cada elemento de las comidas
