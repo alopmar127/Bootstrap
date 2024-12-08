@@ -158,8 +158,7 @@
 
   <!-- Carrusel -->
   <!-- Carrusel Accesible -->
-  <div id="carouselExample" class="carousel slide mt-0" data-bs-ride="carousel" data-bs-interval="3000"
-    aria-labelledby="carousel-heading">
+  <div id="carouselExample" class="carousel slide mt-0"  aria-labelledby="carousel-heading">
     <h2 id="carousel-heading" class="visually-hidden" data-es="Promociones Destacadas" data-en="Featured Promotions">
       Promociones Destacadas
     </h2>
@@ -366,80 +365,36 @@
 
   <script src="bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const popoverTriggerList = [].slice.call(
-        document.querySelectorAll('[data-bs-toggle="popover"]')
-      );
-      const popoverList = popoverTriggerList.map((popoverTriggerEl) => {
-        return new bootstrap.Popover(popoverTriggerEl);
-      });
-    });
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-  // Verificar si Bootstrap está disponible
-  if (typeof bootstrap === 'undefined') {
-    console.error('Bootstrap no está cargado correctamente');
-    return;
-  }
-
+   document.addEventListener("DOMContentLoaded", () => {
   const carouselElement = document.getElementById("carouselExample");
   const pausePlayButton = document.getElementById("carouselPausePlay");
-  
-  // Verificaciones de elementos
-  if (!carouselElement) {
-    console.error('No se encontró el elemento del carrusel');
-    return;
-  }
-  
-  if (!pausePlayButton) {
-    console.error('No se encontró el botón de pausa/reproducción');
-    return;
-  }
-
-  // Crear instancia del carrusel explícitamente
+  // Inicia el carrusel con el intervalo deseado, sin ride:'carousel'
   const carouselInstance = new bootstrap.Carousel(carouselElement, {
-    interval: 3000,  // Intervalo de 3 segundos
-    ride: 'carousel' // Iniciar el desplazamiento automático
+    interval: 3000
   });
-
+  carouselInstance.cycle();
   const icon = pausePlayButton.querySelector("i");
-  if (!icon) {
-    console.error('No se encontró el ícono dentro del botón');
-    return;
-  }
+  let isPlaying = true; // Estado inicial: está reproduciendo automáticamente
 
-  // Controlar estado inicial
-  let isPlaying = true;
-  pausePlayButton.setAttribute("aria-label", "Pausar carrusel");
-  
-  // Evento de clic para pausar/reanudar
   pausePlayButton.addEventListener("click", () => {
-    try {
-      if (isPlaying) {
-        // Pausar
-        carouselInstance.pause();
-        isPlaying = false;
-        pausePlayButton.setAttribute("aria-label", "Reanudar carrusel");
-        icon.classList.remove("fa-pause");
-        icon.classList.add("fa-play");
-        console.log('Carrusel pausado');
-      } else {
-        // Reanudar
-        carouselInstance.cycle();
-        isPlaying = true;
-        pausePlayButton.setAttribute("aria-label", "Pausar carrusel");
-        icon.classList.remove("fa-play");
-        icon.classList.add("fa-pause");
-        console.log('Carrusel reanudado');
-      }
-    } catch (error) {
-      console.error('Error al pausar/reanudar el carrusel:', error);
+    if (isPlaying) {
+      // Pausar
+      carouselInstance.pause();
+      isPlaying = false;
+      pausePlayButton.setAttribute("aria-label", "Reanudar carrusel");
+      icon.classList.remove("fa-pause");
+      icon.classList.add("fa-play");
+    } else {
+      // Reanudar
+      carouselInstance.cycle();
+      isPlaying = true;
+      pausePlayButton.setAttribute("aria-label", "Pausar carrusel");
+      icon.classList.remove("fa-play");
+      icon.classList.add("fa-pause");
     }
   });
-
-  console.log('Script de carrusel inicializado correctamente');
 });
+
 
   </script>
 </body>
