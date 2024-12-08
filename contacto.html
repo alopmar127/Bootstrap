@@ -56,11 +56,40 @@
         idiomaSelector.click();
       });
     </script>
+    <!-- Boton para volver a arriba -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const backToTopButton = document.getElementById("back-to-top");
+        const menu = document.querySelector("header"); // Selecciona el menú
+    
+        const toggleBackToTop = () => {
+          const menuBottom = menu.getBoundingClientRect().bottom;
+    
+          if (menuBottom < 0) {
+            backToTopButton.style.display = "flex"; // Mostrar el botón
+          } else {
+            backToTopButton.style.display = "none"; // Ocultar el botón
+          }
+        };
+    
+        // Detecta el desplazamiento
+        window.addEventListener("scroll", toggleBackToTop);
+    
+        // Añade funcionalidad al botón
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Desplazamiento suave
+          });
+        });
+      });
+    
+    </script>
   </head>
 
   <body>
     <header class="bg-dark">
-      <nav class="navbar navbar-expand-lg py-3">
+      <nav class="navbar navbar-expand-xl py-3">
         <div class="container">
           <!-- Logotipo -->
           <a class="navbar-brand text-warning fw-bold" href="index.html">
@@ -98,15 +127,61 @@
                   <i class="fas fa-home"></i> Inicio
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- Menú con Submenú -->
+              <li class="nav-item dropdown">
                 <a
-                  class="custom-btn btn-lg"
-                  href="menu.html"
+                  class="custom-btn btn-lg dropdown-toggle"
+                  href="#"
+                  id="menuDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
                   data-es="Menú"
                   data-en="Menu"
                 >
                   <i class="fas fa-utensils"></i> Menú
                 </a>
+                <ul
+                  class="dropdown-menu text-center"
+                  aria-labelledby="menuDropdown"
+                >
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="menu.html#hamburguesas"
+                      data-es="Hamburguesas"
+                      data-en="Burgers"
+                      >Hamburguesas</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="menu.html#bocadillos"
+                      data-es="Bocadillos"
+                      data-en="Sandwiches"
+                      >Bocadillos</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="menu.html#entrantes"
+                      data-es="Entrantes"
+                      data-en="Entrants"
+                      >Entrantes</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="menu.html#postres"
+                      data-es="Postres"
+                      data-en="Desserts"
+                      >Postres</a
+                    >
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
                 <a
@@ -119,6 +194,14 @@
                 </a>
               </li>
             </ul>
+
+            <!-- Formulario de Búsqueda
+                <form class="d-flex me-3" role="search" onsubmit="event.preventDefault();">
+                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="search-input" data-es="Buscar" data-en="Search">
+                  <button class="btn btn-outline-light" type="button" data-es="Buscar" data-en="Search">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form> -->
 
             <!-- Botón de Pedido -->
             <a
@@ -133,8 +216,13 @@
             >
               <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
             </a>
+
+            <!-- Selector de Idioma -->
             <button
               class="btn btn-light btn-lg mx-auto mt-3 mt-lg-0"
+              data-toggle="tooltip"
+              data-placement="down"
+              title="Cambiar idioma/Change language"
               id="language-toggle"
             >
               <i class="fas fa-flag"></i> <span id="language-label">EN</span>
@@ -447,7 +535,10 @@
         </form>
       </div>
     </main>
-
+  <!-- Boton para volver a arriba -->
+  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up"></i>
+  </button>
     <footer class="bg-dark py-4">
       <div class="container">
         <div class="row">

@@ -1,16 +1,16 @@
 // Utilities
 
 //Fondo personalizado
-.bg-custom {
-  background-color: $custom-bg-color;
-  opacity: $custom-opacity;
-  background-image: $custom-radial-gradient, $custom-linear-gradient;
-  background-blend-mode: overlay;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: 100%;
-}
+// .bg-custom {
+//   background-color: $custom-bg-color;
+//   opacity: $custom-opacity;
+//   background-image: $custom-radial-gradient, $custom-linear-gradient;
+//   background-blend-mode: overlay;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   height: 100vh;
+//   width: 100%;
+// }
 
 
 $utilities: () !default;

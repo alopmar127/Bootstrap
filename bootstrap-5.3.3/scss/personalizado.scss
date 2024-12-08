@@ -120,6 +120,42 @@ $btn-border: 2px solid #000000; // Borde del botón
   transform: scale(1.1);
 }
 
+// Variables para estilos
+$btn-size: 50px;
+$btn-bg: #ffc107;
+$btn-hover-bg: #d89e04;
+$btn-color: #000;
+$btn-hover-color: #fff;
+
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: $btn-size;
+  height: $btn-size;
+  background-color: $btn-bg;
+  color: $btn-color;
+  border: 1px solid $btn-color;
+  border-radius: 50%;
+  display: none; // Oculto por defecto
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: $btn-hover-bg;
+    color: $btn-hover-color;
+  }
+
+  i {
+    font-size: 1.5rem;
+  }
+}
+
+
 
   /* Fondo de la web */
   // &::before {
@@ -408,6 +444,10 @@ $btn-primary-hover-text: #312e2e; // Texto más oscuro en hover
   }
 }
 
+
+
+
+
 // Alineación responsiva
 @media (max-width: 992px) {
   .navbar-nav {
@@ -415,8 +455,31 @@ $btn-primary-hover-text: #312e2e; // Texto más oscuro en hover
   }
 
   .btn-danger {
-    width: 100%; // Botón ancho en pantallas pequeñas
+    text-align: center !important; // Centrado del texto
     text-align: center; // Centrado del texto
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: center; // Centra horizontalmente
+  align-items: center; // Alinea verticalmente
+  gap: 1rem; // Espaciado entre los botones
+  margin-top: 1rem;
+
+  a,
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px; // Tamaño uniforme para los botones
+    height: auto; // Deja que el alto se adapte al contenido
+  }
+
+  // Estilo responsivo para dispositivos pequeños
+  @media (max-width: 768px) {
+    flex-direction: column; // Apila los botones verticalmente
+    gap: 0.5rem; // Reduce el espaciado en pantallas pequeñas
   }
 }
 
@@ -452,3 +515,106 @@ $btn-primary-hover-text: #312e2e; // Texto más oscuro en hover
 //   background-repeat: no-repeat;
 //   background-size: cover;
 //   }
+
+//dropdown
+// Variables para el dropdown
+// Variables para el custom dropdown
+$custom-dropdown-bg: rgba(34, 34, 34, 0.95); // Fondo oscuro translúcido
+$custom-dropdown-border-color: #ff5722; // Color del borde
+$custom-dropdown-item-bg-hover: #ffc107; // Fondo amarillo al pasar el ratón
+$custom-dropdown-item-color: #ffffff; // Color del texto
+$custom-dropdown-item-hover-color: #000000; // Color del texto al pasar el ratón
+$custom-dropdown-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); // Sombra del dropdown
+$custom-dropdown-border-radius: 0.5rem; // Bordes redondeados
+$custom-dropdown-transition: 0.3s ease; // Transición suave
+
+// Estilo personalizado para el dropdown
+.custom-dropdown-menu {
+  background-color: $custom-dropdown-bg; // Fondo oscuro translúcido
+  border: 1px solid $custom-dropdown-border-color; // Borde con color personalizado
+  border-radius: $custom-dropdown-border-radius; // Bordes redondeados
+  box-shadow: $custom-dropdown-box-shadow; // Sombra
+  transition: background-color $custom-dropdown-transition, box-shadow $custom-dropdown-transition;
+
+  .custom-dropdown-item {
+    background-color: transparent; // Fondo inicial transparente
+    color: $custom-dropdown-item-color; // Color del texto inicial
+    padding: 0.5rem 1rem; // Espaciado interno
+    transition: background-color $custom-dropdown-transition, color $custom-dropdown-transition;
+
+    &:hover,
+    &:focus {
+      background-color: $custom-dropdown-item-bg-hover; // Fondo amarillo al pasar el ratón
+      color: $custom-dropdown-item-hover-color; // Texto negro al pasar el ratón
+    }
+
+    &.active {
+      background-color: $custom-dropdown-item-bg-hover; // Fondo amarillo para ítems activos
+      color: $custom-dropdown-item-hover-color; // Texto negro para ítems activos
+    }
+
+    &.disabled {
+      background-color: transparent; // Fondo transparente para ítems deshabilitados
+      color: rgba($custom-dropdown-item-color, 0.5); // Texto gris
+      pointer-events: none; // Deshabilita interacción
+    }
+  }
+
+  // Divisores dentro del dropdown
+  .custom-dropdown-divider {
+    height: 1px;
+    background-color: $custom-dropdown-border-color; // Color del divisor
+    margin: 0.5rem 0; // Espaciado vertical
+  }
+
+  // Encabezados dentro del dropdown
+  .custom-dropdown-header {
+    color: lighten($custom-dropdown-item-color, 30%); // Texto más claro
+    font-weight: bold;
+    padding: 0.5rem 1rem; // Espaciado interno
+    text-transform: uppercase; // Mayúsculas
+  }
+}
+
+// Transición de aparición del dropdown
+.custom-dropdown-menu {
+  opacity: 0;
+  transform: translateY(-10px); // Animación inicial deslizándose hacia abajo
+  transition: opacity $custom-dropdown-transition, transform $custom-dropdown-transition;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0); // Posición final
+  }
+}
+
+$info-btn-padding: 0.5rem;
+$info-btn-font-size: 1rem;
+$info-btn-icon-size: 1.2rem;
+
+.info-btn {
+  font-size: $info-btn-font-size;
+  padding: $info-btn-padding;
+  width: auto;
+  height: auto;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; // Opcional
+}
+
+.info-btn i {
+  font-size: $info-btn-icon-size;
+}
+
+@media (max-width: 768px) {
+  .info-btn {
+    font-size: 0.9rem; // Reduce el tamaño del texto
+    padding: 0.4rem;
+  }
+
+  .info-btn i {
+    font-size: 1rem; // Reduce el tamaño del ícono
+  }
+}

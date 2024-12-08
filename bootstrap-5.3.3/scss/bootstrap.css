@@ -4,17 +4,6 @@
  * Copyright 2011-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-.bg-custom {
-  background-color: #e5e5f7;
-  opacity: 0.3;
-  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #e5e5f7 10px), repeating-linear-gradient(rgba(0, 0, 0, 0.3333333333), #000000);
-  background-blend-mode: overlay;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: 100%;
-}
-
 :root,
 [data-bs-theme=light] {
   --bs-blue: #1672fd;
@@ -3403,7 +3392,7 @@ textarea.form-control-lg {
   --bs-dropdown-spacer: 0.125rem;
   --bs-dropdown-font-size: 1rem;
   --bs-dropdown-color: var(--bs-body-color);
-  --bs-dropdown-bg: var(--bs-body-bg);
+  --bs-dropdown-bg: #ffc032;
   --bs-dropdown-border-color: var(--bs-border-color-translucent);
   --bs-dropdown-border-radius: var(--bs-border-radius);
   --bs-dropdown-border-width: var(--bs-border-width);
@@ -3624,6 +3613,7 @@ textarea.form-control-lg {
 }
 
 .dropdown-item {
+  font-weight: bold !important;
   display: block;
   width: 100%;
   padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
@@ -4513,17 +4503,17 @@ textarea.form-control-lg {
   border-radius: 0.25rem; /* Bordes redondeados */
   display: block; /* Quita espacio en línea */
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .card.novedades img {
     max-width: 450px; /* Tamaño máximo para pantallas medianas */
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .card.novedades img {
     max-width: 650px; /* Tamaño máximo para pantallas grandes */
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 990px) {
   .card.novedades {
     flex-direction: column; /* Cambiar a disposición vertical en pantallas pequeñas */
     text-align: center; /* Centrar texto en pantallas pequeñas */
@@ -4535,7 +4525,7 @@ textarea.form-control-lg {
 
 .card-grupal {
   position: relative;
-  border-radius: 0.5rem;
+  border-radius: var(--bs-border-radius);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 100%;
   margin: 0 auto;
@@ -6331,6 +6321,27 @@ textarea.form-control-lg {
 
 .carousel-inner {
   overflow: hidden;
+}
+
+#carouselPausePlay {
+  background-color: rgba(255, 255, 255, 0.616); /* Fondo oscuro semi-transparente */
+  color: rgb(0, 0, 0); /* Color del texto e iconos */
+  border: 1px solid rgba(0, 0, 0, 0.5); /* Sin bordes */
+  padding: 10px 15px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 2rem; /* Tamaño de fuente adecuado */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  z-index: 1050; /* Asegura que se muestre sobre el carrusel */
+}
+
+@media (max-width: 768px) {
+  #carouselPausePlay {
+    font-size: 1rem;
+  }
+}
+#carouselPausePlay:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo más claro al pasar el ratón */
+  color: black; /* Texto e icono oscuros en hover */
 }
 
 .spinner-grow,

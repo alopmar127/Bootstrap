@@ -1,187 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iberican Burger - Inicio</title>
-    <link rel="stylesheet" href="bootstrap-5.3.3/scss/personalizado.css" />
-    <link rel="stylesheet" href="bootstrap-5.3.3/scss/bootstrap.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Iberican Burger - Inicio</title>
+<link rel="stylesheet" href="bootstrap-5.3.3/scss/personalizado.css" />
+<link rel="stylesheet" href="bootstrap-5.3.3/scss/bootstrap.css" />
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-    />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const idiomaSelector = document.getElementById("language-toggle");
-        const idiomaLabel = document.getElementById("language-label");
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const idiomaSelector = document.getElementById("language-toggle");
+    const idiomaLabel = document.getElementById("language-label");
 
-        idiomaSelector.addEventListener("click", () => {
-          // Cambiar entre ES y EN
-          const nuevoIdioma = idiomaLabel.textContent === "ES" ? "en" : "es";
-          idiomaLabel.textContent = nuevoIdioma.toUpperCase();
+    idiomaSelector.addEventListener("click", () => {
+      // Cambiar entre ES y EN
+      const nuevoIdioma = idiomaLabel.textContent === "ES" ? "en" : "es";
+      idiomaLabel.textContent = nuevoIdioma.toUpperCase();
 
-          // Seleccionar todos los elementos con data-es y data-en
-          const elementos = document.querySelectorAll("[data-es][data-en]");
+      // Seleccionar todos los elementos con data-es y data-en
+      const elementos = document.querySelectorAll("[data-es][data-en]");
 
-          elementos.forEach((elemento) => {
-            const texto = elemento.getAttribute(`data-${nuevoIdioma}`);
+      elementos.forEach((elemento) => {
+        const texto = elemento.getAttribute(`data-${nuevoIdioma}`);
 
-            if (
-              elemento.tagName === "INPUT" ||
-              elemento.tagName === "TEXTAREA"
-            ) {
-              // Cambiar el placeholder para inputs y textareas
-              elemento.placeholder = texto;
-            } else if (elemento.querySelector("i")) {
-              // Si el elemento tiene un ícono, limpiar nodos de texto previos y agregar texto nuevo
-              const icono = elemento.querySelector("i");
+        if (
+          elemento.tagName === "INPUT" ||
+          elemento.tagName === "TEXTAREA"
+        ) {
+          // Cambiar el placeholder para inputs y textareas
+          elemento.placeholder = texto;
+        } else if (elemento.querySelector("i")) {
+          // Si el elemento tiene un ícono, limpiar nodos de texto previos y agregar texto nuevo
+          const icono = elemento.querySelector("i");
 
-              // Eliminar todos los nodos de texto excepto el ícono
-              const nodes = Array.from(elemento.childNodes).filter(
-                (node) => node !== icono
-              );
-              nodes.forEach((node) => elemento.removeChild(node));
+          // Eliminar todos los nodos de texto excepto el ícono
+          const nodes = Array.from(elemento.childNodes).filter(
+            (node) => node !== icono
+          );
+          nodes.forEach((node) => elemento.removeChild(node));
 
-              // Agregar el nuevo texto
-              elemento.appendChild(document.createTextNode(` ${texto}`));
-            } else {
-              // Cambiar el texto directamente para otros elementos
-              elemento.textContent = texto;
-            }
-          });
-        });
-
-        // Cambiar el idioma inmediatamente al cargar la página
-        idiomaSelector.click();
+          // Agregar el nuevo texto
+          elemento.appendChild(document.createTextNode(` ${texto}`));
+        } else {
+          // Cambiar el texto directamente para otros elementos
+          elemento.textContent = texto;
+        }
       });
-    </script>
+    });
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Evento para abrir/cerrar la información nutricional al pulsar el botón "?"
-        document.querySelectorAll(".info-btn").forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            const infoBox = e.target
-              .closest(".card-grupal")
-              .querySelector(".nutritional-info");
-            infoBox.classList.toggle("d-none");
-          });
-        });
+    // Cambiar el idioma inmediatamente al cargar la página
+    idiomaSelector.click();
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Evento para abrir/cerrar la información nutricional al pulsar el botón "<i class="fa-solid fa-info"></i>"
+    document.querySelectorAll(".info-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const infoBox = e.target
+          .closest(".card-grupal")
+          .querySelector(".nutritional-info");
+        infoBox.classList.toggle("d-none");
       });
-    </script>
-  </head>
+    });
+  });
+</script>
+<!-- Boton para volver a arriba -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const backToTopButton = document.getElementById("back-to-top");
+    const menu = document.querySelector("header"); // Selecciona el menú
 
-  <body>
-    <header class="bg-dark">
-      <nav class="navbar navbar-expand-lg py-3">
-        <div class="container">
-          <!-- Logotipo -->
-          <a class="navbar-brand text-warning fw-bold" href="index.html">
-            <img
-              src="./img/logogpt333.png"
-              alt="Logo"
-              class="d-inline-block align-text-center me-2"
-            />
-            Iberican<span class="text-danger">Burger</span>
-          </a>
+    const toggleBackToTop = () => {
+      const menuBottom = menu.getBoundingClientRect().bottom;
 
-          <!-- Botón Colapsable -->
-          <button
-            class="navbar-toggler text-warning border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i class="fas fa-bars fa-lg"></i>
-          </button>
+      if (menuBottom < 0) {
+        backToTopButton.style.display = "flex"; // Mostrar el botón
+      } else {
+        backToTopButton.style.display = "none"; // Ocultar el botón
+      }
+    };
 
-          <!-- Menú -->
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto text-center">
-              <li class="nav-item">
-                <a
-                  class="custom-btn btn-lg"
-                  href="index.html"
-                  data-es="Inicio"
-                  data-en="Home"
-                >
-                  <i class="fas fa-home"></i> Inicio
-                </a>
-              </li>
-              <!-- Menú con Submenú -->
-              <li class="nav-item dropdown">
-                <a
-                  class="custom-btn btn-lg dropdown-toggle"
-                  href="#"
-                  id="menuDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  data-es="Menú"
-                  data-en="Menu"
-                >
-                  <i class="fas fa-utensils"></i> Menú
-                </a>
-                <ul
-                  class="dropdown-menu text-center"
-                  aria-labelledby="menuDropdown"
-                >
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="hamburguesas.html"
-                      data-es="Hamburguesas"
-                      data-en="Burgers"
-                      >Hamburguesas</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="bocadillos.html"
-                      data-es="Bocadillos"
-                      data-en="Sandwiches"
-                      >Bocadillos</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="ensaladas.html"
-                      data-es="Ensaladas"
-                      data-en="Salads"
-                      >Ensaladas</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="postres.html"
-                      data-es="Postres"
-                      data-en="Desserts"
-                      >Postres</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="custom-btn btn-lg"
-                  href="contacto.html"
-                  data-es="Contacto"
-                  data-en="Contact"
-                >
-                  <i class="fas fa-envelope"></i> Contacto
-                </a>
-              </li>
-            </ul>
+    // Detecta el desplazamiento
+    window.addEventListener("scroll", toggleBackToTop);
 
-            <!-- Formulario de Búsqueda
+    // Añade funcionalidad al botón
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // Desplazamiento suave
+      });
+    });
+  });
+
+</script>
+</head>
+
+<body>
+  <header class="bg-dark">
+    <nav class="navbar navbar-expand-xl py-3">
+      <div class="container">
+        <!-- Logotipo -->
+        <a class="navbar-brand text-warning fw-bold" href="index.html">
+          <img src="./img/logogpt333.png" alt="Logo" class="d-inline-block align-text-center me-2" />
+          Iberican<span class="text-danger">Burger</span>
+        </a>
+
+        <!-- Botón Colapsable -->
+        <button class="navbar-toggler text-warning border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars fa-lg"></i>
+        </button>
+
+        <!-- Menú -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto text-center">
+            <li class="nav-item">
+              <a class="custom-btn btn-lg" href="index.html" data-es="Inicio" data-en="Home">
+                <i class="fas fa-home"></i> Inicio
+              </a>
+            </li>
+            <!-- Menú con Submenú -->
+            <li class="nav-item dropdown">
+              <a class="custom-btn btn-lg dropdown-toggle" href="menu.html" id="menuDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false" data-es="Menú" data-en="Menu">
+                <i class="fas fa-utensils"></i> Menú
+              </a>
+              <ul class="dropdown-menu text-center" aria-labelledby="menuDropdown">
+                <li>
+                  <a class="dropdown-item" href="menu.html#hamburguesas" data-es="Hamburguesas"
+                    data-en="Burgers">Hamburguesas</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="menu.html#bocadillos" data-es="Bocadillos"
+                    data-en="Sandwiches">Bocadillos</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="menu.html#entrantes" data-es="Entrantes"
+                    data-en="Entrants">Entrantes</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="menu.html#postres" data-es="Postres" data-en="Desserts">Postres</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="custom-btn btn-lg" href="contacto.html" data-es="Contacto" data-en="Contact">
+                <i class="fas fa-envelope"></i> Contacto
+              </a>
+            </li>
+          </ul>
+
+          <!-- Formulario de Búsqueda
                 <form class="d-flex me-3" role="search" onsubmit="event.preventDefault();">
                   <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="search-input" data-es="Buscar" data-en="Search">
                   <button class="btn btn-outline-light" type="button" data-es="Buscar" data-en="Search">
@@ -189,164 +161,485 @@
                   </button>
                 </form> -->
 
-            <!-- Botón de Pedido -->
-            <a
-              href="#"
-              class="btn btn-danger btn-lg px-4 py-2 mx-auto mt-3 mt-lg-0"
-              data-bs-toggle="popover"
-              data-bs-placement="bottom"
-              data-bs-content="Ahora mismo no está disponible."
-              onclick="event.preventDefault();"
-              data-es="¡Pedir Ahora!"
-              data-en="Order Now!"
-            >
-              <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
-            </a>
+          <!-- Botón de Pedido -->
+          <a href="#" class="btn btn-danger btn-lg px-4 py-2 mx-auto mt-3 mt-lg-0" data-bs-toggle="popover"
+            data-bs-placement="bottom" data-bs-content="Ahora mismo no está disponible."
+            onclick="event.preventDefault();" data-es="¡Pedir Ahora!" data-en="Order Now!">
+            <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
+          </a>
 
-            <!-- Selector de Idioma -->
-            <button
-              class="btn btn-light btn-lg mx-auto mt-3 mt-lg-0"
-              data-toggle="tooltip"
-              data-placement="down"
-              title="Cambiar idioma/Change language"
-              id="language-toggle"
-            >
-              <i class="fas fa-flag"></i> <span id="language-label">EN</span>
-            </button>
+          <!-- Selector de Idioma -->
+          <button class="btn btn-light btn-lg mx-auto mt-3 mt-lg-0" data-toggle="tooltip" data-placement="down"
+            title="Cambiar idioma/Change language" id="language-toggle">
+            <i class="fas fa-flag"></i> <span id="language-label">EN</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mt-5" id="hamburgueras">
+    <h2 class="text-center mb-4 menu-fuente" data-es="Hamburguesas Principales" data-en="Main Burgers">
+      Hamburguesas Principales
+    </h2>
+    <div class="row d-flex flex-wrap">
+      <!-- Tarjeta de Hamburguesa La Brava -->
+      <div class="col-md-6 col-lg-4 mb-4 d-flex">
+        <div class="card-grupal position-relative cristal">
+          <img src="./img/labrava_borde2.webp" class="card-img-top img-fluid" alt="La Brava" />
+          <div class="card-body text-center">
+            <h5 class="card-title menu-fuente-nombres" data-es="LA BRAVA" data-en="THE BRAVA">
+              LA BRAVA
+            </h5>
+            <p class="card-text" data-es="Carne de ternera al grill con un toque picante."
+              data-en="Grilled beef with a spicy touch.">
+              Carne de ternera al grill con un toque picante.
+            </p>
+          </div>
+          <!-- Botón de Información -->
+          <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+            data-placement="down" title="Información Nutricional/Nutritional information">
+            <i class="fa-solid fa-info"></i>
+          </button>
+          <!-- Información Nutricional (oculta) -->
+          <div class="nutritional-info d-none">
+            <div class="p-3">
+              <h5 class="text-center mb-3" data-es="Información Nutricional - La Brava"
+                data-en="Nutritional Information - The Brava">
+                Información Nutricional - La Brava
+              </h5>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th data-es="Componente" data-en="Component">
+                      Componente
+                    </th>
+                    <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
+                    <th data-es="Por porción" data-en="Per portion">
+                      Por porción
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-es="Energía" data-en="Energy">Energía</td>
+                    <td>950 kj</td>
+                    <td>2850 kj</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Calorías" data-en="Calories">Calorías</td>
+                    <td>225 kcal</td>
+                    <td>675 kcal</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Grasas" data-en="Fats">Grasas</td>
+                    <td>12 g</td>
+                    <td>36 g</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Carbohidratos" data-en="Carbohydrates">
+                      Carbohidratos
+                    </td>
+                    <td>20 g</td>
+                    <td>60 g</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
+                    <td>15 g</td>
+                    <td>45 g</td>
+                  </tr>
+                  <!-- Más filas si es necesario -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </nav>
-    </header>
+      </div>
 
-    <div class="container mt-5">
-      <h2
-        class="text-center mb-4 menu-fuente"
-        data-es="Hamburguesas Principales"
-        data-en="Main Burgers"
-      >
-        Hamburguesas Principales
+      <div class="col-md-6 col-lg-4 mb-4 d-flex">
+        <div class="card-grupal position-relative cristal">
+          <img src="./img/castana_borde2.webp" class="card-img-top img-fluid" alt="Castaña" />
+          <div class="card-body text-center">
+            <h5 class="card-title menu-fuente-nombres">CASTAÑA</h5>
+            <p class="card-text" data-es="Carne de cerdo ibérico con crema de castañas."
+              data-en="Iberian pork with chestnut cream.">
+              Carne de cerdo ibérico con crema de castañas.
+            </p>
+          </div>
+          <!-- Botón de Información -->
+          <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+            data-placement="down" title="Información Nutricional/Nutritional information">
+            <i class="fa-solid fa-info"></i>
+          </button>
+          <!-- Información Nutricional (oculta) -->
+          <div class="nutritional-info d-none">
+            <div class="p-3">
+              <h5 class="text-center mb-3" data-es="Información Nutricional - Castaña"
+                data-en="Nutritional Information - Castaña">
+                Información Nutricional - Castaña
+              </h5>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th data-es="Componente" data-en="Component">
+                      Componente
+                    </th>
+                    <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
+                    <th data-es="Por porción" data-en="Per portion">
+                      Por porción
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-es="Energía" data-en="Energy">Energía</td>
+                    <td>780 kj</td>
+                    <td>2340 kj</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Calorías" data-en="Calories">Calorías</td>
+                    <td>186 kcal</td>
+                    <td>558 kcal</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Grasas" data-en="Fats">Grasas</td>
+                    <td>8 g</td>
+                    <td>24 g</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Carbohidratos" data-en="Carbohydrates">
+                      Carbohidratos
+                    </td>
+                    <td>25 g</td>
+                    <td>75 g</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
+                    <td>12 g</td>
+                    <td>36 g</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta de Hamburguesa Sierra -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card-grupal position-relative cristal">
+          <img src="./img/sierra_borde2.webp" class="card-img-top img-fluid" alt="Sierra" />
+          <div class="card-body text-center">
+            <h5 class="card-title menu-fuente-nombres">SIERRA</h5>
+            <p class="card-text">
+              Carne de cerdo ibérico con setas de temporada.
+            </p>
+          </div>
+          <!-- Botón de Información -->
+          <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+            data-placement="down" title="Información Nutricional/Nutritional information">
+            <i class="fa-solid fa-info"></i>
+          </button>
+          <!-- Información Nutricional (oculta) -->
+          <div class="nutritional-info d-none">
+            <div class="p-3">
+              <h5 class="text-center mb-3">
+                Información Nutricional - Sierra
+              </h5>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Componente</th>
+                    <th>Por 100g</th>
+                    <th>Por porción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Energía</td>
+                    <td>820 kj</td>
+                    <td>2460 kj</td>
+                  </tr>
+                  <tr>
+                    <td>Calorías</td>
+                    <td>196 kcal</td>
+                    <td>588 kcal</td>
+                  </tr>
+                  <tr>
+                    <td>Grasas</td>
+                    <td>10 g</td>
+                    <td>30 g</td>
+                  </tr>
+                  <tr>
+                    <td>Carbohidratos</td>
+                    <td>22 g</td>
+                    <td>66 g</td>
+                  </tr>
+                  <tr>
+                    <td>Proteínas</td>
+                    <td>14 g</td>
+                    <td>42 g</td>
+                  </tr>
+                  <!-- Más filas si es necesario -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Tarjeta de Hamburguesa Iberican Xtreme -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card-grupal position-relative cristal">
+          <img src="./img/xtreme_borde2.png" class="card-img-top img-fluid" alt="IBERICAN XTREME" />
+          <div class="card-body text-center">
+            <h5 class="card-title menu-fuente-nombres">IBERICAN XTREME</h5>
+            <p class="card-text" data-es="Carne de cerdo ibérico con queso curado, jamón ibérico y pan artesanal."
+              data-en="Iberian pork with cured cheese, Iberian ham, and artisanal bread.">
+              Carne de cerdo ibérico con queso curado, jamón ibérico y pan
+              artesanal.
+            </p>
+          </div>
+          <!-- Botón de Información -->
+          <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+            data-placement="down" title="Información Nutricional/Nutritional information">
+            <i class="fa-solid fa-info"></i>
+          </button>
+          <!-- Información Nutricional (oculta) -->
+          <div class="nutritional-info d-none">
+            <div class="p-3">
+              <h5 class="text-center mb-3" data-es="Información Nutricional - IBERICAN XTREME"
+                data-en="Nutritional Information - IBERICAN XTREME">
+                Información Nutricional - IBERICAN XTREME
+              </h5>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th data-es="Componente" data-en="Component">
+                      Componente
+                    </th>
+                    <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
+                    <th data-es="Por porción" data-en="Per portion">
+                      Por porción
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-es="Energía" data-en="Energy">Energía</td>
+                    <td>890 kj</td>
+                    <td>2670 kj</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Calorías" data-en="Calories">Calorías</td>
+                    <td>212 kcal</td>
+                    <td>636 kcal</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Grasas" data-en="Fats">Grasas</td>
+                    <td>14 g</td>
+                    <td>42 g</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Carbohidratos" data-en="Carbohydrates">
+                      Carbohidratos
+                    </td>
+                    <td>20 g</td>
+                    <td>60 g</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
+                    <td>18 g</td>
+                    <td>54 g</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- bocadillos -->
+  <div class="container mt-5" id="bocadillos">
+    <h2 class="text-center mb-4 menu-fuente" data-es="Bocadillos" data-en="Sandwiches">
+      Bocadillos
+    </h2>
+    <div class="row d-flex flex-wrap">
+      <div class="col-md-6 col-lg-4 mb-4 d-flex">
+        <div class="card-grupal position-relative cristal">
+          <img src="./img/bocadillo iberico.webp" class="card-img-top img-fluid" alt="Bocadillo de Jamón" />
+          <div class="card-body text-center">
+            <h5 class="card-title menu-fuente-nombreslil" data-es="BOCADILLO DE JAMÓN" data-en="IBERIAN HAM SANDWICH">
+              BOCADILLO DE JAMÓN
+            </h5>
+            <p class="card-text" data-es="Jamón ibérico de bellota con pan artesanal recién horneado."
+              data-en="Iberian acorn-fed ham with freshly baked artisanal bread.">
+              Jamón ibérico de bellota con pan artesanal recién horneado.
+            </p>
+          </div>
+          <!-- Botón de Información -->
+          <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+            data-placement="down" title="Información Nutricional/Nutritional information">
+            <i class="fa-solid fa-info"></i>
+          </button>
+          <!-- Información Nutricional (oculta) -->
+          <div class="nutritional-info d-none">
+            <div class="p-3">
+              <h5 class="text-center mb-3" data-es="Información Nutricional - Bocadillo de Jamón"
+                data-en="Nutritional Information - Iberian Ham Sandwich">
+                Información Nutricional - Bocadillo de Jamón
+              </h5>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th data-es="Componente" data-en="Component">
+                      Componente
+                    </th>
+                    <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
+                    <th data-es="Por porción" data-en="Per portion">
+                      Por porción
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-es="Energía" data-en="Energy">Energía</td>
+                    <td>850 kj</td>
+                    <td>2550 kj</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Calorías" data-en="Calories">Calorías</td>
+                    <td>200 kcal</td>
+                    <td>600 kcal</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Grasas" data-en="Fats">Grasas</td>
+                    <td>8 g</td>
+                    <td>24 g</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Carbohidratos" data-en="Carbohydrates">
+                      Carbohidratos
+                    </td>
+                    <td>25 g</td>
+                    <td>75 g</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
+                    <td>14 g</td>
+                    <td>42 g</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4 d-flex">
+        <div class="card-grupal position-relative cristal">
+          <img src="./img/bocadillo serrano.webp" class="card-img-top img-fluid" alt="Bocadillo Serrano" />
+          <div class="card-body text-center">
+            <h5 class="card-title menu-fuente-nombreslil" data-es="BOCADILLO SERRANO" data-en="SERRANO HAM SANDWICH">
+              BOCADILLO SERRANO
+            </h5>
+            <p class="card-text" data-es="Jamón serrano curado con tomate rallado y aceite de oliva."
+              data-en="Cured Serrano ham with grated tomato and olive oil.">
+              Jamón serrano curado con tomate rallado y aceite de oliva.
+            </p>
+          </div>
+          <!-- Botón de Información -->
+          <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+            data-placement="down" title="Información Nutricional/Nutritional information">
+            <i class="fa-solid fa-info"></i>
+          </button>
+          <!-- Información Nutricional (oculta) -->
+          <div class="nutritional-info d-none">
+            <div class="p-3">
+              <h5 class="text-center mb-3" data-es="Información Nutricional - Bocadillo Serrano"
+                data-en="Nutritional Information - Serrano Ham Sandwich">
+                Información Nutricional - Bocadillo Serrano
+              </h5>
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th data-es="Componente" data-en="Component">
+                      Componente
+                    </th>
+                    <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
+                    <th data-es="Por porción" data-en="Per portion">
+                      Por porción
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-es="Energía" data-en="Energy">Energía</td>
+                    <td>900 kj</td>
+                    <td>2700 kj</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Calorías" data-en="Calories">Calorías</td>
+                    <td>215 kcal</td>
+                    <td>645 kcal</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Grasas" data-en="Fats">Grasas</td>
+                    <td>10 g</td>
+                    <td>30 g</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Carbohidratos" data-en="Carbohydrates">
+                      Carbohidratos
+                    </td>
+                    <td>18 g</td>
+                    <td>54 g</td>
+                  </tr>
+                  <tr>
+                    <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
+                    <td>16 g</td>
+                    <td>48 g</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entrantes -->
+    <div class="container mt-5" id="entrantes">
+      <h2 class="text-center mb-4 menu-fuente" data-es="Entrantes Principales" data-en="Main Entrees">
+        Entrantes Principales
       </h2>
       <div class="row d-flex flex-wrap">
-        <!-- Tarjeta de Hamburguesa La Brava -->
         <div class="col-md-6 col-lg-4 mb-4 d-flex">
           <div class="card-grupal position-relative cristal">
-            <img
-              src="./img/labrava_borde2.webp"
-              class="card-img-top img-fluid"
-              alt="La Brava"
-            />
+            <img src="./img/croquetas.webp" class="card-img-top img-fluid" alt="Croquetas de Jamón Ibérico" />
             <div class="card-body text-center">
-              <h5
-                class="card-title menu-fuente-nombres"
-                data-es="LA BRAVA"
-                data-en="THE BRAVA"
-              >
-                LA BRAVA
+              <h5 class="card-title menu-fuente-nombreslil" data-es="CROQUETAS DE JAMÓN IBÉRICO"
+                data-en="IBERIAN HAM CROQUETTES">
+                CROQUETAS DE JAMÓN IBÉRICO
               </h5>
-              <p
-                class="card-text"
-                data-es="Carne de ternera al grill con un toque picante."
-                data-en="Grilled beef with a spicy touch."
-              >
-                Carne de ternera al grill con un toque picante.
+              <p class="card-text" data-es="Croquetas crujientes por fuera y cremosas por dentro, con jamón ibérico."
+                data-en="Crispy croquettes with creamy béchamel and Iberian ham.">
+                Croquetas crujientes por fuera y cremosas por dentro, con
+                jamón ibérico.
               </p>
             </div>
             <!-- Botón de Información -->
-            <button
-              class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-            >
-              <i class="bi bi-search"></i>
-            </button>
-            <!-- Información Nutricional (oculta) -->
-            <div class="nutritional-info d-none">
-              <div class="p-3">
-                <h5
-                  class="text-center mb-3"
-                  data-es="Información Nutricional - La Brava"
-                  data-en="Nutritional Information - The Brava"
-                >
-                  Información Nutricional - La Brava
-                </h5>
-                <table class="table table-sm">
-                  <thead>
-                    <tr>
-                      <th data-es="Componente" data-en="Component">
-                        Componente
-                      </th>
-                      <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
-                      <th data-es="Por porción" data-en="Per portion">
-                        Por porción
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td data-es="Energía" data-en="Energy">Energía</td>
-                      <td>950 kj</td>
-                      <td>2850 kj</td>
-                    </tr>
-                    <tr>
-                      <td data-es="Calorías" data-en="Calories">Calorías</td>
-                      <td>225 kcal</td>
-                      <td>675 kcal</td>
-                    </tr>
-                    <tr>
-                      <td data-es="Grasas" data-en="Fats">Grasas</td>
-                      <td>12 g</td>
-                      <td>36 g</td>
-                    </tr>
-                    <tr>
-                      <td data-es="Carbohidratos" data-en="Carbohydrates">
-                        Carbohidratos
-                      </td>
-                      <td>20 g</td>
-                      <td>60 g</td>
-                    </tr>
-                    <tr>
-                      <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
-                      <td>15 g</td>
-                      <td>45 g</td>
-                    </tr>
-                    <!-- Más filas si es necesario -->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 mb-4 d-flex">
-          <div class="card-grupal position-relative cristal">
-            <img
-              src="./img/castana_borde2.webp"
-              class="card-img-top img-fluid"
-              alt="Castaña"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title menu-fuente-nombres">CASTAÑA</h5>
-              <p
-                class="card-text"
-                data-es="Carne de cerdo ibérico con crema de castañas."
-                data-en="Iberian pork with chestnut cream."
-              >
-                Carne de cerdo ibérico con crema de castañas.
-              </p>
-            </div>
-            <!-- Botón de Información -->
-            <button
-              class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-            >
+            <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+              data-placement="down" title="Información Nutricional/Nutritional information">
               <i class="fa-solid fa-info"></i>
             </button>
             <!-- Información Nutricional (oculta) -->
             <div class="nutritional-info d-none">
               <div class="p-3">
-                <h5
-                  class="text-center mb-3"
-                  data-es="Información Nutricional - Castaña"
-                  data-en="Nutritional Information - Castaña"
-                >
-                  Información Nutricional - Castaña
+                <h5 class="text-center mb-3" data-es="Información Nutricional - Croquetas de Jamón"
+                  data-en="Nutritional Information - Iberian Ham Croquettes">
+                  Información Nutricional - Croquetas de Jamón
                 </h5>
                 <table class="table table-sm">
                   <thead>
@@ -363,28 +656,94 @@
                   <tbody>
                     <tr>
                       <td data-es="Energía" data-en="Energy">Energía</td>
-                      <td>780 kj</td>
-                      <td>2340 kj</td>
-                    </tr>
-                    <tr>
-                      <td data-es="Calorías" data-en="Calories">Calorías</td>
                       <td>186 kcal</td>
                       <td>558 kcal</td>
                     </tr>
                     <tr>
                       <td data-es="Grasas" data-en="Fats">Grasas</td>
-                      <td>8 g</td>
-                      <td>24 g</td>
+                      <td>10 g</td>
+                      <td>30 g</td>
                     </tr>
                     <tr>
                       <td data-es="Carbohidratos" data-en="Carbohydrates">
                         Carbohidratos
                       </td>
-                      <td>25 g</td>
-                      <td>75 g</td>
+                      <td>15 g</td>
+                      <td>45 g</td>
                     </tr>
                     <tr>
-                      <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
+                      <td data-es="Proteínas" data-en="Proteins">
+                        Proteínas
+                      </td>
+                      <td>8 g</td>
+                      <td>24 g</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4 d-flex">
+          <div class="card-grupal position-relative cristal">
+            <img src="./img/queso cabra.webp" class="card-img-top img-fluid" alt="Queso de Cabra al Horno" />
+            <div class="card-body text-center">
+              <h5 class="card-title menu-fuente-nombreslil" data-es="QUESO DE CABRA AL HORNO"
+                data-en="BAKED GOAT CHEESE">
+                QUESO DE CABRA AL HORNO
+              </h5>
+              <p class="card-text" data-es="Queso de cabra gratinado al horno con miel y nueces."
+                data-en="Oven-baked goat cheese with honey and walnuts.">
+                Queso de cabra gratinado al horno con miel y nueces.
+              </p>
+            </div>
+            <!-- Botón de Información -->
+            <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+              data-placement="down" title="Información Nutricional/Nutritional information">
+              <i class="fa-solid fa-info"></i>
+            </button>
+            <!-- Información Nutricional (oculta) -->
+            <div class="nutritional-info d-none">
+              <div class="p-3">
+                <h5 class="text-center mb-3" data-es="Información Nutricional - Queso de Cabra"
+                  data-en="Nutritional Information - Baked Goat Cheese">
+                  Información Nutricional - Queso de Cabra
+                </h5>
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th data-es="Componente" data-en="Component">
+                        Componente
+                      </th>
+                      <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
+                      <th data-es="Por porción" data-en="Per portion">
+                        Por porción
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-es="Energía" data-en="Energy">Energía</td>
+                      <td>210 kcal</td>
+                      <td>630 kcal</td>
+                    </tr>
+                    <tr>
+                      <td data-es="Grasas" data-en="Fats">Grasas</td>
+                      <td>18 g</td>
+                      <td>54 g</td>
+                    </tr>
+                    <tr>
+                      <td data-es="Carbohidratos" data-en="Carbohydrates">
+                        Carbohidratos
+                      </td>
+                      <td>5 g</td>
+                      <td>15 g</td>
+                    </tr>
+                    <tr>
+                      <td data-es="Proteínas" data-en="Proteins">
+                        Proteínas
+                      </td>
                       <td>12 g</td>
                       <td>36 g</td>
                     </tr>
@@ -395,109 +754,29 @@
           </div>
         </div>
 
-        <!-- Tarjeta de Hamburguesa Sierra -->
-        <div class="col-md-6 col-lg-4 mb-4">
+        <div class="col-md-6 col-lg-4 mb-4 d-flex">
           <div class="card-grupal position-relative cristal">
-            <img
-              src="./img/sierra_borde2.webp"
-              class="card-img-top img-fluid"
-              alt="Sierra"
-            />
+            <img src="./img/patatas.webp" class="card-img-top img-fluid" alt="Patatas Iberican" />
             <div class="card-body text-center">
-              <h5 class="card-title menu-fuente-nombres">SIERRA</h5>
-              <p class="card-text">
-                Carne de cerdo ibérico con setas de temporada.
+              <h5 class="card-title menu-fuente-nombreslil" data-es="PATATAS IBERICAN" data-en="IBERICAN FRIES">
+                PATATAS IBERICAN
+              </h5>
+              <p class="card-text" data-es="Patatas fritas caseras con panceta, salsa brava y alioli."
+                data-en="Homemade fries with crispy bacon, brava sauce, and aioli.">
+                Patatas fritas caseras con panceta, salsa brava y alioli.
               </p>
             </div>
             <!-- Botón de Información -->
-            <button
-              class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-            >
-              ?
+            <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+              data-placement="down" title="Información Nutricional/Nutritional information">
+              <i class="fa-solid fa-info"></i>
             </button>
             <!-- Información Nutricional (oculta) -->
             <div class="nutritional-info d-none">
               <div class="p-3">
-                <h5 class="text-center mb-3">
-                  Información Nutricional - Sierra
-                </h5>
-                <table class="table table-sm">
-                  <thead>
-                    <tr>
-                      <th>Componente</th>
-                      <th>Por 100g</th>
-                      <th>Por porción</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Energía</td>
-                      <td>820 kj</td>
-                      <td>2460 kj</td>
-                    </tr>
-                    <tr>
-                      <td>Calorías</td>
-                      <td>196 kcal</td>
-                      <td>588 kcal</td>
-                    </tr>
-                    <tr>
-                      <td>Grasas</td>
-                      <td>10 g</td>
-                      <td>30 g</td>
-                    </tr>
-                    <tr>
-                      <td>Carbohidratos</td>
-                      <td>22 g</td>
-                      <td>66 g</td>
-                    </tr>
-                    <tr>
-                      <td>Proteínas</td>
-                      <td>14 g</td>
-                      <td>42 g</td>
-                    </tr>
-                    <!-- Más filas si es necesario -->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Tarjeta de Hamburguesa Iberican Xtreme -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card-grupal position-relative cristal">
-            <img
-              src="./img/xtreme_borde2.png"
-              class="card-img-top img-fluid"
-              alt="IBERICAN XTREME"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title menu-fuente-nombres">IBERICAN XTREME</h5>
-              <p
-                class="card-text"
-                data-es="Carne de cerdo ibérico con queso curado, jamón ibérico y pan artesanal."
-                data-en="Iberian pork with cured cheese, Iberian ham, and artisanal bread."
-              >
-                Carne de cerdo ibérico con queso curado, jamón ibérico y pan
-                artesanal.
-              </p>
-            </div>
-            <!-- Botón de Información -->
-            <button
-              class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-              data-es="?"
-              data-en="?"
-            >
-              ?
-            </button>
-            <!-- Información Nutricional (oculta) -->
-            <div class="nutritional-info d-none">
-              <div class="p-3">
-                <h5
-                  class="text-center mb-3"
-                  data-es="Información Nutricional - IBERICAN XTREME"
-                  data-en="Nutritional Information - IBERICAN XTREME"
-                >
-                  Información Nutricional - IBERICAN XTREME
+                <h5 class="text-center mb-3" data-es="Información Nutricional - Patatas Iberican"
+                  data-en="Nutritional Information - Iberican Fries">
+                  Información Nutricional - Patatas Iberican
                 </h5>
                 <table class="table table-sm">
                   <thead>
@@ -514,18 +793,13 @@
                   <tbody>
                     <tr>
                       <td data-es="Energía" data-en="Energy">Energía</td>
-                      <td>890 kj</td>
-                      <td>2670 kj</td>
-                    </tr>
-                    <tr>
-                      <td data-es="Calorías" data-en="Calories">Calorías</td>
-                      <td>212 kcal</td>
-                      <td>636 kcal</td>
+                      <td>225 kcal</td>
+                      <td>675 kcal</td>
                     </tr>
                     <tr>
                       <td data-es="Grasas" data-en="Fats">Grasas</td>
-                      <td>14 g</td>
-                      <td>42 g</td>
+                      <td>15 g</td>
+                      <td>45 g</td>
                     </tr>
                     <tr>
                       <td data-es="Carbohidratos" data-en="Carbohydrates">
@@ -535,9 +809,11 @@
                       <td>60 g</td>
                     </tr>
                     <tr>
-                      <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
-                      <td>18 g</td>
-                      <td>54 g</td>
+                      <td data-es="Proteínas" data-en="Proteins">
+                        Proteínas
+                      </td>
+                      <td>5 g</td>
+                      <td>15 g</td>
                     </tr>
                   </tbody>
                 </table>
@@ -547,57 +823,38 @@
         </div>
       </div>
     </div>
-
-    <!-- bocadillos -->
-    <div class="container mt-5">
-      <h2
-        class="text-center mb-4 menu-fuente"
-        data-es="Bocadillos"
-        data-en="Sandwiches"
-      >
-        Bocadillos
+    <!-- Postres -->
+    <div class="container mt-5" id="postres">
+      <h2 class="text-center mb-4 menu-fuente" data-es="Postres" data-en="Desserts">
+        Postres
       </h2>
       <div class="row d-flex flex-wrap">
         <div class="col-md-6 col-lg-4 mb-4 d-flex">
           <div class="card-grupal position-relative cristal">
-            <img
-              src="./img/bocadillo iberico.webp"
-              class="card-img-top img-fluid"
-              alt="Bocadillo de Jamón"
-            />
+            <img src="./img/cheesecake.png" class="card-img-top img-fluid" alt="Tarta de Queso con Miel de Encina" />
             <div class="card-body text-center">
-              <h5
-                class="card-title menu-fuente-nombreslil"
-                data-es="BOCADILLO DE JAMÓN"
-                data-en="IBERIAN HAM SANDWICH"
-              >
-                BOCADILLO DE JAMÓN
+              <h5 class="card-title menu-fuente-nombreslil" data-es="TARTA DE QUESO CON MIEL DE ENCINA"
+                data-en="CHEESECAKE WITH HOLM OAK HONEY">
+                TARTA DE QUESO CON MIEL DE ENCINA
               </h5>
-              <p
-                class="card-text"
-                data-es="Jamón ibérico de bellota con pan artesanal recién horneado."
-                data-en="Iberian acorn-fed ham with freshly baked artisanal bread."
-              >
-                Jamón ibérico de bellota con pan artesanal recién horneado.
+              <p class="card-text"
+                data-es="Tarta de queso suave con miel y nueces. Un postre cremoso con sabores locales."
+                data-en="Smooth cheesecake with honey and walnuts. A creamy dessert with local flavors.">
+                Tarta de queso suave con miel y nueces. Un postre cremoso con
+                sabores locales.
               </p>
             </div>
             <!-- Botón de Información -->
-            <button
-              class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-              data-es="?"
-              data-en="?"
-            >
-              ?
+            <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+              data-placement="down" title="Información Nutricional/Nutritional information">
+              <i class="fa-solid fa-info"></i>
             </button>
             <!-- Información Nutricional (oculta) -->
             <div class="nutritional-info d-none">
               <div class="p-3">
-                <h5
-                  class="text-center mb-3"
-                  data-es="Información Nutricional - Bocadillo de Jamón"
-                  data-en="Nutritional Information - Iberian Ham Sandwich"
-                >
-                  Información Nutricional - Bocadillo de Jamón
+                <h5 class="text-center mb-3" data-es="Información Nutricional - Tarta de Queso"
+                  data-en="Nutritional Information - Cheesecake">
+                  Información Nutricional - Tarta de Queso
                 </h5>
                 <table class="table table-sm">
                   <thead>
@@ -614,30 +871,27 @@
                   <tbody>
                     <tr>
                       <td data-es="Energía" data-en="Energy">Energía</td>
-                      <td>850 kj</td>
-                      <td>2550 kj</td>
-                    </tr>
-                    <tr>
-                      <td data-es="Calorías" data-en="Calories">Calorías</td>
-                      <td>200 kcal</td>
-                      <td>600 kcal</td>
+                      <td>250 kcal</td>
+                      <td>750 kcal</td>
                     </tr>
                     <tr>
                       <td data-es="Grasas" data-en="Fats">Grasas</td>
-                      <td>8 g</td>
-                      <td>24 g</td>
+                      <td>15 g</td>
+                      <td>45 g</td>
                     </tr>
                     <tr>
                       <td data-es="Carbohidratos" data-en="Carbohydrates">
                         Carbohidratos
                       </td>
-                      <td>25 g</td>
-                      <td>75 g</td>
+                      <td>20 g</td>
+                      <td>60 g</td>
                     </tr>
                     <tr>
-                      <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
-                      <td>14 g</td>
-                      <td>42 g</td>
+                      <td data-es="Proteínas" data-en="Proteins">
+                        Proteínas
+                      </td>
+                      <td>8 g</td>
+                      <td>24 g</td>
                     </tr>
                   </tbody>
                 </table>
@@ -648,44 +902,29 @@
 
         <div class="col-md-6 col-lg-4 mb-4 d-flex">
           <div class="card-grupal position-relative cristal">
-            <img
-              src="./img/bocadillo serrano.webp"
-              class="card-img-top img-fluid"
-              alt="Bocadillo Serrano"
-            />
+            <img src="./img/castana postre.png" class="card-img-top img-fluid" alt="Chestnut Flan" />
             <div class="card-body text-center">
-              <h5
-                class="card-title menu-fuente-nombreslil"
-                data-es="BOCADILLO SERRANO"
-                data-en="SERRANO HAM SANDWICH"
-              >
-                BOCADILLO SERRANO
+              <h5 class="card-title menu-fuente-nombreslil" data-es="FLAN DE CASTAÑAS" data-en="CHESTNUT FLAN">
+                FLAN DE CASTAÑAS
               </h5>
-              <p
-                class="card-text"
-                data-es="Jamón serrano curado con tomate rallado y aceite de oliva."
-                data-en="Cured Serrano ham with grated tomato and olive oil."
-              >
-                Jamón serrano curado con tomate rallado y aceite de oliva.
+              <p class="card-text"
+                data-es="Flan casero de castañas con textura suave y un toque dulce, coronado con caramelo casero."
+                data-en="Homemade chestnut flan with a smooth texture, lightly sweet taste, and topped with homemade caramel.">
+                Flan casero de castañas con textura suave y un toque dulce,
+                coronado con caramelo casero.
               </p>
             </div>
             <!-- Botón de Información -->
-            <button
-              class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-              data-es="?"
-              data-en="?"
-            >
-              ?
+            <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
+              data-placement="down" title="Información Nutricional/Nutritional information">
+              <i class="fa-solid fa-info"></i>
             </button>
             <!-- Información Nutricional (oculta) -->
             <div class="nutritional-info d-none">
               <div class="p-3">
-                <h5
-                  class="text-center mb-3"
-                  data-es="Información Nutricional - Bocadillo Serrano"
-                  data-en="Nutritional Information - Serrano Ham Sandwich"
-                >
-                  Información Nutricional - Bocadillo Serrano
+                <h5 class="text-center mb-3" data-es="Información Nutricional - Flan de Castañas"
+                  data-en="Nutritional Information - Chestnut Flan">
+                  Información Nutricional - Flan de Castañas
                 </h5>
                 <table class="table table-sm">
                   <thead>
@@ -702,30 +941,27 @@
                   <tbody>
                     <tr>
                       <td data-es="Energía" data-en="Energy">Energía</td>
-                      <td>900 kj</td>
-                      <td>2700 kj</td>
-                    </tr>
-                    <tr>
-                      <td data-es="Calorías" data-en="Calories">Calorías</td>
-                      <td>215 kcal</td>
-                      <td>645 kcal</td>
+                      <td>180 kcal</td>
+                      <td>540 kcal</td>
                     </tr>
                     <tr>
                       <td data-es="Grasas" data-en="Fats">Grasas</td>
-                      <td>10 g</td>
-                      <td>30 g</td>
+                      <td>6 g</td>
+                      <td>18 g</td>
                     </tr>
                     <tr>
                       <td data-es="Carbohidratos" data-en="Carbohydrates">
                         Carbohidratos
                       </td>
-                      <td>18 g</td>
-                      <td>54 g</td>
+                      <td>28 g</td>
+                      <td>84 g</td>
                     </tr>
                     <tr>
-                      <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
-                      <td>16 g</td>
-                      <td>48 g</td>
+                      <td data-es="Proteínas" data-en="Proteins">
+                        Proteínas
+                      </td>
+                      <td>4 g</td>
+                      <td>12 g</td>
                     </tr>
                   </tbody>
                 </table>
@@ -734,1099 +970,447 @@
           </div>
         </div>
       </div>
-
-      <!-- Entrantes -->
-      <div class="container mt-5">
-        <h2
-          class="text-center mb-4 menu-fuente"
-          data-es="Entrantes Principales"
-          data-en="Main Entrees"
-        >
-          Entrantes Principales
-        </h2>
-        <div class="row d-flex flex-wrap">
-          <div class="col-md-6 col-lg-4 mb-4 d-flex">
-            <div class="card-grupal position-relative cristal">
-              <img
-                src="./img/croquetas.webp"
-                class="card-img-top img-fluid"
-                alt="Croquetas de Jamón Ibérico"
-              />
-              <div class="card-body text-center">
-                <h5
-                  class="card-title menu-fuente-nombreslil"
-                  data-es="CROQUETAS DE JAMÓN IBÉRICO"
-                  data-en="IBERIAN HAM CROQUETTES"
-                >
-                  CROQUETAS DE JAMÓN IBÉRICO
-                </h5>
-                <p
-                  class="card-text"
-                  data-es="Croquetas crujientes por fuera y cremosas por dentro, con jamón ibérico."
-                  data-en="Crispy croquettes with creamy béchamel and Iberian ham."
-                >
-                  Croquetas crujientes por fuera y cremosas por dentro, con
-                  jamón ibérico.
-                </p>
-              </div>
-              <!-- Botón de Información -->
-              <button
-                class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-                data-es="?"
-                data-en="?"
-              >
-                ?
-              </button>
-              <!-- Información Nutricional (oculta) -->
-              <div class="nutritional-info d-none">
-                <div class="p-3">
-                  <h5
-                    class="text-center mb-3"
-                    data-es="Información Nutricional - Croquetas de Jamón"
-                    data-en="Nutritional Information - Iberian Ham Croquettes"
-                  >
-                    Información Nutricional - Croquetas de Jamón
-                  </h5>
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <th data-es="Componente" data-en="Component">
-                          Componente
-                        </th>
-                        <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
-                        <th data-es="Por porción" data-en="Per portion">
-                          Por porción
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td data-es="Energía" data-en="Energy">Energía</td>
-                        <td>186 kcal</td>
-                        <td>558 kcal</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Grasas" data-en="Fats">Grasas</td>
-                        <td>10 g</td>
-                        <td>30 g</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Carbohidratos" data-en="Carbohydrates">
-                          Carbohidratos
-                        </td>
-                        <td>15 g</td>
-                        <td>45 g</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Proteínas" data-en="Proteins">
-                          Proteínas
-                        </td>
-                        <td>8 g</td>
-                        <td>24 g</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 d-flex">
-            <div class="card-grupal position-relative cristal">
-              <img
-                src="./img/queso cabra.webp"
-                class="card-img-top img-fluid"
-                alt="Queso de Cabra al Horno"
-              />
-              <div class="card-body text-center">
-                <h5
-                  class="card-title menu-fuente-nombreslil"
-                  data-es="QUESO DE CABRA AL HORNO"
-                  data-en="BAKED GOAT CHEESE"
-                >
-                  QUESO DE CABRA AL HORNO
-                </h5>
-                <p
-                  class="card-text"
-                  data-es="Queso de cabra gratinado al horno con miel y nueces."
-                  data-en="Oven-baked goat cheese with honey and walnuts."
-                >
-                  Queso de cabra gratinado al horno con miel y nueces.
-                </p>
-              </div>
-              <!-- Botón de Información -->
-              <button
-                class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-                data-es="?"
-                data-en="?"
-              >
-                ?
-              </button>
-              <!-- Información Nutricional (oculta) -->
-              <div class="nutritional-info d-none">
-                <div class="p-3">
-                  <h5
-                    class="text-center mb-3"
-                    data-es="Información Nutricional - Queso de Cabra"
-                    data-en="Nutritional Information - Baked Goat Cheese"
-                  >
-                    Información Nutricional - Queso de Cabra
-                  </h5>
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <th data-es="Componente" data-en="Component">
-                          Componente
-                        </th>
-                        <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
-                        <th data-es="Por porción" data-en="Per portion">
-                          Por porción
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td data-es="Energía" data-en="Energy">Energía</td>
-                        <td>210 kcal</td>
-                        <td>630 kcal</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Grasas" data-en="Fats">Grasas</td>
-                        <td>18 g</td>
-                        <td>54 g</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Carbohidratos" data-en="Carbohydrates">
-                          Carbohidratos
-                        </td>
-                        <td>5 g</td>
-                        <td>15 g</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Proteínas" data-en="Proteins">
-                          Proteínas
-                        </td>
-                        <td>12 g</td>
-                        <td>36 g</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 d-flex">
-            <div class="card-grupal position-relative cristal">
-              <img
-                src="./img/patatas.webp"
-                class="card-img-top img-fluid"
-                alt="Patatas Iberican"
-              />
-              <div class="card-body text-center">
-                <h5
-                  class="card-title menu-fuente-nombreslil"
-                  data-es="PATATAS IBERICAN"
-                  data-en="IBERICAN FRIES"
-                >
-                  PATATAS IBERICAN
-                </h5>
-                <p
-                  class="card-text"
-                  data-es="Patatas fritas caseras con panceta, salsa brava y alioli."
-                  data-en="Homemade fries with crispy bacon, brava sauce, and aioli."
-                >
-                  Patatas fritas caseras con panceta, salsa brava y alioli.
-                </p>
-              </div>
-              <!-- Botón de Información -->
-              <button
-                class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-                data-es="?"
-                data-en="?"
-              >
-                ?
-              </button>
-              <!-- Información Nutricional (oculta) -->
-              <div class="nutritional-info d-none">
-                <div class="p-3">
-                  <h5
-                    class="text-center mb-3"
-                    data-es="Información Nutricional - Patatas Iberican"
-                    data-en="Nutritional Information - Iberican Fries"
-                  >
-                    Información Nutricional - Patatas Iberican
-                  </h5>
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <th data-es="Componente" data-en="Component">
-                          Componente
-                        </th>
-                        <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
-                        <th data-es="Por porción" data-en="Per portion">
-                          Por porción
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td data-es="Energía" data-en="Energy">Energía</td>
-                        <td>225 kcal</td>
-                        <td>675 kcal</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Grasas" data-en="Fats">Grasas</td>
-                        <td>15 g</td>
-                        <td>45 g</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Carbohidratos" data-en="Carbohydrates">
-                          Carbohidratos
-                        </td>
-                        <td>20 g</td>
-                        <td>60 g</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Proteínas" data-en="Proteins">
-                          Proteínas
-                        </td>
-                        <td>5 g</td>
-                        <td>15 g</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Postres -->
-      <div class="container mt-5">
-        <h2
-          class="text-center mb-4 menu-fuente"
-          data-es="Postres"
-          data-en="Desserts"
-        >
-          Postres
-        </h2>
-        <div class="row d-flex flex-wrap">
-          <div class="col-md-6 col-lg-4 mb-4 d-flex">
-            <div class="card-grupal position-relative cristal">
-              <img
-                src="./img/cheesecake.png"
-                class="card-img-top img-fluid"
-                alt="Tarta de Queso con Miel de Encina"
-              />
-              <div class="card-body text-center">
-                <h5
-                  class="card-title menu-fuente-nombreslil"
-                  data-es="TARTA DE QUESO CON MIEL DE ENCINA"
-                  data-en="CHEESECAKE WITH HOLM OAK HONEY"
-                >
-                  TARTA DE QUESO CON MIEL DE ENCINA
-                </h5>
-                <p
-                  class="card-text"
-                  data-es="Tarta de queso suave con miel y nueces. Un postre cremoso con sabores locales."
-                  data-en="Smooth cheesecake with honey and walnuts. A creamy dessert with local flavors."
-                >
-                  Tarta de queso suave con miel y nueces. Un postre cremoso con
-                  sabores locales.
-                </p>
-              </div>
-              <!-- Botón de Información -->
-              <button
-                class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-                data-es="?"
-                data-en="?"
-              >
-                ?
-              </button>
-              <!-- Información Nutricional (oculta) -->
-              <div class="nutritional-info d-none">
-                <div class="p-3">
-                  <h5
-                    class="text-center mb-3"
-                    data-es="Información Nutricional - Tarta de Queso"
-                    data-en="Nutritional Information - Cheesecake"
-                  >
-                    Información Nutricional - Tarta de Queso
-                  </h5>
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <th data-es="Componente" data-en="Component">
-                          Componente
-                        </th>
-                        <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
-                        <th data-es="Por porción" data-en="Per portion">
-                          Por porción
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td data-es="Energía" data-en="Energy">Energía</td>
-                        <td>250 kcal</td>
-                        <td>750 kcal</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Grasas" data-en="Fats">Grasas</td>
-                        <td>15 g</td>
-                        <td>45 g</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Carbohidratos" data-en="Carbohydrates">
-                          Carbohidratos
-                        </td>
-                        <td>20 g</td>
-                        <td>60 g</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Proteínas" data-en="Proteins">
-                          Proteínas
-                        </td>
-                        <td>8 g</td>
-                        <td>24 g</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 d-flex">
-            <div class="card-grupal position-relative cristal">
-              <img
-                src="./img/castana postre.png"
-                class="card-img-top img-fluid"
-                alt="Chestnut Flan"
-              />
-              <div class="card-body text-center">
-                <h5
-                  class="card-title menu-fuente-nombreslil"
-                  data-es="FLAN DE CASTAÑAS"
-                  data-en="CHESTNUT FLAN"
-                >
-                  FLAN DE CASTAÑAS
-                </h5>
-                <p
-                  class="card-text"
-                  data-es="Flan casero de castañas con textura suave y un toque dulce, coronado con caramelo casero."
-                  data-en="Homemade chestnut flan with a smooth texture, lightly sweet taste, and topped with homemade caramel."
-                >
-                  Flan casero de castañas con textura suave y un toque dulce,
-                  coronado con caramelo casero.
-                </p>
-              </div>
-              <!-- Botón de Información -->
-              <button
-                class="btn btn-info btn-sm info-btn position-absolute top-0 end-0 m-2"
-                data-es="?"
-                data-en="?"
-              >
-                ?
-              </button>
-              <!-- Información Nutricional (oculta) -->
-              <div class="nutritional-info d-none">
-                <div class="p-3">
-                  <h5
-                    class="text-center mb-3"
-                    data-es="Información Nutricional - Flan de Castañas"
-                    data-en="Nutritional Information - Chestnut Flan"
-                  >
-                    Información Nutricional - Flan de Castañas
-                  </h5>
-                  <table class="table table-sm">
-                    <thead>
-                      <tr>
-                        <th data-es="Componente" data-en="Component">
-                          Componente
-                        </th>
-                        <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
-                        <th data-es="Por porción" data-en="Per portion">
-                          Por porción
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td data-es="Energía" data-en="Energy">Energía</td>
-                        <td>180 kcal</td>
-                        <td>540 kcal</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Grasas" data-en="Fats">Grasas</td>
-                        <td>6 g</td>
-                        <td>18 g</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Carbohidratos" data-en="Carbohydrates">
-                          Carbohidratos
-                        </td>
-                        <td>28 g</td>
-                        <td>84 g</td>
-                      </tr>
-                      <tr>
-                        <td data-es="Proteínas" data-en="Proteins">
-                          Proteínas
-                        </td>
-                        <td>4 g</td>
-                        <td>12 g</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- titulo hamburguesa -->
-      <br />
-      <div class="carved-text">
-        <h1 class="text-center" data-es="HAMBURGUESAS" data-en="LA BRAVA">
-          HAMBURGUESAS
-        </h1>
-      </div>
-
-      <div
-        id="hamburgerCarousel"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <!-- Indicadores -->
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#hamburgerCarousel"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="IBERICAN XTREME"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#hamburgerCarousel"
-            data-bs-slide-to="1"
-            aria-label="LA BRAVA"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#hamburgerCarousel"
-            data-bs-slide-to="2"
-            aria-label="CASTAÑA"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#hamburgerCarousel"
-            data-bs-slide-to="3"
-            aria-label="SIERRA"
-          ></button>
-        </div>
-
-        <!-- Carrusel -->
-        <div class="carousel-inner">
-          <!-- Iberican XTREME -->
-          <div class="carousel-item active">
-            <div class="container my-5 cristal">
-              <div class="row align-items-center carved-text">
-                <h1
-                  class="text-center mb-4"
-                  data-es="HAMBURGUESAS"
-                  data-en="BURGERS"
-                >
-                  HAMBURGUESAS
-                </h1>
-
-                <h1 class="text-center mb-4">IBERICAN XTREME</h1>
-                <!-- Columna izquierda -->
-                <div class="col-md-4 text-center">
-                  <div class="feature">
-                    <i class="fas fa-fire mb-2 fa-2x"></i>
-                    <h5 data-es="Sabor Ahumado" data-en="Smoky Flavor">
-                      Sabor Ahumado
-                    </h5>
-                    <p
-                      data-es="Carne de cerdo ibérico asada al estilo tradicional."
-                      data-en="Iberian pork roasted in the traditional style."
-                    >
-                      Carne de cerdo ibérico asada al estilo tradicional.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-drumstick-bite mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Ingredientes Premium"
-                      data-en="Premium Ingredients"
-                    >
-                      Ingredientes Premium
-                    </h5>
-                    <p
-                      data-es="Queso curado, jamón ibérico y pan artesanal."
-                      data-en="Cured cheese, Iberian ham, and artisanal bread."
-                    >
-                      Queso curado, jamón ibérico y pan artesanal.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-leaf mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Frescura Garantizada"
-                      data-en="Guaranteed Freshness"
-                    >
-                      Frescura Garantizada
-                    </h5>
-                    <p
-                      data-es="Lechuga y tomate recién cosechados."
-                      data-en="Freshly harvested lettuce and tomatoes."
-                    >
-                      Lechuga y tomate recién cosechados.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Imagen central -->
-                <div class="col-md-4 text-center">
-                  <img
-                    src="./img/xtreme_borde2.png"
-                    alt="Arándanos"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-
-                <!-- Columna derecha -->
-                <div class="col-md-4 text-center">
-                  <div class="feature">
-                    <i class="fas fa-heart mb-2 fa-2x"></i>
-                    <h5 data-es="Receta Única" data-en="Unique Recipe">
-                      Receta Única
-                    </h5>
-                    <p
-                      data-es="Una mezcla exclusiva de sabores ibéricos."
-                      data-en="An exclusive blend of Iberian flavors."
-                    >
-                      Una mezcla exclusiva de sabores ibéricos.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-clock mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Perfecta en Cualquier Momento"
-                      data-en="Perfect Anytime"
-                    >
-                      Perfecta en Cualquier Momento
-                    </h5>
-                    <p
-                      data-es="Ideal para almuerzos, cenas o una tarde de amigos."
-                      data-en="Perfect for lunches, dinners, or an evening with friends."
-                    >
-                      Ideal para almuerzos, cenas o una tarde de amigos.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-chart-line mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Rendimiento Energético"
-                      data-en="Energy Performance"
-                    >
-                      Rendimiento Energético
-                    </h5>
-                    <p
-                      data-es="Con 850 kcal para disfrutar sin remordimientos."
-                      data-en="With 850 kcal to enjoy guilt-free."
-                    >
-                      Con 850 kcal para disfrutar sin remordimientos.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- La Brava -->
-          <div class="carousel-item">
-            <div class="container my-5 cristal">
-              <div class="row align-items-center carved-text">
-                <h1
-                  class="text-center mb-4"
-                  data-es="LA BRAVA"
-                  data-en="LA BRAVA"
-                >
-                  LA BRAVA
-                </h1>
-                <!-- Columna izquierda -->
-                <div class="col-md-4 text-center">
-                  <div class="feature">
-                    <i class="fas fa-fire-alt mb-2 fa-2x"></i>
-                    <h5 data-es="Sabor Intenso" data-en="Intense Flavor">
-                      Sabor Intenso
-                    </h5>
-                    <p
-                      data-es="Carne de ternera al grill con un toque picante."
-                      data-en="Grilled beef with a spicy kick."
-                    >
-                      Carne de ternera al grill con un toque picante.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-pepper-hot mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Ingredientes Especiales"
-                      data-en="Special Ingredients"
-                    >
-                      Ingredientes Especiales
-                    </h5>
-                    <p
-                      data-es="Salsa brava, queso cheddar y jalapeños."
-                      data-en="Brava sauce, cheddar cheese, and jalapeños."
-                    >
-                      Salsa brava, queso cheddar y jalapeños.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-bread-slice mb-2 fa-2x"></i>
-                    <h5 data-es="Pan Artesanal" data-en="Artisanal Bread">
-                      Pan Artesanal
-                    </h5>
-                    <p
-                      data-es="Elaborado con semillas y ligeramente tostado."
-                      data-en="Made with seeds and lightly toasted."
-                    >
-                      Elaborado con semillas y ligeramente tostado.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Imagen central -->
-                <div class="col-md-4 text-center">
-                  <img
-                    src="./img/labrava_borde2.webp"
-                    alt="La Brava"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-
-                <!-- Columna derecha -->
-                <div class="col-md-4 text-center">
-                  <div class="feature">
-                    <i class="fas fa-heartbeat mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Receta Picante Única"
-                      data-en="Unique Spicy Recipe"
-                    >
-                      Receta Picante Única
-                    </h5>
-                    <p
-                      data-es="El balance perfecto entre picante y sabor."
-                      data-en="The perfect balance of spice and flavor."
-                    >
-                      El balance perfecto entre picante y sabor.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-stopwatch mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Rápida y Sabrosa"
-                      data-en="Quick and Delicious"
-                    >
-                      Rápida y Sabrosa
-                    </h5>
-                    <p
-                      data-es="Ideal para esos momentos de antojo."
-                      data-en="Perfect for those craving moments."
-                    >
-                      Ideal para esos momentos de antojo.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-burn mb-2 fa-2x"></i>
-                    <h5 data-es="Energía Explosiva" data-en="Explosive Energy">
-                      Energía Explosiva
-                    </h5>
-                    <p
-                      data-es="Con 920 kcal para disfrutar intensamente."
-                      data-en="With 920 kcal for intense enjoyment."
-                    >
-                      Con 920 kcal para disfrutar intensamente.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Más elementos del carrusel -->
-
-          <!-- castaña -->
-          <div class="carousel-item">
-            <div class="container my-5 cristal">
-              <div class="row align-items-center carved-text">
-                <h1
-                  class="text-center mb-4"
-                  data-es="CASTAÑA"
-                  data-en="CHESTNUT"
-                >
-                  CASTAÑA
-                </h1>
-                <!-- Columna izquierda -->
-                <div class="col-md-4 text-center">
-                  <div class="feature">
-                    <i class="fas fa-leaf mb-2 fa-2x"></i>
-                    <h5 data-es="Sabor Natural" data-en="Natural Flavor">
-                      Sabor Natural
-                    </h5>
-                    <p
-                      data-es="Carne de cerdo ibérico con crema de castañas."
-                      data-en="Iberian pork with chestnut cream."
-                    >
-                      Carne de cerdo ibérico con crema de castañas.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-seedling mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Ingredientes Locales"
-                      data-en="Local Ingredients"
-                    >
-                      Ingredientes Locales
-                    </h5>
-                    <p
-                      data-es="Castañas de temporada y queso de cabra."
-                      data-en="Seasonal chestnuts and goat cheese."
-                    >
-                      Castañas de temporada y queso de cabra.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-bread-slice mb-2 fa-2x"></i>
-                    <h5 data-es="Pan Multicereal" data-en="Multigrain Bread">
-                      Pan Multicereal
-                    </h5>
-                    <p
-                      data-es="Tierno y saludable, hecho con cereales selectos."
-                      data-en="Soft and healthy, made with select grains."
-                    >
-                      Tierno y saludable, hecho con cereales selectos.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Imagen central -->
-                <div class="col-md-4 text-center">
-                  <img
-                    src="./img/castana_borde2.webp"
-                    alt="Hamburguesa Castaña"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-
-                <!-- Columna derecha -->
-                <div class="col-md-4 text-center">
-                  <div class="feature">
-                    <i class="fas fa-heart mb-2 fa-2x"></i>
-                    <h5 data-es="Receta Exclusiva" data-en="Exclusive Recipe">
-                      Receta Exclusiva
-                    </h5>
-                    <p
-                      data-es="Una mezcla gourmet para los paladares exigentes."
-                      data-en="A gourmet blend for discerning palates."
-                    >
-                      Una mezcla gourmet para los paladares exigentes.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-stopwatch mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Ideal en Cualquier Momento"
-                      data-en="Ideal Anytime"
-                    >
-                      Ideal en Cualquier Momento
-                    </h5>
-                    <p
-                      data-es="Perfecta para comidas o cenas elegantes."
-                      data-en="Perfect for elegant lunches or dinners."
-                    >
-                      Perfecta para comidas o cenas elegantes.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-apple-alt mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Rica en Nutrientes"
-                      data-en="Rich in Nutrients"
-                    >
-                      Rica en Nutrientes
-                    </h5>
-                    <p
-                      data-es="Con 780 kcal, llena de energía natural."
-                      data-en="With 780 kcal, full of natural energy."
-                    >
-                      Con 780 kcal, llena de energía natural.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- La Brava -->
-          <div class="carousel-item">
-            <div class="container my-5 cristal">
-              <div class="row align-items-center carved-text">
-                <h1
-                  class="text-center mb-4"
-                  data-es="SIERRA"
-                  data-en="MOUNTAIN"
-                >
-                  SIERRA
-                </h1>
-                <!-- Columna izquierda -->
-                <div class="col-md-4 text-center">
-                  <div class="feature">
-                    <i class="fas fa-mountain mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Inspiración Serrana"
-                      data-en="Mountain Inspiration"
-                    >
-                      Inspiración Serrana
-                    </h5>
-                    <p
-                      data-es="Carne de cerdo ibérico con setas de temporada."
-                      data-en="Iberian pork with seasonal mushrooms."
-                    >
-                      Carne de cerdo ibérico con setas de temporada.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-cheese mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Queso Curado Artesanal"
-                      data-en="Artisan Aged Cheese"
-                    >
-                      Queso Curado Artesanal
-                    </h5>
-                    <p
-                      data-es="Un toque especial con queso de cabra curado."
-                      data-en="A special touch with aged goat cheese."
-                    >
-                      Un toque especial con queso de cabra curado.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-seedling mb-2 fa-2x"></i>
-                    <h5 data-es="Hierbas Frescas" data-en="Fresh Herbs">
-                      Hierbas Frescas
-                    </h5>
-                    <p
-                      data-es="Aliño de hierbas locales que realzan el sabor."
-                      data-en="Dressing of local herbs that enhance the flavor."
-                    >
-                      Aliño de hierbas locales que realzan el sabor.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Imagen central -->
-                <div class="col-md-4 text-center">
-                  <img
-                    src="./img/sierra_borde2.webp"
-                    alt="Hamburguesa Castaña"
-                    class="img-fluid rounded-circle"
-                  />
-                </div>
-
-                <!-- Columna derecha -->
-                <div class="col-md-4 text-center">
-                  <div class="feature">
-                    <i class="fas fa-heart mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Receta de Tradición"
-                      data-en="Traditional Recipe"
-                    >
-                      Receta de Tradición
-                    </h5>
-                    <p
-                      data-es="Un homenaje a los sabores de la sierra."
-                      data-en="A tribute to the mountain's flavors."
-                    >
-                      Un homenaje a los sabores de la sierra.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-stopwatch mb-2 fa-2x"></i>
-                    <h5
-                      data-es="Perfecta en Cualquier Momento"
-                      data-en="Perfect Anytime"
-                    >
-                      Perfecta en Cualquier Momento
-                    </h5>
-                    <p
-                      data-es="Ideal para un almuerzo reconfortante."
-                      data-en="Perfect for a comforting lunch."
-                    >
-                      Ideal para un almuerzo reconfortante.
-                    </p>
-                  </div>
-                  <div class="feature mt-4">
-                    <i class="fas fa-apple-alt mb-2 fa-2x"></i>
-                    <h5 data-es="Energía Pura" data-en="Pure Energy">
-                      Energía Pura
-                    </h5>
-                    <p
-                      data-es="Con 820 kcal, llena de sabor y nutrientes."
-                      data-en="With 820 kcal, full of flavor and nutrients."
-                    >
-                      Con 820 kcal, llena de sabor y nutrientes.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Agregar más hamburguesas siguiendo el mismo patrón -->
-      </div>
-
-      <!-- Controles dentro del carrusel -->
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#hamburgerCarousel"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden" data-es="Anterior" data-en="Previous"
-          >Anterior</span
-        >
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#hamburgerCarousel"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden" data-es="Siguiente" data-en="Next"
-          >Siguiente</span
-        >
-      </button>
+    </div>
+    <!-- titulo hamburguesa -->
+    <br />
+    <div class="carved-text">
+      <h1 class="text-center" data-es="HAMBURGUESAS" data-en="LA BRAVA">
+        HAMBURGUESAS
+      </h1>
     </div>
 
-    <footer class="bg-dark py-4">
-      <div class="container">
-        <div class="row">
-          <!-- Logotipo y Nombre -->
-          <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-            <a class="navbar-brand text-warning fw-bold" href="index.html">
-              <img
-                src="./img/logogpt333.png"
-                alt="Logo"
-                class="d-inline-block align-text-center"
-              />
-              Iberican<span class="text-danger">Burger</span>
-            </a>
-            <p
-              class="text-white mt-2"
-              data-es="La mejor experiencia de hamburguesas gourmet."
-              data-en="The best gourmet burger experience."
-            >
-              La mejor experiencia de hamburguesas gourmet.
-            </p>
-          </div>
+    <div id="hamburgerCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicadores -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#hamburgerCarousel" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="IBERICAN XTREME"></button>
+        <button type="button" data-bs-target="#hamburgerCarousel" data-bs-slide-to="1" aria-label="LA BRAVA"></button>
+        <button type="button" data-bs-target="#hamburgerCarousel" data-bs-slide-to="2" aria-label="CASTAÑA"></button>
+        <button type="button" data-bs-target="#hamburgerCarousel" data-bs-slide-to="3" aria-label="SIERRA"></button>
+      </div>
 
-          <!-- Menú Rápido -->
-          <div class="col-md-4 text-center">
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <a
-                  href="index.html"
-                  class="text-white text-decoration-none"
-                  data-es="Inicio"
-                  data-en="Home"
-                >
-                  <i class="fas fa-home"></i> Inicio
-                </a>
-              </li>
-              <li class="mb-2">
-                <a
-                  href="menu.html"
-                  class="text-white text-decoration-none"
-                  data-es="Menú"
-                  data-en="Menu"
-                >
-                  <i class="fas fa-utensils"></i> Menú
-                </a>
-              </li>
-              <li>
-                <a
-                  href="contacto.html"
-                  class="text-white text-decoration-none"
-                  data-es="Contacto"
-                  data-en="Contact"
-                >
-                  <i class="fas fa-envelope"></i> Contacto
-                </a>
-              </li>
-            </ul>
-          </div>
+      <!-- Carrusel -->
+      <div class="carousel-inner">
+        <!-- Iberican XTREME -->
+        <div class="carousel-item active">
+          <div class="container my-5 cristal">
+            <div class="row align-items-center carved-text">
+              <h1 class="text-center mb-4" data-es="HAMBURGUESAS" data-en="BURGERS">
+                HAMBURGUESAS
+              </h1>
 
-          <!-- Redes Sociales -->
-          <div class="col-md-4 text-center text-md-end">
-            <p
-              class="text-white mb-2"
-              data-es="Síguenos en redes sociales:"
-              data-en="Follow us on social media:"
-            >
-              Síguenos en redes sociales:
-            </p>
-            <div class="social-icons">
-              <a href="#" class="text-white"
-                ><i class="fab fa-facebook fa-lg"></i
-              ></a>
-              <a href="#" class="text-white"
-                ><i class="fab fa-twitter fa-lg"></i
-              ></a>
-              <a href="#" class="text-white"
-                ><i class="fab fa-instagram fa-lg"></i
-              ></a>
+              <h1 class="text-center mb-4">IBERICAN XTREME</h1>
+              <!-- Columna izquierda -->
+              <div class="col-md-4 text-center">
+                <div class="feature">
+                  <i class="fas fa-fire mb-2 fa-2x"></i>
+                  <h5 data-es="Sabor Ahumado" data-en="Smoky Flavor">
+                    Sabor Ahumado
+                  </h5>
+                  <p data-es="Carne de cerdo ibérico asada al estilo tradicional."
+                    data-en="Iberian pork roasted in the traditional style.">
+                    Carne de cerdo ibérico asada al estilo tradicional.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-drumstick-bite mb-2 fa-2x"></i>
+                  <h5 data-es="Ingredientes Premium" data-en="Premium Ingredients">
+                    Ingredientes Premium
+                  </h5>
+                  <p data-es="Queso curado, jamón ibérico y pan artesanal."
+                    data-en="Cured cheese, Iberian ham, and artisanal bread.">
+                    Queso curado, jamón ibérico y pan artesanal.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-leaf mb-2 fa-2x"></i>
+                  <h5 data-es="Frescura Garantizada" data-en="Guaranteed Freshness">
+                    Frescura Garantizada
+                  </h5>
+                  <p data-es="Lechuga y tomate recién cosechados." data-en="Freshly harvested lettuce and tomatoes.">
+                    Lechuga y tomate recién cosechados.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Imagen central -->
+              <div class="col-md-4 text-center">
+                <img src="./img/xtreme_borde2.png" alt="Arándanos" class="img-fluid rounded-circle" />
+              </div>
+
+              <!-- Columna derecha -->
+              <div class="col-md-4 text-center">
+                <div class="feature">
+                  <i class="fas fa-heart mb-2 fa-2x"></i>
+                  <h5 data-es="Receta Única" data-en="Unique Recipe">
+                    Receta Única
+                  </h5>
+                  <p data-es="Una mezcla exclusiva de sabores ibéricos."
+                    data-en="An exclusive blend of Iberian flavors.">
+                    Una mezcla exclusiva de sabores ibéricos.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-clock mb-2 fa-2x"></i>
+                  <h5 data-es="Perfecta en Cualquier Momento" data-en="Perfect Anytime">
+                    Perfecta en Cualquier Momento
+                  </h5>
+                  <p data-es="Ideal para almuerzos, cenas o una tarde de amigos."
+                    data-en="Perfect for lunches, dinners, or an evening with friends.">
+                    Ideal para almuerzos, cenas o una tarde de amigos.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-chart-line mb-2 fa-2x"></i>
+                  <h5 data-es="Rendimiento Energético" data-en="Energy Performance">
+                    Rendimiento Energético
+                  </h5>
+                  <p data-es="Con 850 kcal para disfrutar sin remordimientos."
+                    data-en="With 850 kcal to enjoy guilt-free.">
+                    Con 850 kcal para disfrutar sin remordimientos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- La Brava -->
+        <div class="carousel-item">
+          <div class="container my-5 cristal">
+            <div class="row align-items-center carved-text">
+              <h1 class="text-center mb-4" data-es="LA BRAVA" data-en="LA BRAVA">
+                LA BRAVA
+              </h1>
+              <!-- Columna izquierda -->
+              <div class="col-md-4 text-center">
+                <div class="feature">
+                  <i class="fas fa-fire-alt mb-2 fa-2x"></i>
+                  <h5 data-es="Sabor Intenso" data-en="Intense Flavor">
+                    Sabor Intenso
+                  </h5>
+                  <p data-es="Carne de ternera al grill con un toque picante."
+                    data-en="Grilled beef with a spicy kick.">
+                    Carne de ternera al grill con un toque picante.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-pepper-hot mb-2 fa-2x"></i>
+                  <h5 data-es="Ingredientes Especiales" data-en="Special Ingredients">
+                    Ingredientes Especiales
+                  </h5>
+                  <p data-es="Salsa brava, queso cheddar y jalapeños."
+                    data-en="Brava sauce, cheddar cheese, and jalapeños.">
+                    Salsa brava, queso cheddar y jalapeños.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-bread-slice mb-2 fa-2x"></i>
+                  <h5 data-es="Pan Artesanal" data-en="Artisanal Bread">
+                    Pan Artesanal
+                  </h5>
+                  <p data-es="Elaborado con semillas y ligeramente tostado."
+                    data-en="Made with seeds and lightly toasted.">
+                    Elaborado con semillas y ligeramente tostado.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Imagen central -->
+              <div class="col-md-4 text-center">
+                <img src="./img/labrava_borde2.webp" alt="La Brava" class="img-fluid rounded-circle" />
+              </div>
+
+              <!-- Columna derecha -->
+              <div class="col-md-4 text-center">
+                <div class="feature">
+                  <i class="fas fa-heartbeat mb-2 fa-2x"></i>
+                  <h5 data-es="Receta Picante Única" data-en="Unique Spicy Recipe">
+                    Receta Picante Única
+                  </h5>
+                  <p data-es="El balance perfecto entre picante y sabor."
+                    data-en="The perfect balance of spice and flavor.">
+                    El balance perfecto entre picante y sabor.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-stopwatch mb-2 fa-2x"></i>
+                  <h5 data-es="Rápida y Sabrosa" data-en="Quick and Delicious">
+                    Rápida y Sabrosa
+                  </h5>
+                  <p data-es="Ideal para esos momentos de antojo." data-en="Perfect for those craving moments.">
+                    Ideal para esos momentos de antojo.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-burn mb-2 fa-2x"></i>
+                  <h5 data-es="Energía Explosiva" data-en="Explosive Energy">
+                    Energía Explosiva
+                  </h5>
+                  <p data-es="Con 920 kcal para disfrutar intensamente." data-en="With 920 kcal for intense enjoyment.">
+                    Con 920 kcal para disfrutar intensamente.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Línea de Separación -->
-        <hr class="bg-light my-4" />
+        <!-- Más elementos del carrusel -->
 
-        <!-- Información de Derechos -->
-        <div class="text-center text-white">
-          <p
-            class="mb-0"
-            data-es="© 2024 Iberican Burger. Todos los derechos reservados."
-            data-en="© 2024 Iberican Burger. All rights reserved."
-          >
-            © 2024 Iberican Burger. Todos los derechos reservados.
-          </p>
+        <!-- castaña -->
+        <div class="carousel-item">
+          <div class="container my-5 cristal">
+            <div class="row align-items-center carved-text">
+              <h1 class="text-center mb-4" data-es="CASTAÑA" data-en="CHESTNUT">
+                CASTAÑA
+              </h1>
+              <!-- Columna izquierda -->
+              <div class="col-md-4 text-center">
+                <div class="feature">
+                  <i class="fas fa-leaf mb-2 fa-2x"></i>
+                  <h5 data-es="Sabor Natural" data-en="Natural Flavor">
+                    Sabor Natural
+                  </h5>
+                  <p data-es="Carne de cerdo ibérico con crema de castañas."
+                    data-en="Iberian pork with chestnut cream.">
+                    Carne de cerdo ibérico con crema de castañas.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-seedling mb-2 fa-2x"></i>
+                  <h5 data-es="Ingredientes Locales" data-en="Local Ingredients">
+                    Ingredientes Locales
+                  </h5>
+                  <p data-es="Castañas de temporada y queso de cabra." data-en="Seasonal chestnuts and goat cheese.">
+                    Castañas de temporada y queso de cabra.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-bread-slice mb-2 fa-2x"></i>
+                  <h5 data-es="Pan Multicereal" data-en="Multigrain Bread">
+                    Pan Multicereal
+                  </h5>
+                  <p data-es="Tierno y saludable, hecho con cereales selectos."
+                    data-en="Soft and healthy, made with select grains.">
+                    Tierno y saludable, hecho con cereales selectos.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Imagen central -->
+              <div class="col-md-4 text-center">
+                <img src="./img/castana_borde2.webp" alt="Hamburguesa Castaña" class="img-fluid rounded-circle" />
+              </div>
+
+              <!-- Columna derecha -->
+              <div class="col-md-4 text-center">
+                <div class="feature">
+                  <i class="fas fa-heart mb-2 fa-2x"></i>
+                  <h5 data-es="Receta Exclusiva" data-en="Exclusive Recipe">
+                    Receta Exclusiva
+                  </h5>
+                  <p data-es="Una mezcla gourmet para los paladares exigentes."
+                    data-en="A gourmet blend for discerning palates.">
+                    Una mezcla gourmet para los paladares exigentes.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-stopwatch mb-2 fa-2x"></i>
+                  <h5 data-es="Ideal en Cualquier Momento" data-en="Ideal Anytime">
+                    Ideal en Cualquier Momento
+                  </h5>
+                  <p data-es="Perfecta para comidas o cenas elegantes."
+                    data-en="Perfect for elegant lunches or dinners.">
+                    Perfecta para comidas o cenas elegantes.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-apple-alt mb-2 fa-2x"></i>
+                  <h5 data-es="Rica en Nutrientes" data-en="Rich in Nutrients">
+                    Rica en Nutrientes
+                  </h5>
+                  <p data-es="Con 780 kcal, llena de energía natural." data-en="With 780 kcal, full of natural energy.">
+                    Con 780 kcal, llena de energía natural.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- La Brava -->
+        <div class="carousel-item">
+          <div class="container my-5 cristal">
+            <div class="row align-items-center carved-text">
+              <h1 class="text-center mb-4" data-es="SIERRA" data-en="MOUNTAIN">
+                SIERRA
+              </h1>
+              <!-- Columna izquierda -->
+              <div class="col-md-4 text-center">
+                <div class="feature">
+                  <i class="fas fa-mountain mb-2 fa-2x"></i>
+                  <h5 data-es="Inspiración Serrana" data-en="Mountain Inspiration">
+                    Inspiración Serrana
+                  </h5>
+                  <p data-es="Carne de cerdo ibérico con setas de temporada."
+                    data-en="Iberian pork with seasonal mushrooms.">
+                    Carne de cerdo ibérico con setas de temporada.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-cheese mb-2 fa-2x"></i>
+                  <h5 data-es="Queso Curado Artesanal" data-en="Artisan Aged Cheese">
+                    Queso Curado Artesanal
+                  </h5>
+                  <p data-es="Un toque especial con queso de cabra curado."
+                    data-en="A special touch with aged goat cheese.">
+                    Un toque especial con queso de cabra curado.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-seedling mb-2 fa-2x"></i>
+                  <h5 data-es="Hierbas Frescas" data-en="Fresh Herbs">
+                    Hierbas Frescas
+                  </h5>
+                  <p data-es="Aliño de hierbas locales que realzan el sabor."
+                    data-en="Dressing of local herbs that enhance the flavor.">
+                    Aliño de hierbas locales que realzan el sabor.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Imagen central -->
+              <div class="col-md-4 text-center">
+                <img src="./img/sierra_borde2.webp" alt="Hamburguesa Castaña" class="img-fluid rounded-circle" />
+              </div>
+
+              <!-- Columna derecha -->
+              <div class="col-md-4 text-center">
+                <div class="feature">
+                  <i class="fas fa-heart mb-2 fa-2x"></i>
+                  <h5 data-es="Receta de Tradición" data-en="Traditional Recipe">
+                    Receta de Tradición
+                  </h5>
+                  <p data-es="Un homenaje a los sabores de la sierra." data-en="A tribute to the mountain's flavors.">
+                    Un homenaje a los sabores de la sierra.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-stopwatch mb-2 fa-2x"></i>
+                  <h5 data-es="Perfecta en Cualquier Momento" data-en="Perfect Anytime">
+                    Perfecta en Cualquier Momento
+                  </h5>
+                  <p data-es="Ideal para un almuerzo reconfortante." data-en="Perfect for a comforting lunch.">
+                    Ideal para un almuerzo reconfortante.
+                  </p>
+                </div>
+                <div class="feature mt-4">
+                  <i class="fas fa-apple-alt mb-2 fa-2x"></i>
+                  <h5 data-es="Energía Pura" data-en="Pure Energy">
+                    Energía Pura
+                  </h5>
+                  <p data-es="Con 820 kcal, llena de sabor y nutrientes."
+                    data-en="With 820 kcal, full of flavor and nutrients.">
+                    Con 820 kcal, llena de sabor y nutrientes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
-  </body>
-  <!-- Bootstrap Icons -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-    rel="stylesheet"
-  />
-  <script src="bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const popoverTriggerList = [].slice.call(
-        document.querySelectorAll('[data-bs-toggle="popover"]')
-      );
-      const popoverList = popoverTriggerList.map((popoverTriggerEl) => {
-        return new bootstrap.Popover(popoverTriggerEl);
-      });
+
+      <!-- Agregar más hamburguesas siguiendo el mismo patrón -->
+    </div>
+
+    <!-- Controles dentro del carrusel -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#hamburgerCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden" data-es="Anterior" data-en="Previous">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#hamburgerCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden" data-es="Siguiente" data-en="Next">Siguiente</span>
+    </button>
+  </div>
+  <!-- Boton para volver a arriba -->
+  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <footer class="bg-dark py-4">
+    <div class="container">
+      <div class="row">
+        <!-- Logotipo y Nombre -->
+        <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+          <a class="navbar-brand text-warning fw-bold" href="index.html">
+            <img src="./img/logogpt333.png" alt="Logo" class="d-inline-block align-text-center" />
+            Iberican<span class="text-danger">Burger</span>
+          </a>
+          <p class="text-white mt-2" data-es="La mejor experiencia de hamburguesas gourmet."
+            data-en="The best gourmet burger experience.">
+            La mejor experiencia de hamburguesas gourmet.
+          </p>
+        </div>
+
+        <!-- Menú Rápido -->
+        <div class="col-md-4 text-center">
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a href="index.html" class="text-white text-decoration-none" data-es="Inicio" data-en="Home">
+                <i class="fas fa-home"></i> Inicio
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="menu.html" class="text-white text-decoration-none" data-es="Menú" data-en="Menu">
+                <i class="fas fa-utensils"></i> Menú
+              </a>
+            </li>
+            <li>
+              <a href="contacto.html" class="text-white text-decoration-none" data-es="Contacto" data-en="Contact">
+                <i class="fas fa-envelope"></i> Contacto
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Redes Sociales -->
+        <div class="col-md-4 text-center text-md-end">
+          <p class="text-white mb-2" data-es="Síguenos en redes sociales:" data-en="Follow us on social media:">
+            Síguenos en redes sociales:
+          </p>
+          <div class="social-icons">
+            <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Línea de Separación -->
+      <hr class="bg-light my-4" />
+
+      <!-- Información de Derechos -->
+      <div class="text-center text-white">
+        <p class="mb-0" data-es="© 2024 Iberican Burger. Todos los derechos reservados."
+          data-en="© 2024 Iberican Burger. All rights reserved.">
+          © 2024 Iberican Burger. Todos los derechos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+<script src="bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const popoverTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="popover"]')
+    );
+    const popoverList = popoverTriggerList.map((popoverTriggerEl) => {
+      return new bootstrap.Popover(popoverTriggerEl);
     });
-  </script>
+  });
+</script>
+
 </html>

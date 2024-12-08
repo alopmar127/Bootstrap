@@ -291,3 +291,26 @@
 .carousel-inner {
   overflow: hidden;
 }
+
+#carouselPausePlay {
+  background-color: rgba(255, 255, 255, 0.616); /* Fondo oscuro semi-transparente */
+  color: rgb(0, 0, 0); /* Color del texto e iconos */
+  border: 1px solid rgba(0, 0, 0, 0.5); /* Sin bordes */
+  padding: 10px 15px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 2rem; /* Tamaño de fuente adecuado */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  z-index: 1050; /* Asegura que se muestre sobre el carrusel */
+}
+// font-size mas pequeño en moviles
+@media (max-width: 768px) {
+  #carouselPausePlay {
+    font-size: 1rem;
+  }
+}
+
+#carouselPausePlay:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo más claro al pasar el ratón */
+  color: black; /* Texto e icono oscuros en hover */
+}
+

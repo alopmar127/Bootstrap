@@ -219,19 +219,19 @@
   }
 
   /* Media queries para tamaños de pantalla */
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     img {
       max-width: 450px; /* Tamaño máximo para pantallas medianas */
     }
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 1200px) {
     img {
       max-width: 650px; /* Tamaño máximo para pantallas grandes */
     }
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 990px) {
     flex-direction: column; /* Cambiar a disposición vertical en pantallas pequeñas */
     text-align: center; /* Centrar texto en pantallas pequeñas */
     img {
