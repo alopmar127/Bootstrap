@@ -4496,7 +4496,7 @@ textarea.form-control-lg {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2); /* Sombras ligeras en el texto */
 }
 .card.novedades img {
-  max-width: 60%; /* Imagen escalable */
+  max-width: 50%; /* Imagen escalable */
   height: auto; /* Mantener proporciones */
   -o-object-fit: cover;
      object-fit: cover; /* Asegura que la imagen se adapte al espacio */
