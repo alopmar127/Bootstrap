@@ -235,7 +235,7 @@
     flex-direction: column; /* Cambiar a disposición vertical en pantallas pequeñas */
     text-align: center; /* Centrar texto en pantallas pequeñas */
     img {
-      max-width: 450px; /* Tamaño máximo más pequeño */
+      max-width: 100%; /* Tamaño máximo más pequeño */
     }
   }
 }

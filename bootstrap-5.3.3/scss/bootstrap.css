@@ -4519,7 +4519,7 @@ textarea.form-control-lg {
     text-align: center; /* Centrar texto en pantallas pequeñas */
   }
   .card.novedades img {
-    max-width: 450px; /* Tamaño máximo más pequeño */
+    max-width: 100%; /* Tamaño máximo más pequeño */
   }
 }
 
