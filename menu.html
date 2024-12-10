@@ -193,8 +193,8 @@
               LA BRAVA
             </h5>
             <p class="card-text" data-es="Carne de ternera al grill con un toque picante."
-              data-en="Grilled beef with a spicy touch.">
-              Carne de ternera al grill con un toque picante.
+              data-en="Grilled iberican pork with a spicy touch.">
+              Carne de cerdo ibérico al grill con un toque picante.
             </p>
           </div>
           <!-- Botón de Información -->
@@ -209,7 +209,7 @@
                 data-en="Nutritional Information - The Brava">
                 Información Nutricional - La Brava
               </h5>
-              <table class="table table-sm">
+              <table class="table table-sm table-striped table-bordered">
                 <thead>
                   <tr>
                     <th data-es="Componente" data-en="Component">
@@ -249,7 +249,13 @@
                     <td>15 g</td>
                     <td>45 g</td>
                   </tr>
-                  <!-- Más filas si es necesario -->
+                  <tr>
+                    <td data-es="Ingredientes" data-en="Ingredients">Ingredientes</td>
+                    <td colspan="2" data-es="Pan rústico, carne picante de res, jalapeños, cebolla morada, queso pepper jack, salsa chipotle" 
+                        data-en="Rustic bun, spicy iberican pork patty, jalapeños, red onion, pepper jack cheese, chipotle sauce">
+                      Pan rústico, carne picante de cerdo iberico, jalapeños, cebolla morada, queso pepper jack, salsa chipotle
+                    </td>
+                  </tr>   
                 </tbody>
               </table>
             </div>
@@ -279,7 +285,7 @@
                 data-en="Nutritional Information - Castaña">
                 Información Nutricional - Castaña
               </h5>
-              <table class="table table-sm">
+              <table class="table table-sm table-striped table-bordered">
                 <thead>
                   <tr>
                     <th data-es="Componente" data-en="Component">
@@ -318,7 +324,14 @@
                     <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
                     <td>12 g</td>
                     <td>36 g</td>
-                  </tr>
+                  </tr>       
+                  <tr>
+                    <td data-es="Ingredientes" data-en="Ingredients">Ingredientes</td>
+                    <td colspan="2" data-es="Pan integral, carne de cerdo ibérico, crema de castañas, queso manchego, rúcula, salsa de miel" 
+                        data-en="Whole wheat bun, Iberian pork patty, chestnut cream, Manchego cheese, arugula, honey sauce">
+                      Pan integral, carne de cerdo ibérico, crema de castañas, queso manchego, rúcula, salsa de miel
+                    </td>
+                  </tr>                          
                 </tbody>
               </table>
             </div>
@@ -326,68 +339,79 @@
         </div>
       </div>
 
-      <!-- Tarjeta de Hamburguesa Sierra -->
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card-grupal position-relative cristal">
-          <img src="./img/sierra_borde2.webp" class="card-img-top img-fluid" alt="Sierra" />
-          <div class="card-body text-center">
-            <h5 class="card-title menu-fuente-nombres">SIERRA</h5>
-            <p class="card-text">
-              Carne de cerdo ibérico con setas de temporada.
-            </p>
-          </div>
-          <!-- Botón de Información -->
-          <button class="btn  btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" data-toggle="tooltip"
-            data-placement="down" title="Información Nutricional/Nutritional information">
-            <i class="fa-solid fa-info"></i>
-          </button>
-          <!-- Información Nutricional (oculta) -->
-          <div class="nutritional-info d-none">
-            <div class="p-3">
-              <h5 class="text-center mb-3">
-                Información Nutricional - Sierra
-              </h5>
-              <table class="table table-sm">
-                <thead>
-                  <tr>
-                    <th>Componente</th>
-                    <th>Por 100g</th>
-                    <th>Por porción</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Energía</td>
-                    <td>820 kj</td>
-                    <td>2460 kj</td>
-                  </tr>
-                  <tr>
-                    <td>Calorías</td>
-                    <td>196 kcal</td>
-                    <td>588 kcal</td>
-                  </tr>
-                  <tr>
-                    <td>Grasas</td>
-                    <td>10 g</td>
-                    <td>30 g</td>
-                  </tr>
-                  <tr>
-                    <td>Carbohidratos</td>
-                    <td>22 g</td>
-                    <td>66 g</td>
-                  </tr>
-                  <tr>
-                    <td>Proteínas</td>
-                    <td>14 g</td>
-                    <td>42 g</td>
-                  </tr>
-                  <!-- Más filas si es necesario -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+     <!-- Tarjeta de Hamburguesa Sierra -->
+<div class="col-md-6 col-lg-4 mb-4">
+  <div class="card-grupal position-relative cristal">
+    <img src="./img/sierra_borde2.webp" class="card-img-top img-fluid" alt="Sierra" />
+    <div class="card-body text-center">
+      <h5 class="card-title menu-fuente-nombres" data-es="SIERRA" data-en="SIERRA">SIERRA</h5>
+      <p class="card-text" data-es="Carne de cerdo ibérico con setas de temporada." data-en="Iberian pork with seasonal mushrooms.">
+        Carne de cerdo ibérico con setas de temporada.
+      </p>
+    </div>
+    <!-- Botón de Información -->
+    <button 
+      class="btn btn-danger btn-sm info-btn position-absolute top-0 end-0 m-2" 
+      data-toggle="tooltip" 
+      data-placement="down" 
+      title="Más información" 
+      aria-label="Más información">
+      <i class="fa-solid fa-info"></i>
+    </button>
+    <!-- Información Nutricional (oculta) -->
+    <div class="nutritional-info d-none">
+      <div class="p-3">
+        <h5 class="text-center mb-3" data-es="Información Nutricional - Sierra" data-en="Nutritional Information - Sierra">
+          Información Nutricional - Sierra
+        </h5>
+        <table class="table table-sm table-striped table-bordered">
+          <thead>
+            <tr>
+              <th data-es="Componente" data-en="Component">Componente</th>
+              <th data-es="Por 100g" data-en="Per 100g">Por 100g</th>
+              <th data-es="Por porción" data-en="Per portion">Por porción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-es="Energía" data-en="Energy">Energía</td>
+              <td>820 kj</td>
+              <td>2460 kj</td>
+            </tr>
+            <tr>
+              <td data-es="Calorías" data-en="Calories">Calorías</td>
+              <td>196 kcal</td>
+              <td>588 kcal</td>
+            </tr>
+            <tr>
+              <td data-es="Grasas" data-en="Fats">Grasas</td>
+              <td>10 g</td>
+              <td>30 g</td>
+            </tr>
+            <tr>
+              <td data-es="Carbohidratos" data-en="Carbohydrates">Carbohidratos</td>
+              <td>22 g</td>
+              <td>66 g</td>
+            </tr>
+            <tr>
+              <td data-es="Proteínas" data-en="Proteins">Proteínas</td>
+              <td>14 g</td>
+              <td>42 g</td>
+            </tr>
+            <tr>
+              <td data-es="Ingredientes" data-en="Ingredients">Ingredientes</td>
+              <td colspan="2" data-es="Pan artesanal, carne de cerdo ibérico, setas de temporada, cebolla caramelizada, queso curado, salsa especial de la casa" 
+                  data-en="Artisanal bread, Iberian pork, seasonal mushrooms, caramelized onion, aged cheese, house special sauce">
+                Pan artesanal, carne de cerdo ibérico, setas de temporada, cebolla caramelizada, queso curado, salsa especial de la casa
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
+  </div>
+</div>
+
       <!-- Tarjeta de Hamburguesa Iberican Xtreme -->
       <div class="col-md-6 col-lg-4 mb-4">
         <div class="card-grupal position-relative cristal">
@@ -412,7 +436,7 @@
                 data-en="Nutritional Information - IBERICAN XTREME">
                 Información Nutricional - IBERICAN XTREME
               </h5>
-              <table class="table table-sm">
+              <table class="table table-sm table-striped table-bordered">
                 <thead>
                   <tr>
                     <th data-es="Componente" data-en="Component">
@@ -452,6 +476,14 @@
                     <td>18 g</td>
                     <td>54 g</td>
                   </tr>
+                  <tr>
+                    <td data-es="Ingredientes" data-en="Ingredients">Ingredientes</td>
+                    <td colspan="2" data-es="Pan de semillas, doble carne de cerdo ibérico, queso brie, cebolla crujiente, salsa de trufa, lechuga batavia, tomate confitado" 
+                        data-en="Seeded bun, double Iberian pork patty, brie cheese, crispy onion, truffle sauce, Batavia lettuce, confit tomato">
+                      Pan de semillas, doble carne de cerdo ibérico, queso brie, cebolla crujiente, salsa de trufa, lechuga batavia, tomate confitado
+                    </td>
+                  </tr>
+                  
                 </tbody>
               </table>
             </div>
@@ -491,7 +523,7 @@
                 data-en="Nutritional Information - Iberian Ham Sandwich">
                 Información Nutricional - Bocadillo de Jamón
               </h5>
-              <table class="table table-sm">
+              <table class="table table-sm table-striped table-bordered">
                 <thead>
                   <tr>
                     <th data-es="Componente" data-en="Component">
@@ -562,7 +594,7 @@
                 data-en="Nutritional Information - Serrano Ham Sandwich">
                 Información Nutricional - Bocadillo Serrano
               </h5>
-              <table class="table table-sm">
+              <table class="table table-sm table-striped table-bordered">
                 <thead>
                   <tr>
                     <th data-es="Componente" data-en="Component">
@@ -642,7 +674,7 @@
                   data-en="Nutritional Information - Iberian Ham Croquettes">
                   Información Nutricional - Croquetas de Jamón
                 </h5>
-                <table class="table table-sm">
+                <table class="table table-sm table-striped table-bordered">
                   <thead>
                     <tr>
                       <th data-es="Componente" data-en="Component">
@@ -711,7 +743,7 @@
                   data-en="Nutritional Information - Baked Goat Cheese">
                   Información Nutricional - Queso de Cabra
                 </h5>
-                <table class="table table-sm">
+                <table class="table table-sm table-striped table-bordered">
                   <thead>
                     <tr>
                       <th data-es="Componente" data-en="Component">
@@ -779,7 +811,7 @@
                   data-en="Nutritional Information - Iberican Fries">
                   Información Nutricional - Patatas Iberican
                 </h5>
-                <table class="table table-sm">
+                <table class="table table-sm table-striped table-bordered">
                   <thead>
                     <tr>
                       <th data-es="Componente" data-en="Component">
@@ -857,7 +889,7 @@
                   data-en="Nutritional Information - Cheesecake">
                   Información Nutricional - Tarta de Queso
                 </h5>
-                <table class="table table-sm">
+                <table class="table table-sm table-striped table-bordered">
                   <thead>
                     <tr>
                       <th data-es="Componente" data-en="Component">
@@ -927,7 +959,7 @@
                   data-en="Nutritional Information - Chestnut Flan">
                   Información Nutricional - Flan de Castañas
                 </h5>
-                <table class="table table-sm">
+                <table class="table table-sm table-striped table-bordered">
                   <thead>
                     <tr>
                       <th data-es="Componente" data-en="Component">
