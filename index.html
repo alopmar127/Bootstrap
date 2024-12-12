@@ -189,38 +189,35 @@
               </li>
             </ul>
 
-            <!-- Formulario de Búsqueda
-              <form class="d-flex me-3" role="search" onsubmit="event.preventDefault();">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="search-input" data-es="Buscar" data-en="Search">
-                <button class="btn btn-outline-light" type="button" data-es="Buscar" data-en="Search">
-                  <i class="fas fa-search"></i>
-                </button>
-              </form> -->
-
-            <!-- Botón de Pedido -->
-            <a
-              href="#"
-              class="btn btn-danger btn-lg px-4 py-2 mx-auto mt-3 mt-lg-0"
-              data-bs-toggle="popover"
-              data-bs-placement="bottom"
-              data-bs-content="Ahora mismo no está disponible."
-              onclick="event.preventDefault();"
-              data-es="¡Pedir Ahora!"
-              data-en="Order Now!"
+            <!-- Botones adicionales -->
+            <div
+              class="d-flex justify-content-center align-items-center flex-wrap mt-3 mt-lg-0 gap-2"
             >
-              <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
-            </a>
+              <!-- Botón de Pedido -->
+              <a
+                href="#"
+                class="btn btn-danger btn-lg px-4 py-2"
+                data-bs-toggle="popover"
+                data-bs-placement="bottom"
+                data-bs-content="Ahora mismo no está disponible."
+                onclick="event.preventDefault();"
+                data-es="¡Pedir Ahora!"
+                data-en="Order Now!"
+              >
+                <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
+              </a>
 
-            <!-- Selector de Idioma -->
-            <button
-              class="btn btn-light btn-lg mx-auto mt-3 mt-lg-0"
-              data-toggle="tooltip"
-              data-placement="down"
-              title="Cambiar idioma/Change language"
-              id="language-toggle"
-            >
-              <i class="fas fa-flag"></i> <span id="language-label">EN</span>
-            </button>
+              <!-- Selector de Idioma -->
+              <button
+                class="btn btn-light btn-lg"
+                data-toggle="tooltip"
+                data-placement="down"
+                title="Cambiar idioma/Change language"
+                id="language-toggle"
+              >
+                <i class="fas fa-flag"></i> <span id="language-label">EN</span>
+              </button>
+            </div>
           </div>
         </div>
       </nav>
