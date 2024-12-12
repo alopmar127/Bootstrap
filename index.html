@@ -1,190 +1,195 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iberican Burger - Inicio</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+    <link rel="stylesheet" href="bootstrap-5.3.3/scss/personalizado.css" />
+    <link rel="stylesheet" href="bootstrap-5.3.3/scss/bootstrap.css" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-  <title>Iberican Burger - Inicio</title>
-  <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
-  <link rel="stylesheet" href="bootstrap-5.3.3/scss/personalizado.css">
-  <link rel="stylesheet" href="bootstrap-5.3.3/scss/bootstrap.css" >
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const idiomaSelector = document.getElementById("language-toggle");
+        const idiomaLabel = document.getElementById("language-label");
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const idiomaSelector = document.getElementById("language-toggle");
-      const idiomaLabel = document.getElementById("language-label");
+        idiomaSelector.addEventListener("click", () => {
+          // Cambiar entre ES y EN
+          const nuevoIdioma = idiomaLabel.textContent === "ES" ? "en" : "es";
+          idiomaLabel.textContent = nuevoIdioma.toUpperCase();
 
-      idiomaSelector.addEventListener("click", () => {
-        // Cambiar entre ES y EN
-        const nuevoIdioma = idiomaLabel.textContent === "ES" ? "en" : "es";
-        idiomaLabel.textContent = nuevoIdioma.toUpperCase();
+          // Seleccionar todos los elementos con data-es y data-en
+          const elementos = document.querySelectorAll("[data-es][data-en]");
 
-        // Seleccionar todos los elementos con data-es y data-en
-        const elementos = document.querySelectorAll("[data-es][data-en]");
+          // Cambiar el texto de los elementos
+          elementos.forEach((elemento) => {
+            const texto = elemento.getAttribute(`data-${nuevoIdioma}`);
+            const icono = elemento.querySelector("i");
 
-        // Cambiar el texto de los elementos
-        elementos.forEach((elemento) => {
-          const texto = elemento.getAttribute(`data-${nuevoIdioma}`);
-          const icono = elemento.querySelector("i");
+            if (icono) {
+              // Limpiar todo menos el ícono y añadir el nuevo texto
+              elemento.innerHTML = "";
+              elemento.appendChild(icono); // Volvemos a agregar el ícono
+              elemento.appendChild(document.createTextNode(` ${texto}`)); // Agregar el nuevo texto
+            } else {
+              // Si no hay ícono, simplemente reemplazamos el texto completo
+              elemento.textContent = texto;
+            }
+          });
+        });
 
-          if (icono) {
-            // Limpiar todo menos el ícono y añadir el nuevo texto
-            elemento.innerHTML = "";
-            elemento.appendChild(icono); // Volvemos a agregar el ícono
-            elemento.appendChild(document.createTextNode(` ${texto}`)); // Agregar el nuevo texto
+        // Establecer el idioma inicial (ES o EN)
+        idiomaSelector.click();
+      });
+    </script>
+    <!-- Boton para volver a arriba -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const backToTopButton = document.getElementById("back-to-top");
+        const menu = document.querySelector("header"); // Selecciona el menú
+
+        const toggleBackToTop = () => {
+          const menuBottom = menu.getBoundingClientRect().bottom;
+
+          if (menuBottom < 0) {
+            backToTopButton.style.display = "flex"; // Mostrar el botón
           } else {
-            // Si no hay ícono, simplemente reemplazamos el texto completo
-            elemento.textContent = texto;
+            backToTopButton.style.display = "none"; // Ocultar el botón
           }
+        };
+
+        // Detecta el desplazamiento
+        window.addEventListener("scroll", toggleBackToTop);
+
+        // Añade funcionalidad al botón
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Desplazamiento suave
+          });
         });
       });
+    </script>
+  </head>
 
-      // Establecer el idioma inicial (ES o EN)
-      idiomaSelector.click();
-    });
-  </script>
-  <!-- Boton para volver a arriba -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const backToTopButton = document.getElementById("back-to-top");
-      const menu = document.querySelector("header"); // Selecciona el menú
+  <body>
+    <header class="bg-dark">
+      <nav class="navbar navbar-expand-xl py-3">
+        <div class="container">
+          <!-- Logotipo -->
+          <a class="navbar-brand text-warning fw-bold" href="index.html">
+            <img
+              src="./img/logogpt333.png"
+              alt="Logo"
+              class="d-inline-block align-text-center me-2"
+            />
+            Iberican<span class="text-danger">Burger</span>
+          </a>
 
-      const toggleBackToTop = () => {
-        const menuBottom = menu.getBoundingClientRect().bottom;
+          <!-- Botón Colapsable -->
+          <button
+            class="navbar-toggler text-warning border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
 
-        if (menuBottom < 0) {
-          backToTopButton.style.display = "flex"; // Mostrar el botón
-        } else {
-          backToTopButton.style.display = "none"; // Ocultar el botón
-        }
-      };
+          <!-- Menú -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto text-center">
+              <li class="nav-item">
+                <a
+                  class="custom-btn btn-lg"
+                  href="index.html"
+                  data-es="Inicio"
+                  data-en="Home"
+                >
+                  <i class="fas fa-home"></i> Inicio
+                </a>
+              </li>
+              <!-- Menú con Submenú -->
+              <li class="nav-item dropdown">
+                <a
+                  class="custom-btn btn-lg dropdown-toggle"
+                  href="#"
+                  id="menuDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  data-es="Menú"
+                  data-en="Menu"
+                >
+                  <i class="fas fa-utensils"></i> Menú
+                </a>
+                <ul
+                  class="dropdown-menu text-center"
+                  aria-labelledby="menuDropdown"
+                >
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="menu.html#hamburguesas"
+                      data-es="Hamburguesas"
+                      data-en="Burgers"
+                      >Hamburguesas</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="menu.html#bocadillos"
+                      data-es="Bocadillos"
+                      data-en="Sandwiches"
+                      >Bocadillos</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="menu.html#entrantes"
+                      data-es="Entrantes"
+                      data-en="Entrants"
+                      >Entrantes</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="menu.html#postres"
+                      data-es="Postres"
+                      data-en="Desserts"
+                      >Postres</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="custom-btn btn-lg"
+                  href="contacto.html"
+                  data-es="Contacto"
+                  data-en="Contact"
+                >
+                  <i class="fas fa-envelope"></i> Contacto
+                </a>
+              </li>
+            </ul>
 
-      // Detecta el desplazamiento
-      window.addEventListener("scroll", toggleBackToTop);
-
-      // Añade funcionalidad al botón
-      backToTopButton.addEventListener("click", () => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth", // Desplazamiento suave
-        });
-      });
-    });
-
-  </script>
-</head>
-
-<body>
-  <header class="bg-dark">
-    <nav class="navbar navbar-expand-xl py-3">
-      <div class="container">
-        <!-- Logotipo -->
-        <a class="navbar-brand text-warning fw-bold" href="index.html">
-          <img
-            src="./img/logogpt333.png"
-            alt="Logo"
-            class="d-inline-block align-text-center me-2">
-          Iberican<span class="text-danger">Burger</span>
-        </a>
-
-        <!-- Botón Colapsable -->
-        <button
-          class="navbar-toggler text-warning border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <i class="fas fa-bars fa-lg"></i>
-        </button>
-
-        <!-- Menú -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto text-center">
-            <li class="nav-item">
-              <a
-                class="custom-btn btn-lg"
-                href="index.html"
-                data-es="Inicio"
-                data-en="Home"
-              >
-                <i class="fas fa-home"></i> Inicio
-              </a>
-            </li>
-            <!-- Menú con Submenú -->
-            <li class="nav-item dropdown">
-              <a
-                class="custom-btn btn-lg dropdown-toggle"
-                href="#"
-                id="menuDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                data-es="Menú"
-                data-en="Menu"
-              >
-                <i class="fas fa-utensils"></i> Menú
-              </a>
-              <ul
-                class="dropdown-menu text-center"
-                aria-labelledby="menuDropdown"
-              >
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="menu.html#hamburguesas"
-                    data-es="Hamburguesas"
-                    data-en="Burgers"
-                    >Hamburguesas</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="menu.html#bocadillos"
-                    data-es="Bocadillos"
-                    data-en="Sandwiches"
-                    >Bocadillos</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="menu.html#entrantes"
-                    data-es="Entrantes"
-                    data-en="Entrants"
-                    >Entrantes</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="menu.html#postres"
-                    data-es="Postres"
-                    data-en="Desserts"
-                    >Postres</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a
-                class="custom-btn btn-lg"
-                href="contacto.html"
-                data-es="Contacto"
-                data-en="Contact"
-              >
-                <i class="fas fa-envelope"></i> Contacto
-              </a>
-            </li>
-          </ul>
-
-          <!-- Formulario de Búsqueda
+            <!-- Formulario de Búsqueda
               <form class="d-flex me-3" role="search" onsubmit="event.preventDefault();">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="search-input" data-es="Buscar" data-en="Search">
                 <button class="btn btn-outline-light" type="button" data-es="Buscar" data-en="Search">
@@ -192,276 +197,385 @@
                 </button>
               </form> -->
 
-          <!-- Botón de Pedido -->
-          <a
-            href="#"
-            class="btn btn-danger btn-lg px-4 py-2 mx-auto mt-3 mt-lg-0"
-            data-bs-toggle="popover"
-            data-bs-placement="bottom"
-            data-bs-content="Ahora mismo no está disponible."
-            onclick="event.preventDefault();"
-            data-es="¡Pedir Ahora!"
-            data-en="Order Now!"
-          >
-            <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
-          </a>
+            <!-- Botón de Pedido -->
+            <a
+              href="#"
+              class="btn btn-danger btn-lg px-4 py-2 mx-auto mt-3 mt-lg-0"
+              data-bs-toggle="popover"
+              data-bs-placement="bottom"
+              data-bs-content="Ahora mismo no está disponible."
+              onclick="event.preventDefault();"
+              data-es="¡Pedir Ahora!"
+              data-en="Order Now!"
+            >
+              <i class="fas fa-hamburger"></i> ¡Pedir Ahora!
+            </a>
 
-          <!-- Selector de Idioma -->
-          <button
-            class="btn btn-light btn-lg mx-auto mt-3 mt-lg-0"
-            data-toggle="tooltip"
-            data-placement="down"
-            title="Cambiar idioma/Change language"
-            id="language-toggle"
-          >
-            <i class="fas fa-flag"></i> <span id="language-label">EN</span>
-          </button>
+            <!-- Selector de Idioma -->
+            <button
+              class="btn btn-light btn-lg mx-auto mt-3 mt-lg-0"
+              data-toggle="tooltip"
+              data-placement="down"
+              title="Cambiar idioma/Change language"
+              id="language-toggle"
+            >
+              <i class="fas fa-flag"></i> <span id="language-label">EN</span>
+            </button>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
-  <!-- Carrusel -->
-  <!-- Carrusel Accesible -->
-  <div id="carouselExample" class="carousel slide mt-0"  aria-labelledby="carousel-heading">
-    <h2 id="carousel-heading" class="visually-hidden" data-es="Promociones Destacadas" data-en="Featured Promotions">
-      Promociones Destacadas
-    </h2>
+    <!-- Carrusel -->
+    <!-- Carrusel Accesible -->
+    <div
+      id="carouselExample"
+      class="carousel slide mt-0"
+      aria-labelledby="carousel-heading"
+    >
+      <h2
+        id="carousel-heading"
+        class="visually-hidden"
+        data-es="Promociones Destacadas"
+        data-en="Featured Promotions"
+      >
+        Promociones Destacadas
+      </h2>
 
-    <!-- Controles de pausa/reanudación -->
-    <button id="carouselPausePlay" class="btn btn-outline-light position-absolute top-0 end-0 m-2"
-      aria-controls="carouselExample" aria-label="Pausar carrusel" data-state="playing">
-      <i class="fas fa-pause"></i>
-    </button>
+      <!-- Controles de pausa/reanudación -->
+      <button
+        id="carouselPausePlay"
+        class="btn btn-outline-light position-absolute top-0 end-0 m-2"
+        aria-controls="carouselExample"
+        aria-label="Pausar carrusel"
+        data-state="playing"
+      >
+        <i class="fas fa-pause"></i>
+      </button>
 
-
-    <div class="carousel-inner">
-      <!-- Primera Imagen -->
-      <div class="carousel-item active">
-        <img src="./img/iberican_xtreme.webp" class="d-block w-100"
-          alt="Hamburguesa Iberican Xtreme: una explosión de sabores." style="height: 400px; object-fit: cover" >
-        <div class="carousel-caption">
-          <h3 data-es="Descubre la Iberican Xtreme" data-en="Discover the Iberican Xtreme">
-            Descubre la Iberican Xtreme
-          </h3>
-          <p data-es="Una hamburguesa única con ingredientes premium."
-            data-en="A unique burger with premium ingredients.">
-            Una hamburguesa única con ingredientes premium.
-          </p>
-        </div>
-      </div>
-
-      <!-- Segunda Imagen -->
-      <div class="carousel-item">
-        <img src="./img/castana_apa.webp" class="d-block w-100"
-          alt="La hamburguesa Castaña, con ingredientes de temporada." style="height: 400px; object-fit: cover" >
-        <div class="carousel-caption">
-          <h3 data-es="La Castaña: Sabor de Temporada" data-en="La Castaña: Seasonal Flavor">
-            La Castaña: Sabor de Temporada
-          </h3>
-          <p data-es="Disfruta de esta combinación única con crema de castañas."
-            data-en="Enjoy this unique combination with chestnut cream.">
-            Disfruta de esta combinación única con crema de castañas.
-          </p>
-        </div>
-      </div>
-
-      <!-- Tercera Imagen -->
-      <div class="carousel-item">
-        <img src="./img/labrava_apa.webp" class="d-block w-100"
-          alt="Hamburguesa La Brava, un toque picante que no olvidarás." style="height: 400px; object-fit: cover" >
-        <div class="carousel-caption">
-          <h3 data-es="La Brava: Pura Pasión" data-en="La Brava: Pure Passion">
-            La Brava: Pura Pasión
-          </h3>
-          <p data-es="Carne a la parrilla con un toque picante irresistible."
-            data-en="Grilled meat with an irresistible spicy touch.">
-            Carne a la parrilla con un toque picante irresistible.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Controles del Carrusel -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
-      aria-label="Anterior">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
-      aria-label="Siguiente">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Siguiente</span>
-    </button>
-  </div>
-
-
-
-
-  <!-- Sección de Bienvenida -->
-  <div class="container mt-5">
-    <div class="text-center">
-      <div class="card novedades my-4 shadow-sm bg-secondary">
-        <div class="card-body">
-          <h1 class="card-title menu-fuente" data-es="Novedades" data-en="News">
-            Novedades
-          </h1>
-          <p class="card-text"
-            data-es="¡Descubre nuestras últimas incorporaciones al menú! Prueba las nuevas hamburguesas con ingredientes de temporada."
-            data-en="Discover our latest menu additions! Try the new burgers with seasonal ingredients.">
-            ¡Descubre nuestras últimas incorporaciones al menú! Prueba las
-            nuevas hamburguesas con ingredientes de temporada.
-          </p>
-          <a href="menu.html" class="btn btn-primary" data-es="Saber más" data-en="Learn more">
-            Saber más
-          </a>
-        </div>
-        <img src="./img/estilo1.png" class="img-fluid" alt="Novedades en el menú">
-      </div>
-    </div>
-  </div>
-
-  <div class="container mt-5">
-    <div class="card shadow-lg border-0">
-      <div class="row g-0">
-        <!-- Imagen a la izquierda -->
-        <div class="col-md-5">
+      <div class="carousel-inner">
+        <!-- Primera Imagen -->
+        <div class="carousel-item active">
           <img
-            src="./img/midjourney.deiwor_Facade_of_a_modern_hamburger_restaurant_in_th_3736fbc0-c603-4e00-bc08-4bd2c2785734.webp"
-            alt="Nuestra Empresa" class="img-fluid rounded-start" style="height: 100%; object-fit: cover" >
+            src="./img/iberican_xtreme.webp"
+            class="d-block w-100"
+            alt="Hamburguesa Iberican Xtreme: una explosión de sabores."
+            style="height: 400px; object-fit: cover"
+          />
+          <div class="carousel-caption">
+            <h3
+              data-es="Descubre la Iberican Xtreme"
+              data-en="Discover the Iberican Xtreme"
+            >
+              Descubre la Iberican Xtreme
+            </h3>
+            <p
+              data-es="Una hamburguesa única con ingredientes premium."
+              data-en="A unique burger with premium ingredients."
+            >
+              Una hamburguesa única con ingredientes premium.
+            </p>
+          </div>
         </div>
-        <!-- Contenido a la derecha -->
-        <div class="col-md-7">
+
+        <!-- Segunda Imagen -->
+        <div class="carousel-item">
+          <img
+            src="./img/castana_apa.webp"
+            class="d-block w-100"
+            alt="La hamburguesa Castaña, con ingredientes de temporada."
+            style="height: 400px; object-fit: cover"
+          />
+          <div class="carousel-caption">
+            <h3
+              data-es="La Castaña: Sabor de Temporada"
+              data-en="La Castaña: Seasonal Flavor"
+            >
+              La Castaña: Sabor de Temporada
+            </h3>
+            <p
+              data-es="Disfruta de esta combinación única con crema de castañas."
+              data-en="Enjoy this unique combination with chestnut cream."
+            >
+              Disfruta de esta combinación única con crema de castañas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tercera Imagen -->
+        <div class="carousel-item">
+          <img
+            src="./img/labrava_apa.webp"
+            class="d-block w-100"
+            alt="Hamburguesa La Brava, un toque picante que no olvidarás."
+            style="height: 400px; object-fit: cover"
+          />
+          <div class="carousel-caption">
+            <h3
+              data-es="La Brava: Pura Pasión"
+              data-en="La Brava: Pure Passion"
+            >
+              La Brava: Pura Pasión
+            </h3>
+            <p
+              data-es="Carne a la parrilla con un toque picante irresistible."
+              data-en="Grilled meat with an irresistible spicy touch."
+            >
+              Carne a la parrilla con un toque picante irresistible.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles del Carrusel -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="prev"
+        aria-label="Anterior"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="next"
+        aria-label="Siguiente"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+    <!-- Sección de Bienvenida -->
+    <div class="container mt-5">
+      <div class="text-center">
+        <div class="card novedades my-4 shadow-sm bg-secondary">
           <div class="card-body">
-            <h2 class="card-title text-primary" data-es="Bienvenidos a Iberican Burger"
-              data-en="Welcome to Iberican Burger">
-              Bienvenidos a Iberican Burger
-            </h2>
-            <p class="card-text"
-              data-es="En Iberican Burger, nos enorgullece ofrecer hamburguesas elaboradas con los mejores ingredientes locales. Nuestra pasión por la calidad y el sabor nos ha llevado a crear una experiencia única para los amantes de la buena comida."
-              data-en="At Iberican Burger, we take pride in offering burgers made with the finest local ingredients. Our passion for quality and flavor has led us to create a unique experience for food lovers.">
-              En Iberican Burger, nos enorgullece ofrecer hamburguesas
-              elaboradas con los mejores ingredientes locales. Nuestra pasión
-              por la calidad y el sabor nos ha llevado a crear una experiencia
-              única para los amantes de la buena comida.
+            <h1
+              class="card-title menu-fuente"
+              data-es="Novedades"
+              data-en="News"
+            >
+              Novedades
+            </h1>
+            <p
+              class="card-text"
+              data-es="¡Descubre nuestras últimas incorporaciones al menú! Prueba las nuevas hamburguesas con ingredientes de temporada."
+              data-en="Discover our latest menu additions! Try the new burgers with seasonal ingredients."
+            >
+              ¡Descubre nuestras últimas incorporaciones al menú! Prueba las
+              nuevas hamburguesas con ingredientes de temporada.
             </p>
-
-            <p class="card-text"
-              data-es="Con más de 5 años de experiencia, nos hemos convertido en un referente en el mercado de hamburguesas artesanales, combinando tradición e innovación para deleitar a nuestros clientes."
-              data-en="With over 5 years of experience, we have become a benchmark in the artisanal burger market, combining tradition and innovation to delight our customers.">
-              Con más de 5 años de experiencia, nos hemos convertido en un
-              referente en el mercado de hamburguesas artesanales, combinando
-              tradición e innovación para deleitar a nuestros clientes.
-            </p>
-
-            <a href="contacto.html" class="btn btn-primary btn-lg mt-3" data-es="Conoce Más" data-en="Learn More">
-              Conoce Más <i class="fas fa-arrow-right"></i>
+            <a
+              href="menu.html"
+              class="btn btn-primary"
+              data-es="Saber más"
+              data-en="Learn more"
+            >
+              Saber más
             </a>
           </div>
+          <img
+            src="./img/estilo1.png"
+            class="img-fluid"
+            alt="Novedades en el menú"
+          />
         </div>
       </div>
     </div>
-  </div>
-  <!-- Boton para volver a arriba -->
-  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-  <footer class="bg-dark py-4">
-    <div class="container">
-      <div class="row">
-        <!-- Logotipo y Nombre -->
-        <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-          <a class="navbar-brand text-warning fw-bold" href="index.html">
-            <img src="./img/logogpt333.png" alt="Logo" class="d-inline-block align-text-center" >
-            Iberican<span class="text-danger">Burger</span>
-          </a>
-          <p class="text-white mt-2" data-es="La mejor experiencia de hamburguesas gourmet."
-            data-en="The best gourmet burger experience.">
-            La mejor experiencia de hamburguesas gourmet.
-          </p>
-        </div>
 
-        <!-- Menú Rápido -->
-        <div class="col-md-4 text-center">
-          <ul class="list-unstyled">
-            <li class="mb-2">
-              <a href="index.html" class="text-white text-decoration-none" data-es="Inicio" data-en="Home">
-                <i class="fas fa-home"></i> Inicio
-              </a>
-            </li>
-            <li class="mb-2">
-              <a href="menu.html" class="text-white text-decoration-none" data-es="Menú" data-en="Menu">
-                <i class="fas fa-utensils"></i> Menú
-              </a>
-            </li>
-            <li>
-              <a href="contacto.html" class="text-white text-decoration-none" data-es="Contacto" data-en="Contact">
-                <i class="fas fa-envelope"></i> Contacto
-              </a>
-            </li>
-          </ul>
-        </div>
+    <div class="container mt-5">
+      <div class="card shadow-lg border-0">
+        <div class="row g-0">
+          <!-- Imagen a la izquierda -->
+          <div class="col-md-5">
+            <img
+              src="./img/midjourney.deiwor_Facade_of_a_modern_hamburger_restaurant_in_th_3736fbc0-c603-4e00-bc08-4bd2c2785734.webp"
+              alt="Nuestra Empresa"
+              class="img-fluid rounded-start"
+              style="height: 100%; object-fit: cover"
+            />
+          </div>
+          <!-- Contenido a la derecha -->
+          <div class="col-md-7">
+            <div class="card-body">
+              <h2
+                class="card-title text-primary"
+                data-es="Bienvenidos a Iberican Burger"
+                data-en="Welcome to Iberican Burger"
+              >
+                Bienvenidos a Iberican Burger
+              </h2>
+              <p
+                class="card-text"
+                data-es="En Iberican Burger, nos enorgullece ofrecer hamburguesas elaboradas con los mejores ingredientes locales. Nuestra pasión por la calidad y el sabor nos ha llevado a crear una experiencia única para los amantes de la buena comida."
+                data-en="At Iberican Burger, we take pride in offering burgers made with the finest local ingredients. Our passion for quality and flavor has led us to create a unique experience for food lovers."
+              >
+                En Iberican Burger, nos enorgullece ofrecer hamburguesas
+                elaboradas con los mejores ingredientes locales. Nuestra pasión
+                por la calidad y el sabor nos ha llevado a crear una experiencia
+                única para los amantes de la buena comida.
+              </p>
 
-        <!-- Redes Sociales -->
-        <div class="col-md-4 text-center text-md-end">
-          <p class="text-white mb-2" data-es="Síguenos en redes sociales:" data-en="Follow us on social media:">
-            Síguenos en redes sociales:
-          </p>
-          <div class="social-icons">
-            <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
-            <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
-            <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+              <p
+                class="card-text"
+                data-es="Con más de 5 años de experiencia, nos hemos convertido en un referente en el mercado de hamburguesas artesanales, combinando tradición e innovación para deleitar a nuestros clientes."
+                data-en="With over 5 years of experience, we have become a benchmark in the artisanal burger market, combining tradition and innovation to delight our customers."
+              >
+                Con más de 5 años de experiencia, nos hemos convertido en un
+                referente en el mercado de hamburguesas artesanales, combinando
+                tradición e innovación para deleitar a nuestros clientes.
+              </p>
+
+              <a
+                href="contacto.html"
+                class="btn btn-primary btn-lg mt-3"
+                data-es="Conoce Más"
+                data-en="Learn More"
+              >
+                Conoce Más <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Línea de Separación -->
-      <hr class="bg-light my-4">
-
-      <!-- Información de Derechos -->
-      <div class="text-center text-white">
-        <p class="mb-0" data-es="© 2024 Iberican Burger. Todos los derechos reservados."
-          data-en="© 2024 Iberican Burger. All rights reserved.">
-          © 2024 Iberican Burger. Todos los derechos reservados.
-        </p>
-      </div>
     </div>
-  </footer>
+    <!-- Boton para volver a arriba -->
+    <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <footer class="bg-dark py-4">
+      <div class="container">
+        <div class="row">
+          <!-- Logotipo y Nombre -->
+          <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+            <a class="navbar-brand text-warning fw-bold" href="index.html">
+              <img
+                src="./img/logogpt333.png"
+                alt="Logo"
+                class="d-inline-block align-text-center"
+              />
+              Iberican<span class="text-danger">Burger</span>
+            </a>
+            <p
+              class="text-white mt-2"
+              data-es="La mejor experiencia de hamburguesas gourmet."
+              data-en="The best gourmet burger experience."
+            >
+              La mejor experiencia de hamburguesas gourmet.
+            </p>
+          </div>
 
-  <script src="bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-   document.addEventListener("DOMContentLoaded", () => {
-  const carouselElement = document.getElementById("carouselExample");
-  const pausePlayButton = document.getElementById("carouselPausePlay");
-  // Inicia el carrusel con el intervalo deseado, sin ride:'carousel'
-  const carouselInstance = new bootstrap.Carousel(carouselElement, {
-    interval: 3000
-  });
-  carouselInstance.cycle();
-  const icon = pausePlayButton.querySelector("i");
-  let isPlaying = true; // Estado inicial: está reproduciendo automáticamente
+          <!-- Menú Rápido -->
+          <div class="col-md-4 text-center">
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a
+                  href="index.html"
+                  class="text-white text-decoration-none"
+                  data-es="Inicio"
+                  data-en="Home"
+                >
+                  <i class="fas fa-home"></i> Inicio
+                </a>
+              </li>
+              <li class="mb-2">
+                <a
+                  href="menu.html"
+                  class="text-white text-decoration-none"
+                  data-es="Menú"
+                  data-en="Menu"
+                >
+                  <i class="fas fa-utensils"></i> Menú
+                </a>
+              </li>
+              <li>
+                <a
+                  href="contacto.html"
+                  class="text-white text-decoration-none"
+                  data-es="Contacto"
+                  data-en="Contact"
+                >
+                  <i class="fas fa-envelope"></i> Contacto
+                </a>
+              </li>
+            </ul>
+          </div>
 
-  pausePlayButton.addEventListener("click", () => {
-    if (isPlaying) {
-      // Pausar
-      carouselInstance.pause();
-      isPlaying = false;
-      pausePlayButton.setAttribute("aria-label", "Reanudar carrusel");
-      icon.classList.remove("fa-pause");
-      icon.classList.add("fa-play");
-    } else {
-      // Reanudar
-      carouselInstance.cycle();
-      isPlaying = true;
-      pausePlayButton.setAttribute("aria-label", "Pausar carrusel");
-      icon.classList.remove("fa-play");
-      icon.classList.add("fa-pause");
-    }
-  });
-});
+          <!-- Redes Sociales -->
+          <div class="col-md-4 text-center text-md-end">
+            <p
+              class="text-white mb-2"
+              data-es="Síguenos en redes sociales:"
+              data-en="Follow us on social media:"
+            >
+              Síguenos en redes sociales:
+            </p>
+            <div class="social-icons">
+              <a href="facebook.com" class="text-white"
+                ><i class="fab fa-facebook fa-lg"></i
+              ></a>
+              <a href="twitter.com" class="text-white"
+                ><i class="fab fa-twitter fa-lg"></i
+              ></a>
+              <a href="instagram.com" class="text-white"
+                ><i class="fab fa-instagram fa-lg"></i
+              ></a>
+            </div>
+          </div>
+        </div>
 
+        <!-- Línea de Separación -->
+        <hr class="bg-light my-4" />
 
-  </script>
-</body>
+        <!-- Información de Derechos -->
+        <div class="text-center text-white">
+          <p
+            class="mb-0"
+            data-es="© 2024 Iberican Burger. Todos los derechos reservados."
+            data-en="© 2024 Iberican Burger. All rights reserved."
+          >
+            © 2024 Iberican Burger. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
 
+    <script src="bootstrap-5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const carouselElement = document.getElementById("carouselExample");
+        const pausePlayButton = document.getElementById("carouselPausePlay");
+        // Inicia el carrusel con el intervalo deseado, sin ride:'carousel'
+        const carouselInstance = new bootstrap.Carousel(carouselElement, {
+          interval: 3000,
+        });
+        carouselInstance.cycle();
+        const icon = pausePlayButton.querySelector("i");
+        let isPlaying = true; // Estado inicial: está reproduciendo automáticamente
+
+        pausePlayButton.addEventListener("click", () => {
+          if (isPlaying) {
+            // Pausar
+            carouselInstance.pause();
+            isPlaying = false;
+            pausePlayButton.setAttribute("aria-label", "Reanudar carrusel");
+            icon.classList.remove("fa-pause");
+            icon.classList.add("fa-play");
+          } else {
+            // Reanudar
+            carouselInstance.cycle();
+            isPlaying = true;
+            pausePlayButton.setAttribute("aria-label", "Pausar carrusel");
+            icon.classList.remove("fa-play");
+            icon.classList.add("fa-pause");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
