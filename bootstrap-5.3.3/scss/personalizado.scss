@@ -1,4 +1,3 @@
-
 //Variables personalizadas para fondo
 // $custom-bg-color: #c9b7b7; // Color base del fondo
 // $custom-opacity: 0.3; // Opacidad del fondo
@@ -41,8 +40,7 @@ footer {
   padding-top: 2rem; /* Espaciado interno superior dentro del footer */
   background-color: $bg-color-dark;
   color: $text-color-light;
-  border-top: $yellow-line; 
-
+  border-top: $yellow-line;
 
   a {
     color: $text-color-light;
@@ -66,96 +64,91 @@ footer {
   }
 }
 
-
-
 body {
   position: relative; /* Necesario para posicionar el pseudo-elemento */
   min-height: 100vh; /* Asegura que cubra toda la ventana */
 
-//Navegacion por teclado
-a:focus,
-button:focus {
-  outline: 4px solid #ff0707;
-  outline-offset: 2px;
-}
-
-
-//Boton volver arriba
-// Variables
-$btn-bg-color: #f8ea39; // Color de fondo del botón
-$btn-bg-hover: #b9af25; // Color de fondo al pasar el cursor
-$btn-color: #000; // Color del texto/icono
-$btn-size: 70px; // Tamaño del botón
-$btn-border-radius: 50%; // Forma redonda
-$btn-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Sombra
-$btn-position: 2rem; // Margen desde los bordes
-$btn-border: 2px solid #000000; // Borde del botón
-// Estilo del botón
-#btnVolverArriba {
-  position: fixed;
-  bottom: $btn-position;
-  right: $btn-position;
-  display: none; // Oculto por defecto
-  z-index: 1000; // Asegura que esté por encima del contenido
-  background-color: $btn-bg-color;
-  color: $btn-color;
-  border: none;
-  border-radius: $btn-border-radius;
-  width: $btn-size;
-  height: $btn-size;
-  justify-content: center;
-  align-items: center;
-  box-shadow: $btn-shadow;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  border: $btn-border;
-
-  // Icono centrado
-  display: flex;
-  font-size: 1.2rem;
-}
-
-// Hover y efecto de interacción
-#btnVolverArriba:hover {
-  background-color: $btn-bg-hover;
-  transform: scale(1.1);
-}
-
-// Variables para estilos
-$btn-size: 50px;
-$btn-bg: #ffc107;
-$btn-hover-bg: #d89e04;
-$btn-color: #000;
-$btn-hover-color: #fff;
-
-.back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: $btn-size;
-  height: $btn-size;
-  background-color: $btn-bg;
-  color: $btn-color;
-  border: 1px solid $btn-color;
-  border-radius: 50%;
-  display: none; // Oculto por defecto
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  z-index: 1000;
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  &:hover {
-    background-color: $btn-hover-bg;
-    color: $btn-hover-color;
+  //Navegacion por teclado
+  a:focus,
+  button:focus {
+    outline: 4px solid #ff0707;
+    outline-offset: 2px;
   }
 
-  i {
-    font-size: 1.5rem;
+  //Boton volver arriba
+  // Variables
+  $btn-bg-color: #f8ea39; // Color de fondo del botón
+  $btn-bg-hover: #b9af25; // Color de fondo al pasar el cursor
+  $btn-color: #000; // Color del texto/icono
+  $btn-size: 70px; // Tamaño del botón
+  $btn-border-radius: 50%; // Forma redonda
+  $btn-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Sombra
+  $btn-position: 2rem; // Margen desde los bordes
+  $btn-border: 2px solid #000000; // Borde del botón
+  // Estilo del botón
+  #btnVolverArriba {
+    position: fixed;
+    bottom: $btn-position;
+    right: $btn-position;
+    display: none; // Oculto por defecto
+    z-index: 1000; // Asegura que esté por encima del contenido
+    background-color: $btn-bg-color;
+    color: $btn-color;
+    border: none;
+    border-radius: $btn-border-radius;
+    width: $btn-size;
+    height: $btn-size;
+    justify-content: center;
+    align-items: center;
+    box-shadow: $btn-shadow;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border: $btn-border;
+
+    // Icono centrado
+    display: flex;
+    font-size: 1.2rem;
   }
-}
 
+  // Hover y efecto de interacción
+  #btnVolverArriba:hover {
+    background-color: $btn-bg-hover;
+    transform: scale(1.1);
+  }
 
+  // Variables para estilos
+  $btn-size: 50px;
+  $btn-bg: #ffc107;
+  $btn-hover-bg: #d89e04;
+  $btn-color: #000;
+  $btn-hover-color: #fff;
+
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: $btn-size;
+    height: $btn-size;
+    background-color: $btn-bg;
+    color: $btn-color;
+    border: 1px solid $btn-color;
+    border-radius: 50%;
+    display: none; // Oculto por defecto
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: $btn-hover-bg;
+      color: $btn-hover-color;
+    }
+
+    i {
+      font-size: 1.5rem;
+    }
+  }
 
   /* Fondo de la web */
   // &::before {
@@ -173,8 +166,8 @@ $btn-hover-color: #fff;
   //   background-attachment: fixed;
   //   opacity: $custom-opacity; /* Aplica opacidad solo al fondo */
   //   z-index: -1; /* Envía el fondo detrás del contenido */
-  background-image: url('../../img/fondogen.png');
-  }
+  background-image: url("../../img/fondogen.png");
+}
 
 // body {
 //     background-image: url('../../img/fondogen2.png'); /* Reemplaza con la ruta de tu imagen */
@@ -252,28 +245,31 @@ $shadow-blur: 2px; // Difuminado de la sombra
   font-size: 2rem; // Tamaño adecuado para visualizar el efecto
   text-transform: uppercase; // Opcional, para que se vea más "grabado"
   text-shadow: $shadow-offset $shadow-offset $shadow-blur $stone-shadow-dark,
-    /* Sombra oscura inferior derecha */ -$shadow-offset - $shadow-offset
-      $shadow-blur $stone-shadow-light; /* Luz superior izquierda */
+    /* Sombra oscura inferior derecha */ -$shadow-offset - $shadow-offset $shadow-blur
+      $stone-shadow-light; /* Luz superior izquierda */
   letter-spacing: 1px; // Espaciado para mayor claridad
 }
 
 //Prueba fuente
 /* Definición de la fuente */
 @font-face {
-  font-family: 'Shred Handed';
-  src: url('../../fonts/Shred-Handed.eot'); /* IE9 Compatibility */
-  src: url('../../fonts/Shred-Handed.woff2') format('woff2'), /* Navegadores modernos */
-       url('../../fonts/Shred-Handed.woff') format('woff'), /* Compatibilidad adicional */
-       url('../../fonts/Shred-Handed.ttf') format('truetype'); /* Compatibilidad general */
-       
+  font-family: "Shred Handed";
+  src: url("../../fonts/Shred-Handed.eot"); /* IE9 Compatibility */
+  src: url("../../fonts/Shred-Handed.woff2") format("woff2"),
+    /* Navegadores modernos */ url("../../fonts/Shred-Handed.woff")
+      format("woff"),
+    /* Compatibilidad adicional */ url("../../fonts/Shred-Handed.ttf")
+      format("truetype"); /* Compatibilidad general */
+
   font-weight: normal;
   font-style: normal;
 }
 
 /* Aplicación de la fuente */
 // Variables
-$font-family-main: 'Shred Handed', sans-serif;
-$text-shadow-main: 3px 3px 2px rgba(255, 0, 0, 0.4), -6px 2px rgba(251, 255, 0, 0.88);
+$font-family-main: "Shred Handed", sans-serif;
+$text-shadow-main: 3px 3px 2px rgba(255, 0, 0, 0.4),
+  -6px 2px rgba(251, 255, 0, 0.88);
 $font-size-large: 8rem;
 $font-size-medium: 3rem;
 $font-size-little: 2.1rem;
@@ -298,22 +294,20 @@ $font-size-large-mobile: 6rem;
 
 .menu-fuente-nombres {
   font-size: $font-size-medium;
-    // Ajuste en móviles
-    @media (max-width: 576px) {
-      font-size: $font-size-medium-mobile;
-    }
+  // Ajuste en móviles
+  @media (max-width: 576px) {
+    font-size: $font-size-medium-mobile;
+  }
 }
 
 .menu-fuente-nombreslil {
   font-size: $font-size-little;
 }
 
-
-p{
+p {
   font-size: 1.05rem;
   font-weight: bold;
 }
-
 
 //Efecto cristal
 .cristal {
@@ -337,6 +331,9 @@ header {
 
   &:hover {
     color: #ffc107; // Color amarillo al pasar el ratón
+  }
+  img {
+    width: 80px;
   }
 }
 
@@ -444,10 +441,6 @@ $btn-primary-hover-text: #312e2e; // Texto más oscuro en hover
   }
 }
 
-
-
-
-
 // Alineación responsiva
 @media (max-width: 992px) {
   .navbar-nav {
@@ -534,13 +527,15 @@ $custom-dropdown-transition: 0.3s ease; // Transición suave
   border: 1px solid $custom-dropdown-border-color; // Borde con color personalizado
   border-radius: $custom-dropdown-border-radius; // Bordes redondeados
   box-shadow: $custom-dropdown-box-shadow; // Sombra
-  transition: background-color $custom-dropdown-transition, box-shadow $custom-dropdown-transition;
+  transition: background-color $custom-dropdown-transition,
+    box-shadow $custom-dropdown-transition;
 
   .custom-dropdown-item {
     background-color: transparent; // Fondo inicial transparente
     color: $custom-dropdown-item-color; // Color del texto inicial
     padding: 0.5rem 1rem; // Espaciado interno
-    transition: background-color $custom-dropdown-transition, color $custom-dropdown-transition;
+    transition: background-color $custom-dropdown-transition,
+      color $custom-dropdown-transition;
 
     &:hover,
     &:focus {
@@ -580,7 +575,8 @@ $custom-dropdown-transition: 0.3s ease; // Transición suave
 .custom-dropdown-menu {
   opacity: 0;
   transform: translateY(-10px); // Animación inicial deslizándose hacia abajo
-  transition: opacity $custom-dropdown-transition, transform $custom-dropdown-transition;
+  transition: opacity $custom-dropdown-transition,
+    transform $custom-dropdown-transition;
 
   &.show {
     opacity: 1;

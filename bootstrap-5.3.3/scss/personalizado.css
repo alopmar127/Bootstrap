@@ -235,6 +235,9 @@ header {
 .navbar-brand:hover {
   color: #ffc107;
 }
+.navbar-brand img {
+  width: 80px;
+}
 
 .nav-link {
   font-size: 1.1rem;
